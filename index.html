@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+		<meta name="viewport" charset="UTF-8" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="styles.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  </head>
+	<body>
+		<div id="colour-banner">
+			<div class="text-box colour-input">
+				<div style="flex:1;">
+					<input id="col1" placeholder="#54cc66">
+				</div>
+				<div style="width:40px;">
+					<input class="colour-picker" type="color" value="#54cc66">
+				</div>
+			</div>
+			<div class="text-box colour-input">
+				<div style="flex:1;">
+					<input id="col1" placeholder="#5382c9">
+				</div>
+				<div style="width:40px;">
+					<input class="colour-picker" type="color" value="#5382c9">
+				</div>
+			</div>
+			<div class="text-box percentage-input">
+				<input id="split" type="number" value="50" min="0" max="100">
+			</div>
+			<div class="text-box colour-output">
+				<div style="flex:1;">
+					<p id="colour-result">rgb</p>
+				</div>
+				<div style="width:40px;"><img src="clipboard-copy.svg" style="height:16px;left:12px;top:12px;position:relative;"/></div>
+			</div>
+		</div>
+		<div id="track">
+			<div id="track-start" class="large-tick"></div>
+			<div id="track-end" class="large-tick"></div>
+			<div id="track-diamond">
+			</div>
+		</div>
+	</body>
+	<script src="drag.js"></script>
+	<script src="col_conversion.js"></script>
+	<script src="script.js"></script>
+</html>
