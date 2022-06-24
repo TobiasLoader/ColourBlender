@@ -5,54 +5,86 @@
 		<link rel="stylesheet" href="styles.css" />
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@300;400&display=swap" rel="stylesheet">
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   </head>
 	<body>
-		<div id="colour-banner">
-			<div class="text-box colour-input">
-				<div style="flex:1;">
-					<input id="col1" placeholder="#54cc66">
+		<div id="title" class="light-title">
+			<a href="http://colourblender.io">colourblender.io</a>
+		</div>
+		<div id="central-content" class="light-mode">
+			<div id="main-content">
+				<div id="colour-banner">
+					<div class="text-box colour-input">
+						<div style="flex:1;">
+							<input id="col1" placeholder="#6ad279">
+						</div>
+						<div style="width:50px;">
+							<input id="col1_picker" class="colour-picker" type="color" value="#6ad279">
+						</div>
+					</div>
+					<div class="text-box colour-input">
+						<div style="flex:1;">
+							<input id="col2" placeholder="#5382c9">
+						</div>
+						<div style="width:50px;">
+							<input id="col2_picker" class="colour-picker" type="color" value="#5382c9">
+						</div>
+					</div>
+					<div class="text-box percentage-input">
+						<div style="flex:3">
+						<input id="split" type="number" value="50" min="0" max="100">
+						</div>
+						<div style="width:50px;">
+							<p style="font-size:25px;margin:0;line-height:40px;text-align:right">%</p>
+						</div>
+					</div>
+					<div class="text-box colour-output">
+						<div style="flex:1;">
+							<p id="colour-result">rgb</p>
+						</div>
+						<div id="copy-btn" style="width:40px;"><img src="light-clipboard-copy.svg" style="height:16px;left:12px;top:12px;position:relative;"/></div>
+					</div>
 				</div>
-				<div style="width:50px;">
-					<input id="col1_picker" class="colour-picker" type="color" value="#54cc66">
+				<div id="track">
+					<div id="track-start" class="large-tick"></div>
+					<div id="track-end" class="large-tick"></div>
+					<div id="track-diamond">
+						<div class="grab-bars" style="right:8px;top:18px"></div>
+						<div class="grab-bars" style=""></div>
+						<div class="grab-bars" style="right:12px;top:2px"></div>
+					</div>
 				</div>
 			</div>
-			<div class="text-box colour-input">
-				<div style="flex:1;">
-					<input id="col2" placeholder="#5382c9">
+			<div id="sec-content">
+				<div id="sub-content-box">
+					<div id="showcss-content">show css</div>
+					<div id="gradient-content">gradient</div>
+					<div id="info-content">info</div>
 				</div>
-				<div style="width:50px;">
-					<input id="col2_picker" class="colour-picker" type="color" value="#5382c9">
-				</div>
-			</div>
-			<div class="text-box percentage-input">
-				<div style="flex:3">
-				<input id="split" type="number" value="50" min="0" max="100">
-				</div>
-				<div style="width:50px;">
-					<p style="color:white;font-size:25px;margin:0;line-height:40px;text-align:right">%</p>
-				</div>
-			</div>
-			<div class="text-box colour-output">
-				<div style="flex:1;">
-					<p id="colour-result">rgb</p>
-				</div>
-				<div id="copy-btn" style="width:40px;"><img src="clipboard-copy.svg" style="height:16px;left:12px;top:12px;position:relative;"/></div>
 			</div>
 		</div>
-		<div id="track">
-			<div id="track-start" class="large-tick"></div>
-			<div id="track-end" class="large-tick"></div>
-			<div id="track-diamond">
-				<div class="grab-bars" style="right:8px;top:18px"></div>
-				<div class="grab-bars" style=""></div>
-				<div class="grab-bars" style="right:12px;top:2px"></div>
+		<div id="sidebar" class="light-sidebar">
+			<div id="sidebar-content">
+				<div id="sidebar-inner">
+					<div id="hexrgb-btn" class="sidebar-btn">
+						<p><span id="txt-hex">hex</span> <span style="opacity:0.5;">|</span> <span id="txt-rgb">rgb</span></p>
+					</div>
+					<div id="showcss-btn" class="sidebar-btn"><p>show css</p></div>
+					<div id="gradient-btn" class="sidebar-btn"><p>gradient</p></div>
+					<div id="info-btn" class="sidebar-btn"><p>info</p></div>
+				</div>
+			</div>
+			<div id="burger">
+				<div id="burger-line1" class="burger-line"></div>
+				<div id="burger-line2" class="burger-line"></div>
+				<div id="burger-line3" class="burger-line"></div>
 			</div>
 		</div>
 	</body>
 	<script src="drag.js"></script>
 	<script src="col_conversion.js"></script>
+	<script src="col_funcs.js"></script>
 	<script src="script.js"></script>
 </html>
