@@ -15,32 +15,40 @@
 				<div style="flex:1;">
 					<input id="col1" placeholder="#54cc66">
 				</div>
-				<div style="width:40px;">
-					<input class="colour-picker" type="color" value="#54cc66">
+				<div style="width:50px;">
+					<input id="col1_picker" class="colour-picker" type="color" value="#54cc66">
 				</div>
 			</div>
 			<div class="text-box colour-input">
 				<div style="flex:1;">
-					<input id="col1" placeholder="#5382c9">
+					<input id="col2" placeholder="#5382c9">
 				</div>
-				<div style="width:40px;">
-					<input class="colour-picker" type="color" value="#5382c9">
+				<div style="width:50px;">
+					<input id="col2_picker" class="colour-picker" type="color" value="#5382c9">
 				</div>
 			</div>
 			<div class="text-box percentage-input">
+				<div style="flex:3">
 				<input id="split" type="number" value="50" min="0" max="100">
+				</div>
+				<div style="width:50px;">
+					<p style="color:white;font-size:25px;margin:0;line-height:40px;text-align:right">%</p>
+				</div>
 			</div>
 			<div class="text-box colour-output">
 				<div style="flex:1;">
 					<p id="colour-result">rgb</p>
 				</div>
-				<div style="width:40px;"><img src="clipboard-copy.svg" style="height:16px;left:12px;top:12px;position:relative;"/></div>
+				<div id="copy-btn" style="width:40px;"><img src="clipboard-copy.svg" style="height:16px;left:12px;top:12px;position:relative;"/></div>
 			</div>
 		</div>
 		<div id="track">
 			<div id="track-start" class="large-tick"></div>
 			<div id="track-end" class="large-tick"></div>
 			<div id="track-diamond">
+				<div class="grab-bars" style="right:8px;top:18px"></div>
+				<div class="grab-bars" style=""></div>
+				<div class="grab-bars" style="right:12px;top:2px"></div>
 			</div>
 		</div>
 	</body>
