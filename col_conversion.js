@@ -1,14 +1,27 @@
 
+/// String: rgb(1,2,3)
+/// Array : [1,2,3]
+
+function strRGBtoArrayRGB(rgb_str){
+	return rgb_str.slice(4).slice(0, -1).split(',').map(s => parseInt(s));
+}
+function arrayRGBtoStrRGB(rgb_array){
+	return 'rgb('+rgb_array[0].toString()+','+rgb_array[1].toString()+','+rgb_array[2].toString()+')';
+}
+
+
 /// Blend from RGB
 
 function basicBlendHEX(hex1,hex2,split){
-	return rgbToHex(basicBlendRGB(hexToRgb(hex1),hexToRgb(hex2),split));
+	return rgbArrayToHex(basicBlendRGB(hexToRgbArray(hex1),hexToRgbArray(hex2),split));
 }
-function basicBlendRGB(rgb1,rgb2,split){
-	return Array.from({length: 3}, (_, i) => parseInt(rgb1[i]*(1-split)+rgb2[i]*split));
-
+function basicBlendRGB(rgb1_array,rgb2_array,split){
+	console.log(rgb1_array,rgb2_array,split);
+	return Array.from({length: 3}, (_, i) => parseInt(rgb1_array[i]*(1-split)+rgb2_array[i]*split));
 }
-
+function basicBlendStrRGB(rgb1_str,rgb2_str,split){
+	return arrayRGBtoStrRGB(basicBlendRGB(strRGBtoArrayRGB(rgb1_str),strRGBtoArrayRGB(rgb2_str),split));
+}
 
 //// Blend from RYB
 
@@ -17,26 +30,33 @@ function blendHEX(hex1,hex2,split){
 }
 
 function blendRGB(rgb1,rgb2,split){
-	return rybToRGB(blendRYB(rgbToRYB(rgb1),rgbToRYB(rgb2),split));
+	return rybToRGB(blendRYB(rgbToRYB(strRGBtoArrayRGB(rgb1)),rgbToRYB(strRGBtoArrayRGB(rgb2)),split));
 }
 
 function blendRYB(ryb1,ryb2,split){
 	return Array.from({length: 3}, (_, i) => parseInt(ryb1[i]*(1-split)+ryb2[i]*split));
 }
 
-function hexToRgb(hex) {
-  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  return [parseInt(result[1], 16),parseInt(result[2], 16),parseInt(result[3], 16)];
+function hexToRgbArray(hex) {
+	var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+	return [parseInt(result[1], 16),parseInt(result[2], 16),parseInt(result[3], 16)];
 }
-function rgbToHex(rgb) {
-  return "#" + ((1 << 24) + (rgb[0] << 16) + (rgb[1] << 8) + rgb[2]).toString(16).slice(1);
+function rgbArrayToHex(rgb_array) {
+	return "#" + ((1 << 24) + (rgb_array[0] << 16) + (rgb_array[1] << 8) + rgb_array[2]).toString(16).slice(1);
+}
+
+function hexToRgbStr(hex) {
+	return arrayRGBtoStrRGB(hexToRgbArray(hex));
+}
+function rgbStrToHex(rgb) {
+	return rgbArrayToHex(strRGBtoArrayRGB(rgb));
 }
 
 // Credit: http://www.deathbysoftware.com/colors/index.html.
-function rgbToRYB(rgb){
-	var r = rgb[0];
-		g = rgb[1];
-		b = rgb[2];
+function rgbToRYB(rgb_array){
+	var r = rgb_array[0];
+		g = rgb_array[1];
+		b = rgb_array[2];
 	// Remove the white from the color
 	var w = Math.min(r, g, b);
 	r -= w;
@@ -72,10 +92,10 @@ function rgbToRYB(rgb){
 }
 	
 
-function rybToRGB(ryb){
-	var r = ryb[0];
-		y = ryb[1];
-		b = ryb[2];
+function rybToRGB(ryb_array){
+	var r = ryb_array[0];
+		y = ryb_array[1];
+		b = ryb_array[2];
 	// Remove the whiteness from the color.
 	var w = Math.min(r, y, b);
 	r -= w;

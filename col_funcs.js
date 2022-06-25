@@ -1,11 +1,14 @@
 
-function applyGradient() {
+function refreshColourFields() {
 	$('body').css({'background':'linear-gradient(90deg, '+cols[0]+' 20%, '+cols[1]+' 80%)'});
 	$('#sidebar-content').css({'background':cols[1]});
 	applyColourChoice();
 }
 function applyColourChoice() {
-	colour_choice = basicBlendHEX(cols[0],cols[1],split);
+	if (colour_encode=='hex')
+		colour_choice = basicBlendHEX(cols[0],cols[1],split);
+	else if (colour_encode=='rgb')
+		colour_choice = basicBlendStrRGB(cols[0],cols[1],split);
 	$('#colour-banner').css({'left':(20+60*split).toString()+'%'});
 	$('#colour-banner').css({'background':colour_choice});
 	$('#sub-content-box').css({'background':colour_choice});
@@ -15,6 +18,11 @@ function applyColourChoice() {
 	});
 	$('#colour-result').html(colour_choice);
 	$('#split').val(parseInt(100*split).toString());
+	for (var i=0; i<2; i+=1){
+		$('#col'+(i+1).toString()).val(cols[i]);
+		if (colour_encode=='rgb') $('#col'+(i+1).toString()+'_picker').val(rgbStrToHex(cols[i]));
+		else if (colour_encode=='hex') $('#col'+(i+1).toString()+'_picker').val(cols[i]);
+	}
 	lightDarkCheckTitle();
 	lightDarkCheckSidebar();
 	lightDarkCheckBanner();
@@ -26,14 +34,21 @@ function extractBrightnessHEX(hex){
 	var r = (rgb >> 16) & 0xff;  // extract red
 	var g = (rgb >>  8) & 0xff;  // extract green
 	var b = (rgb >>  0) & 0xff;  // extract blue
-	return 0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709
+	return extractBrightnessRGBArray([r,g,b]);
 }
-function extractBrightnessRGB(rgb){
-	return 0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2]; // per ITU-R BT.709
+function extractBrightnessRGBArray(rgb_array){
+	return 0.2126 * rgb_array[0] + 0.7152 * rgb_array[1] + 0.0722 * rgb_array[2]; // per ITU-R BT.709
+}
+function extractBrightnessCol(col){
+	if (colour_encode=='hex')
+		return extractBrightnessHEX(col);
+	else if (colour_encode=='rgb')
+		return extractBrightnessRGBArray(strRGBtoArrayRGB(col));
+	return 0;
 }
 
 function lightDarkCheckBanner(){
-	let b = extractBrightnessHEX(colour_choice);
+	let b = extractBrightnessCol(colour_choice);
 	if (colour_banner_mode=='light' && b>187){
 		$('#central-content').removeClass("light-mode");
 		$('#central-content').addClass("dark-mode");
@@ -49,7 +64,7 @@ function lightDarkCheckBanner(){
 }
 
 function lightDarkCheckTitle(){
-	let b = extractBrightnessHEX(cols[0]);
+	let b = extractBrightnessCol(cols[0]);
 	if (b>=185){
 		$('#title').removeClass('light-title');
 		$('#title').addClass('dark-title');
@@ -59,7 +74,7 @@ function lightDarkCheckTitle(){
 	}
 }
 function lightDarkCheckSidebar(){
-	let b = extractBrightnessHEX(cols[1]);
+	let b = extractBrightnessCol(cols[1]);
 	if (b>=185){
 		$('#sidebar').removeClass('light-sidebar');
 		$('#sidebar').addClass('dark-sidebar');
@@ -95,14 +110,28 @@ function verifyFormatHex(hex) {
 	}
 }
 
+function verifyFormatRGB(rgbstr) {
+	let rgb = rgbstr.replace(/(\s+)|(,)/g, '&').replace(/[^0-9,&]/g,'').split('&').filter(s => (s!='')).map(s => parseInt(s)).filter(i => (i!=undefined && i>=0 && i<= 255));
+	if (rgb.length == 3){
+		return 'rgb('+rgb[0].toString()+','+rgb[1].toString()+','+rgb[2].toString()+')';
+	} else {
+		return false;
+	}
+}
+
+function verifyFormatCol(colstr){
+	if (colour_encode=='hex')
+		return verifyFormatHex(colstr);
+	else if (colour_encode=='rgb')
+		return verifyFormatRGB(colstr);
+	else return false;
+}
+
 function colourTextInputEntered(el,el_picker,i){
-	let vhex = verifyFormatHex(el.val());
-	if (vhex){
-		cols[i] = vhex;
-		if (cols[i][0]!='#') cols[i] = '#'+cols[i];
-		el.val(cols[i]);
-		el_picker.val(cols[i]);
-		applyGradient();
+	let veri_col = verifyFormatCol(el.val());
+	if (veri_col){
+		cols[i] = veri_col;
+		refreshColourFields();
 	} else {
 		el.attr('placeholder',cols[i]);
 		el.val('');

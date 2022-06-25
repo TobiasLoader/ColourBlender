@@ -9,7 +9,7 @@ body {
 	height:100%;
 	font-family: 'Overpass Mono';
 	font-weight: 300;
-	letter-spacing: 2px;
+	letter-spacing: 1px;
 	overflow: hidden;
 }
 
@@ -31,7 +31,6 @@ body {
 	margin:0;
 	font-size:18px;
 	text-decoration: none;
-	letter-spacing: 1px;
 }
 .light-title#title {border:rgba(255,255,255,0.2) 1px solid;}
 .dark-title#title {border:rgba(50,50,50,0.2) 1px solid;}
@@ -127,7 +126,7 @@ body {
 }
 
 
-/* /////////////// CONTENT-OVERLAY //////////////// */
+/* /////////////// SEC-CONTENT //////////////// */
 
 
 #sec-content {
@@ -160,6 +159,13 @@ body {
 #gradient-content {display:none;}
 #info-content {display:none;}
 
+.light-mode #sub-content-box p {
+	color: rgb(255,255,255);
+}
+.dark-mode #sub-content-box p {
+	color: rgb(50,50,50);
+}
+
 
 /* /////////////// MAIN-CONTENT //////////////// */
 
@@ -167,7 +173,7 @@ body {
 #colour-banner {
 	top:15%;
 	height:55%;
-	width:max(260px,20%);
+	width:max(280px,20%);
 	position:absolute;
 	left:0;
 	transform: translateX(-50%);
@@ -191,6 +197,7 @@ body {
 	width:60%;
 	left:20%;
 	position: relative;
+	letter-spacing:1px;
 }
 
 input {
@@ -204,7 +211,6 @@ input {
 	background: none;
 	border:none;
 	outline:none;
-	letter-spacing: 2px;
 }
 .light-mode input {
 	color:rgb(255,255,255);

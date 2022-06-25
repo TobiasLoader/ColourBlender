@@ -41,14 +41,16 @@ c2.keypress(function (e) {
 });
 
 c1_picker.on('input',function(){
-	cols[0] = c1_picker.val();
+	if (colour_encode=='hex') cols[0] = c1_picker.val();
+	else if (colour_encode=='rgb') cols[0] = hexToRgbStr(c1_picker.val());
 	c1.val(cols[0]);
-	applyGradient();
+	refreshColourFields();
 });
 c2_picker.on('input',function(){
-	cols[1] = c2_picker.val();
+	if (colour_encode=='hex') cols[1] = c2_picker.val();
+	else if (colour_encode=='rgb') cols[1] = hexToRgbStr(c2_picker.val());
 	c2.val(cols[1]);
-	applyGradient();
+	refreshColourFields();
 });
 $('#split').on('input',function(){
 	if ($('#split').val()>=0 && $('#split').val()<=100){
@@ -120,11 +122,20 @@ $('#hexrgb-btn').click(function(){
 		colour_encode = 'rgb';
 		$('#txt-hex').css({opacity:0.5});
 		$('#txt-rgb').css({opacity:1});
+		$('.colour-input input').css('font-size','15px');
+		$('#colour-result').css('font-size','13px');
+		$('.text-box').css({'width':'70%','left':'15%','letter-spacing':'0'});
+		cols = cols.map(hex => hexToRgbStr(hex));
 	} else if (colour_encode=='rgb'){
 		colour_encode = 'hex';
 		$('#txt-hex').css({opacity:1});
 		$('#txt-rgb').css({opacity:0.5});
+		$('.colour-input input').css('font-size','20px');
+		$('#colour-result').css('font-size','15px');
+		$('.text-box').css({'width':'60%','left':'20%','letter-spacing':'1px'});	
+		cols = cols.map(rgb => rgbStrToHex(rgb));
 	}
+	refreshColourFields();
 });
 
 $('#showcss-btn, #gradient-btn, #info-btn').click(function(){
@@ -157,7 +168,7 @@ $('#info-btn').click(function(){
 	$('#info-content').css('display','block');
 });
 
-applyGradient();
+refreshColourFields();
 applyColourChoice();
 
 dragElement(document.getElementById('track-diamond'));
