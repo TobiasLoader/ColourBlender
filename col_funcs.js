@@ -19,7 +19,8 @@ function applyColourChoice() {
 	$('#colour-result').html(colour_choice);
 	$('#split').val(parseInt(100*split).toString());
 	for (var i=0; i<2; i+=1){
-		$('#col'+(i+1).toString()).val(cols[i]);
+		$('#col'+(i+1).toString()).attr('placeholder',cols[i]);
+		$('#col'+(i+1).toString()).val('');
 		if (colour_encode=='rgb') $('#col'+(i+1).toString()+'_picker').val(rgbStrToHex(cols[i]));
 		else if (colour_encode=='hex') $('#col'+(i+1).toString()+'_picker').val(cols[i]);
 	}
@@ -28,6 +29,29 @@ function applyColourChoice() {
 	lightDarkCheckBanner();
 }
 
+function switchToHex(){
+	colour_encode = 'hex';
+	$('#txt-hex').css({opacity:1});
+	$('#txt-rgb').css({opacity:0.5});
+	$('.colour-input input').css('font-size','20px');
+	$('#colour-result').css('font-size','15px');
+	$('.text-box').css({'width':'60%','left':'20%','letter-spacing':'1px'});
+	$('body').removeClass('rgb');
+	$('body').addClass('hex');
+	cols = cols.map(rgb => rgbStrToHex(rgb));
+}
+
+function switchToRgb(){
+	colour_encode = 'rgb';
+	$('#txt-hex').css({opacity:0.5});
+	$('#txt-rgb').css({opacity:1});
+	$('.colour-input input').css('font-size','15px');
+	$('#colour-result').css('font-size','13px');
+	$('.text-box').css({'width':'70%','left':'15%','letter-spacing':'0'});
+	$('body').removeClass('hex');
+	$('body').addClass('rgb');
+	cols = cols.map(hex => hexToRgbStr(hex));
+}
 
 function extractBrightnessHEX(hex){
 	var rgb = parseInt(hex.substring(1), 16);   // convert rrggbb to decimal
@@ -126,6 +150,13 @@ function verifyFormatCol(colstr){
 		return verifyFormatRGB(colstr);
 	else return false;
 }
+function verifyOtherFormatCol(colstr){
+	if (colour_encode=='rgb')
+		return verifyFormatHex(colstr);
+	else if (colour_encode=='hex')
+		return verifyFormatRGB(colstr);
+	else return false;
+}
 
 function colourTextInputEntered(el,el_picker,i){
 	let veri_col = verifyFormatCol(el.val());
@@ -133,8 +164,17 @@ function colourTextInputEntered(el,el_picker,i){
 		cols[i] = veri_col;
 		refreshColourFields();
 	} else {
-		el.attr('placeholder',cols[i]);
-		el.val('');
+		let other_veri_col = verifyOtherFormatCol(el.val());
+		if (other_veri_col) {
+			if (colour_encode=='rgb') switchToHex();
+			else if (colour_encode=='hex') switchToRgb();
+			cols[i] = other_veri_col;
+			refreshColourFields();
+		}
+		else {
+			el.attr('placeholder',cols[i]);
+			el.val('');
+		}
 	}
 }
 

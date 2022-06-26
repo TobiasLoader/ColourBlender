@@ -16,7 +16,6 @@ function basicBlendHEX(hex1,hex2,split){
 	return rgbArrayToHex(basicBlendRGB(hexToRgbArray(hex1),hexToRgbArray(hex2),split));
 }
 function basicBlendRGB(rgb1_array,rgb2_array,split){
-	console.log(rgb1_array,rgb2_array,split);
 	return Array.from({length: 3}, (_, i) => parseInt(rgb1_array[i]*(1-split)+rgb2_array[i]*split));
 }
 function basicBlendStrRGB(rgb1_str,rgb2_str,split){

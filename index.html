@@ -9,7 +9,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   </head>
-	<body>
+	<body class="hex">
 		<div id="title" class="light-title">
 			<a href="http://colourblender.io">colourblender.io</a>
 		</div>
@@ -68,9 +68,6 @@
 		<div id="sidebar" class="light-sidebar">
 			<div id="sidebar-content">
 				<div id="sidebar-inner">
-					<div id="hexrgb-btn" class="sidebar-btn">
-						<p><span id="txt-hex">hex</span> <span style="opacity:0.5;">|</span> <span id="txt-rgb">rgb</span></p>
-					</div>
 					<div id="showcss-btn" class="sidebar-btn"><p>show css</p></div>
 					<div id="gradient-btn" class="sidebar-btn"><p>gradient</p></div>
 					<div id="info-btn" class="sidebar-btn"><p>info</p></div>
@@ -80,6 +77,14 @@
 				<div id="burger-line1" class="burger-line"></div>
 				<div id="burger-line2" class="burger-line"></div>
 				<div id="burger-line3" class="burger-line"></div>
+			</div>
+			<div id="hexrgb-switch" class="switch">
+				<input type="checkbox" id="colinput">
+				<div class="slider">
+					<div class="sliderbox"></div>
+					<span class="on">rgb</span>
+					<span class="off">hex</span>
+				</div>
 			</div>
 		</div>
 	</body>

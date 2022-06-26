@@ -1,7 +1,9 @@
-var cols =  ['#6ad279','#5382c9'];
+var cols =  ['#60c36f','#5382c9'];
 var split = 0.5;
-var colour_choice = basicBlendHEX(cols[0],cols[1],split);
 var colour_encode = 'hex';
+var can_encode_switch = true;
+
+var colour_choice;
 
 let c1 = $('#col1');
 let c2 = $('#col2');
@@ -18,27 +20,26 @@ var burger_transition = false;
 var sub_content = false;
 var sub_content_transition = false;
 
-document.addEventListener('mousedown', function (event) {
-  if (event.detail > 1) {
-	event.preventDefault();
-  }
-}, false);
-
 c1.focusout(function(){colourTextInputEntered(c1,c1_picker,0);});
 c2.focusout(function(){colourTextInputEntered(c2,c2_picker,1);});
 
 c1.keypress(function (e) {
 	if (e.which == 13) {
 		colourTextInputEntered(c1,c1_picker,0);
+		c1.blur();
 		return false;
 	}
 });
 c2.keypress(function (e) {
 	if (e.which == 13) {
 		colourTextInputEntered(c2,c2_picker,1);
+		c2.blur();
 		return false;
 	}
 });
+
+c1.dblclick(function() {c1.val(cols[0]);});
+c2.dblclick(function() {c2.val(cols[1]);});
 
 c1_picker.on('input',function(){
 	if (colour_encode=='hex') cols[0] = c1_picker.val();
@@ -117,25 +118,28 @@ $('#burger').click(function(){
 	}
 });
 
-$('#hexrgb-btn').click(function(){
-	if (colour_encode=='hex'){
-		colour_encode = 'rgb';
-		$('#txt-hex').css({opacity:0.5});
-		$('#txt-rgb').css({opacity:1});
-		$('.colour-input input').css('font-size','15px');
-		$('#colour-result').css('font-size','13px');
-		$('.text-box').css({'width':'70%','left':'15%','letter-spacing':'0'});
-		cols = cols.map(hex => hexToRgbStr(hex));
-	} else if (colour_encode=='rgb'){
-		colour_encode = 'hex';
-		$('#txt-hex').css({opacity:1});
-		$('#txt-rgb').css({opacity:0.5});
-		$('.colour-input input').css('font-size','20px');
-		$('#colour-result').css('font-size','15px');
-		$('.text-box').css({'width':'60%','left':'20%','letter-spacing':'1px'});	
-		cols = cols.map(rgb => rgbStrToHex(rgb));
+
+$("#hexrgb-switch").on("mouseup", ()=>{
+	if (can_encode_switch){
+		switch (colour_encode) {
+			case "hex": 
+				can_encode_switch = false;
+				$("#hexrgb-switch .on").css('opacity', '0');
+				$("#hexrgb-switch .off").css('opacity', '1');
+				switchToRgb();
+				refreshColourFields();
+				$(".sliderbox").animate({"left":"70"},200,function (){can_encode_switch = true;});
+			break;
+		case "rgb":
+			can_encode_switch = false;
+			$("#hexrgb-switch .off").css('opacity', '0');
+			$("#hexrgb-switch .on").css('opacity', '1');
+			switchToHex();
+			refreshColourFields();
+			$(".sliderbox").animate({"left":"10"},200,function () {can_encode_switch = true;});
+			break;
+		}
 	}
-	refreshColourFields();
 });
 
 $('#showcss-btn, #gradient-btn, #info-btn').click(function(){
@@ -168,7 +172,6 @@ $('#info-btn').click(function(){
 	$('#info-content').css('display','block');
 });
 
-refreshColourFields();
-applyColourChoice();
 
+refreshColourFields();
 dragElement(document.getElementById('track-diamond'));
