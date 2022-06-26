@@ -64,7 +64,11 @@ $('#split').on('input',function(){
 
 $('#copy-btn').click(function(){
 	navigator.clipboard.writeText(colour_choice);
-})
+	$('#copy-btn .tooltiptext p').html('Copied!');
+});
+$('#copy-btn').mouseleave(function(){
+	$('#copy-btn .tooltiptext p').html('Copy to Clipboard');
+});
 
 $('#burger').click(function(){
 	if (burger_transition==false && sub_content_transition==false){
@@ -151,6 +155,7 @@ $('#showcss-btn, #gradient-btn, #info-btn').click(function(){
 });
 
 $('#showcss-btn').click(function(){
+	showcssBuildCode();
 	$('#showcss-content').css('display','block');
 	$('#gradient-content').css('display','none');
 	$('#info-content').css('display','none');

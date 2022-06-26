@@ -27,6 +27,7 @@ function applyColourChoice() {
 	lightDarkCheckTitle();
 	lightDarkCheckSidebar();
 	lightDarkCheckBanner();
+	belowDarkCheck();
 }
 
 function switchToHex(){
@@ -42,6 +43,8 @@ function switchToHex(){
 	$("#hexrgb-switch .on").css('opacity', '1');
 	$(".sliderbox").animate({"left":"10"},200,function () {can_encode_switch = true;});
 	cols = cols.map(rgb => rgbStrToHex(rgb));
+	colour_choice = rgbStrToHex(colour_choice);
+	showcssBuildCode();
 }
 
 function switchToRgb(){
@@ -57,6 +60,8 @@ function switchToRgb(){
 	$("#hexrgb-switch .off").css('opacity', '1');
 	$(".sliderbox").animate({"left":"70"},200,function (){can_encode_switch = true;});
 	cols = cols.map(hex => hexToRgbStr(hex));
+	colour_choice = hexToRgbStr(colour_choice);
+	showcssBuildCode();
 }
 
 function extractBrightnessHEX(hex){
@@ -90,6 +95,15 @@ function lightDarkCheckBanner(){
 		$('#central-content').addClass("light-mode");
 		colour_banner_mode = 'light';
 		$('.colour-output img').attr('src','light-clipboard-copy.svg');
+	}
+}
+
+function belowDarkCheck(){
+	let b = extractBrightnessCol(colour_choice);
+	if (b<100){
+		$('.code-snippet').css('border','rgb(100,100,100) 1px solid');
+	} else {
+		$('.code-snippet').css('border','none');
 	}
 }
 

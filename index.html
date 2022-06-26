@@ -44,7 +44,10 @@
 						<div style="flex:1;">
 							<p id="colour-result">rgb</p>
 						</div>
-						<div id="copy-btn" style="width:40px;"><img src="light-clipboard-copy.svg" style="height:16px;left:12px;top:12px;position:relative;"/></div>
+						<div id="copy-btn" class="tooltip" style="width:40px;">
+							<img src="light-clipboard-copy.svg" style="height:16px;left:12px;top:12px;position:relative;"/>
+							<span class="tooltiptext"><p>Copy to Clipboard</p></span>
+					</div>
 					</div>
 				</div>
 				<div id="track">
@@ -59,9 +62,25 @@
 			</div>
 			<div id="sec-content">
 				<div id="sub-content-box">
-					<div id="showcss-content"><p>show css</p></div>
-					<div id="gradient-content"><p>gradient</p></div>
-					<div id="info-content"><p>info</p></div>
+					<div id="showcss-content" class="sub-content-inner">
+						<h2>show css</h2>
+						<p class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+						<div class="code-snippet">
+							<p class='code-css'>
+								<span class='l1'>color</span><span class='l2'>: </span><span class='l3'>#</span><span class='l4'>abcdef</span><span class='l2'>;</span>
+							</p>
+						</div>
+					</div>
+					<div id="gradient-content" class="sub-content-inner">
+						<h2>gradient</h2>
+						<p class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+						<div class="code-snippet">
+							<p class='code-css'>
+								<span class='l1'>color</span><span class='l2'>: </span><span class='l3'>#</span><span class='l4'>abcdef</span><span class='l2'>;</span>
+							</p>
+						</div>
+					</div>
+					<div id="info-content" class="sub-content-inner"><p>info</p></div>
 				</div>
 			</div>
 		</div>
@@ -71,10 +90,10 @@
 					<div id="showcss-btn" class="sidebar-btn"><p>show css</p></div>
 					<div id="gradient-btn" class="sidebar-btn"><p>gradient</p></div>
 					<div id="info-btn" class="sidebar-btn"><p>info</p></div>
-					<div id="bottom-row">
-						<a href="https://www.linkedin.com/in/tobiasloader/"><img src="linkedin_light.svg"class="socialimg linkedinlight" alt="linkedin logo"><img src="linkedin_dark.svg"class="socialimg linkedindark" alt="linkedin logo"></a>
-						<a href="https://github.com/TobiasLoader"><img src="github_light.svg" class="socialimg githublight" alt="github logo"><img src="github_dark.svg" class="socialimg githubdark" alt="github logo"></a>
-					</div>
+				</div>
+				<div id="bottom-row">
+					<a href="https://www.linkedin.com/in/tobiasloader/"><img src="linkedin_light.svg"class="socialimg linkedinlight" alt="linkedin logo"><img src="linkedin_dark.svg"class="socialimg linkedindark" alt="linkedin logo"></a>
+					<a href="https://github.com/TobiasLoader"><img src="github_light.svg" class="socialimg githublight" alt="github logo"><img src="github_dark.svg" class="socialimg githubdark" alt="github logo"></a>
 				</div>
 			</div>
 			<div id="burger">
@@ -95,5 +114,6 @@
 	<script src="drag.js"></script>
 	<script src="col_conversion.js"></script>
 	<script src="col_funcs.js"></script>
+	<script src="build_code_snippets.js"></script>
 	<script src="script.js"></script>
 </html>

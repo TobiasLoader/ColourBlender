@@ -69,8 +69,7 @@ body {
 
 #sidebar-content {
 	width:250px;
-	padding-top:120px;
-	height:-webkit-fill-available;
+	height:100%;
 	opacity: 0;
 	right:0;
 	position: absolute;
@@ -79,11 +78,11 @@ body {
 }
 
 #sidebar-inner {
-	height:-webkit-fill-available;
 	display:flex;
 	flex-direction: column;
 	justify-content: start;
-	/* transform: translateY(-50%); */
+	top: 120px;
+	position: absolute;
 }
 
 .sidebar-btn {
@@ -259,8 +258,7 @@ body {
 }
 
 #sub-content-box {
-	width:60%;
-	height:60%;
+	width:70%;
 	position: absolute;
 	top:50%;
 	left:50%;
@@ -276,16 +274,42 @@ body {
 	border: rgb(50,50,50,0.3) 1px solid;
 }
 
+.sub-content-inner {
+	display: block;
+	padding: 12%;
+}
+
 #showcss-content {display:none;}
 #gradient-content {display:none;}
 #info-content {display:none;}
 
-.light-mode #sub-content-box p {
-	color: rgb(255,255,255);
+.light-mode #sub-content-box p, .light-mode #sub-content-box h2 {color: rgb(255,255,255);}
+.dark-mode #sub-content-box p, .dark-mode #sub-content-box h2 {color: rgb(50,50,50);}
+
+#sub-content-box .desc {
+	opacity:0.7;
+	letter-spacing:0;
 }
-.dark-mode #sub-content-box p {
-	color: rgb(50,50,50);
+
+.code-snippet {
+	width:100%;
+	height:60px;
+	background: rgb(50,50,50);
+	border:rgb(100,100,100) 1px solid;
+	margin-top:50px;
 }
+
+.code-css {
+	margin: 0;
+	line-height: 60px;
+	vertical-align: middle;
+	padding-left: 30px;
+	font-size:17px;
+}
+.code-css .l1 {color: rgba(249, 186, 130, 1);}
+.code-css .l2 {color: rgba(220, 220, 220, 1);}
+.code-css .l3 {color: rgba(119, 148, 231, 1);}
+.code-css .l4 {color: rgba(201, 213, 247, 1);}
 
 
 /* /////////////// MAIN-CONTENT //////////////// */
@@ -361,14 +385,13 @@ input:focus::placeholder {
 	display:flex;
 }
 .colour-output {
+	cursor: pointer;
 	display: flex;
 }
-.light-mode .colour-output {
-	border: rgba(255,255,255,0.6) 1px solid;
-}
-.dark-mode .colour-output {
-	border: rgba(50,50,50,0.6) 1px solid;
-}
+.light-mode .colour-output {border: rgba(255,255,255,0.6) 1px solid;}
+.dark-mode .colour-output {border: rgba(50,50,50,0.6) 1px solid;}
+.light-mode .colour-output:hover {background: rgba(255,255,255,0.05);}
+.dark-mode .colour-output:hover {background: rgba(50,50,50,0.05);}
 
 .colour-picker {
 	position: relative;
@@ -420,11 +443,57 @@ input[type="color"]::-webkit-color-swatch-wrapper {
 
 #copy-btn {
 	opacity: 0.6;
-	cursor:pointer;
 }
 #copy-btn:hover {
 	opacity: 1;
 	cursor:pointer;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 100px;
+  height:50px;
+  top:-5px;
+  position: absolute;
+  left: 120%;
+}
+.light-mode .tooltip .tooltiptext {background-color: rgb(50,50,50);}
+.dark-mode .tooltip .tooltiptext {background-color: rgb(255,255,255);}
+
+.tooltip .tooltiptext p {
+	margin:0;
+	position: absolute;
+	top:50%;
+	transform: translateY(-50%);
+	text-align: center;
+	width:100%;
+	letter-spacing: 0;
+	font-size: 12px;
+}
+.light-mode .tooltip .tooltiptext p {color: rgb(255,255,255);}
+.dark-mode .tooltip .tooltiptext p {color: rgb(50,50,50);}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -7px;
+  border-width: 7px;
+  border-style: solid;
+}
+.light-mode .tooltip .tooltiptext::after {  border-color: transparent rgb(50,50,50) transparent transparent;
+}
+.dark-mode .tooltip .tooltiptext::after {  border-color: transparent rgb(255,255,255) transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
 }
 
 #track {
