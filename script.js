@@ -124,20 +124,14 @@ $("#hexrgb-switch").on("mouseup", ()=>{
 		switch (colour_encode) {
 			case "hex": 
 				can_encode_switch = false;
-				$("#hexrgb-switch .on").css('opacity', '0');
-				$("#hexrgb-switch .off").css('opacity', '1');
 				switchToRgb();
 				refreshColourFields();
-				$(".sliderbox").animate({"left":"70"},200,function (){can_encode_switch = true;});
-			break;
-		case "rgb":
-			can_encode_switch = false;
-			$("#hexrgb-switch .off").css('opacity', '0');
-			$("#hexrgb-switch .on").css('opacity', '1');
-			switchToHex();
-			refreshColourFields();
-			$(".sliderbox").animate({"left":"10"},200,function () {can_encode_switch = true;});
-			break;
+				break;
+			case "rgb":
+				can_encode_switch = false;
+				switchToHex();
+				refreshColourFields();
+				break;
 		}
 	}
 });

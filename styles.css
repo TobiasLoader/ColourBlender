@@ -69,7 +69,7 @@ body {
 
 #sidebar-content {
 	width:250px;
-	padding-top:106px;
+	padding-top:120px;
 	height:-webkit-fill-available;
 	opacity: 0;
 	right:0;
@@ -89,7 +89,7 @@ body {
 .sidebar-btn {
 	height:50px;
 	width:180px;
-	margin: 10px 40px;
+	margin: 10px 35px;
 	cursor:pointer;
 }
 .light-sidebar .sidebar-btn {
@@ -117,6 +117,52 @@ body {
 	color: rgb(50,50,50);
 }
 
+#bottom-row {
+	position: absolute;
+	bottom:50px;
+	height:50px;
+	width:180px;
+	margin: 0;
+	left:35px;
+	display:flex;
+	justify-content: center;
+}
+
+#bottom-row a {
+	margin:10px;
+	text-decoration: none;
+}
+
+#bottom-row a {
+	margin:10px;
+	text-decoration: none;
+}
+
+.socialimg {
+	width: 30px;
+	height: 30px;
+	opacity:0.8;
+}
+.socialimg:hover {
+	opacity:1;
+}
+
+/* because of optical illusion linkedin svg looks slightly smaller */
+.linkedinimg {
+	width: 31px; 
+	height: 31px;
+}
+
+.light-sidebar .linkedindark {display: none;}
+.dark-sidebar .linkedinlight {display: none;}
+.light-sidebar .linkedinlight {display: inline-block;}
+.dark-sidebar .linkedindark {display: inline-block;}
+
+.light-sidebar .githubdark {display: none;}
+.dark-sidebar .githublight {display: none;}
+.light-sidebar .githublight {display: inline-block;}
+.dark-sidebar .githubdark {display: inline-block;}
+
 /* slider box */
 
 .switch {
@@ -124,7 +170,7 @@ body {
 	display: inline-block;
 	right: 108px;
 	top: 25px;
-	width: 100px;
+	width: 105px;
 	height:40px;
 	border-radius:40px;
 }
@@ -187,12 +233,12 @@ body {
 .on {
 	text-align:right;
 	right:16px;
-	font-size: 17px;
+	font-size: 18px;
 }
 .off {
 	text-align:left;
 	left:19px;
-	font-size: 18px;
+	font-size: 17px;
 }
 
 .rgb .on {opacity:0;}

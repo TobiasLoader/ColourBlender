@@ -38,6 +38,9 @@ function switchToHex(){
 	$('.text-box').css({'width':'60%','left':'20%','letter-spacing':'1px'});
 	$('body').removeClass('rgb');
 	$('body').addClass('hex');
+	$("#hexrgb-switch .off").css('opacity', '0');
+	$("#hexrgb-switch .on").css('opacity', '1');
+	$(".sliderbox").animate({"left":"10"},200,function () {can_encode_switch = true;});
 	cols = cols.map(rgb => rgbStrToHex(rgb));
 }
 
@@ -50,6 +53,9 @@ function switchToRgb(){
 	$('.text-box').css({'width':'70%','left':'15%','letter-spacing':'0'});
 	$('body').removeClass('hex');
 	$('body').addClass('rgb');
+	$("#hexrgb-switch .on").css('opacity', '0');
+	$("#hexrgb-switch .off").css('opacity', '1');
+	$(".sliderbox").animate({"left":"70"},200,function (){can_encode_switch = true;});
 	cols = cols.map(hex => hexToRgbStr(hex));
 }
 
