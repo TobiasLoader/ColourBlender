@@ -171,6 +171,7 @@ $('#info-btn').click(function(){
 	$('#info-content').css('display','block');
 });
 
-
 refreshColourFields();
+showcssBuildCode();
+gradientBuildCode();
 dragElement(document.getElementById('track-diamond'));

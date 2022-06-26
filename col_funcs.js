@@ -45,6 +45,7 @@ function switchToHex(){
 	cols = cols.map(rgb => rgbStrToHex(rgb));
 	colour_choice = rgbStrToHex(colour_choice);
 	showcssBuildCode();
+	gradientBuildCode();
 }
 
 function switchToRgb(){
@@ -62,6 +63,7 @@ function switchToRgb(){
 	cols = cols.map(hex => hexToRgbStr(hex));
 	colour_choice = hexToRgbStr(colour_choice);
 	showcssBuildCode();
+	gradientBuildCode();
 }
 
 function extractBrightnessHEX(hex){
