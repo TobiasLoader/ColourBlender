@@ -9,122 +9,129 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   </head>
-	<body class="hex hide">
-		<div id="title" class="light-title">
-			<a href="http://colourblender.io">colourblender.io</a>
-		</div>
-		<div id="central-content" class="light-mode">
-			<div id="main-content">
-				<div id="colour-banner">
-					<div class="text-box colour-input">
-						<div style="flex:1;">
-							<input id="col1" placeholder="#6ad279">
-						</div>
-						<div style="width:50px;">
-							<input id="col1_picker" class="colour-picker" type="color" value="#6ad279">
-						</div>
-					</div>
-					<div class="text-box colour-input">
-						<div style="flex:1;">
-							<input id="col2" placeholder="#5382c9">
-						</div>
-						<div style="width:50px;">
-							<input id="col2_picker" class="colour-picker" type="color" value="#5382c9">
-						</div>
-					</div>
-					<div class="text-box percentage-input">
-						<div style="flex:3">
-						<input id="split" type="number" value="50" min="0" max="100">
-						</div>
-						<div style="width:50px;">
-							<p style="font-size:25px;margin:0;line-height:40px;text-align:right">%</p>
-						</div>
-					</div>
-					<div class="text-box colour-output">
-						<div style="flex:1;">
-							<p id="colour-result">rgb</p>
-						</div>
-						<div id="copy-btn" class="copy-clipboard-btn tooltip" style="width:40px;		position: relative;">
-							<img src="light-clipboard-copy.svg" style="height:16px;left:12px;top:12px;position:relative;"/>
-							<span class="tooltiptext"><p>Copy to Clipboard</p></span>
-					</div>
-					</div>
-				</div>
-				<div id="track">
-					<div id="track-start" class="large-tick"></div>
-					<div id="track-end" class="large-tick"></div>
-					<div id="track-diamond">
-						<div class="grab-bars" style="right:8px;top:18px"></div>
-						<div class="grab-bars" style=""></div>
-						<div class="grab-bars" style="right:12px;top:2px"></div>
-					</div>
-				</div>
+	<body class="hex">
+		<div class="hide">
+			<div id="title" class="light-title">
+				<a href="http://colourblender.io">colourblender.io</a>
 			</div>
-			<div id="sec-content">
-				<div id="sub-content-box">
-					<div id="showcss-content" class="sub-content-inner">
-						<h2>show css</h2>
-						<p class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-						<div id="css-colour" class="code-snippet">
-							<div class='code-css-container'><p class='code-css'></p></div>
-							<div id="copy-css-btn" class="copy-img-container">
-								<div class="copy-clipboard-btn tooltip tooltip-down">
-									<img class="code-copy-img" src="light-clipboard-copy.svg">
-									<span class="tooltiptext"><p>Copy to Clipboard</p></span>
+			<div id="central-content" class="light-mode">
+				<div id="main-content">
+					<div id="colour-banner">
+						<div class="text-box colour-input">
+							<div style="flex:1;">
+								<input id="col1" placeholder="#6ad279">
+							</div>
+							<div style="width:50px;">
+								<input id="col1_picker" class="colour-picker" type="color" value="#6ad279">
+							</div>
+						</div>
+						<div class="text-box colour-input">
+							<div style="flex:1;">
+								<input id="col2" placeholder="#5382c9">
+							</div>
+							<div style="width:50px;">
+								<input id="col2_picker" class="colour-picker" type="color" value="#5382c9">
+							</div>
+						</div>
+						<div class="text-box percentage-input">
+							<div style="flex:3">
+							<input id="split" type="number" value="50" min="0" max="100">
+							</div>
+							<div style="width:50px;">
+								<p style="font-size:25px;margin:0;line-height:40px;text-align:right">%</p>
+							</div>
+						</div>
+						<div class="text-box colour-output">
+							<div style="flex:1;">
+								<p id="colour-result">rgb</p>
+							</div>
+							<div id="copy-btn" class="copy-clipboard-btn tooltip" style="width:40px;height:40px;position: relative;">
+								<img src="light-clipboard-copy.svg" style="height:16px;left:12px;top:12px;position:relative;"/>
+								<span class="tooltiptext"><p>Copy to Clipboard</p></span>
+							</div>
+						</div>
+						<div class="grab-bars-vert-container">
+							<div class="grab-bars-vert" style="left:calc(50% - 3px)"></div>
+							<div class="grab-bars-vert" style="left:50%"></div>
+							<div class="grab-bars-vert" style="left:calc(50% + 3px)"></div>
+						</div>
+					</div>
+					<div id="track">
+						<div id="track-start" class="large-tick"></div>
+						<div id="track-end" class="large-tick"></div>
+						<div id="track-diamond">
+							<div class="grab-bars" style="right:8px;top:18px"></div>
+							<div class="grab-bars" style=""></div>
+							<div class="grab-bars" style="right:12px;top:2px"></div>
+						</div>
+					</div>
+				</div>
+				<div id="sec-content">
+					<div id="sub-content-box">
+						<div id="showcss-content" class="sub-content-inner">
+							<h2>show css</h2>
+							<p class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+							<div id="css-colour" class="code-snippet">
+								<div class='code-css-container'><p class='code-css'></p></div>
+								<div id="copy-css-btn" class="copy-img-container">
+									<div class="copy-clipboard-btn tooltip tooltip-down">
+										<img class="code-copy-img" src="light-clipboard-copy.svg">
+										<span class="tooltiptext"><p>Copy to Clipboard</p></span>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div id="gradient-content" class="sub-content-inner">
-						<h2>gradient</h2>
-						<p class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-						<div id="modern-gradient" class="code-snippet">
-							<div class='code-css-container'><p class='code-css'></p></div>
-							<div id="copy-gradient-btn" class="copy-img-container">
-								<div class="copy-clipboard-btn tooltip tooltip-down">
-									<img class="code-copy-img" src="light-clipboard-copy.svg">
-									<span class="tooltiptext"><p>Copy to Clipboard</p></span>
+						<div id="gradient-content" class="sub-content-inner">
+							<h2>gradient</h2>
+							<p class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+							<div id="modern-gradient" class="code-snippet">
+								<div class='code-css-container'><p class='code-css'></p></div>
+								<div id="copy-gradient-btn" class="copy-img-container">
+									<div class="copy-clipboard-btn tooltip tooltip-down">
+										<img class="code-copy-img" src="light-clipboard-copy.svg">
+										<span class="tooltiptext"><p>Copy to Clipboard</p></span>
+									</div>
+								</div>
+							</div>
+							<p class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+							<div id="max-comp-gradient" class="code-snippet">
+								<div class='code-css-container'><p class='code-css'></p></div>
+								<div id="copy-gradient-max-comp-btn" class="copy-img-container">
+									<div class="copy-clipboard-btn tooltip tooltip-down">
+										<img class="code-copy-img" src="light-clipboard-copy.svg">
+										<span class="tooltiptext"><p>Copy to Clipboard</p></span>
+									</div>
 								</div>
 							</div>
 						</div>
-						<p class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-						<div id="max-comp-gradient" class="code-snippet">
-							<div class='code-css-container'><p class='code-css'></p></div>
-							<div id="copy-gradient-max-comp-btn" class="copy-img-container">
-								<div class="copy-clipboard-btn tooltip tooltip-down">
-									<img class="code-copy-img" src="light-clipboard-copy.svg">
-									<span class="tooltiptext"><p>Copy to Clipboard</p></span>
-								</div>
-							</div>
-						</div>
+						<div id="info-content" class="sub-content-inner"><p>info</p></div>
 					</div>
-					<div id="info-content" class="sub-content-inner"><p>info</p></div>
 				</div>
 			</div>
-		</div>
-		<div id="sidebar" class="light-sidebar">
-			<div id="sidebar-content">
-				<div id="sidebar-inner">
-					<div id="showcss-btn" class="sidebar-btn"><p>show css</p></div>
-					<div id="gradient-btn" class="sidebar-btn"><p>gradient</p></div>
-					<div id="info-btn" class="sidebar-btn"><p>info</p></div>
+			<div id="sidebar" class="light-sidebar">
+				<div id="sidebar-content">
+					<div id="sidebar-inner">
+						<div id="showcss-btn" class="sidebar-btn"><p>show css</p></div>
+						<div id="gradient-btn" class="sidebar-btn"><p>gradient</p></div>
+						<div id="info-btn" class="sidebar-btn"><p>info</p></div>
+					</div>
+					<div id="bottom-row">
+						<a href="https://www.linkedin.com/in/tobiasloader/"><img src="linkedin_light.svg"class="socialimg linkedinlight" alt="linkedin logo"><img src="linkedin_dark.svg"class="socialimg linkedindark" alt="linkedin logo"></a>
+						<a href="https://github.com/TobiasLoader"><img src="github_light.svg" class="socialimg githublight" alt="github logo"><img src="github_dark.svg" class="socialimg githubdark" alt="github logo"></a>
+					</div>
 				</div>
-				<div id="bottom-row">
-					<a href="https://www.linkedin.com/in/tobiasloader/"><img src="linkedin_light.svg"class="socialimg linkedinlight" alt="linkedin logo"><img src="linkedin_dark.svg"class="socialimg linkedindark" alt="linkedin logo"></a>
-					<a href="https://github.com/TobiasLoader"><img src="github_light.svg" class="socialimg githublight" alt="github logo"><img src="github_dark.svg" class="socialimg githubdark" alt="github logo"></a>
+				<div id="burger">
+					<div id="burger-line1" class="burger-line"></div>
+					<div id="burger-line2" class="burger-line"></div>
+					<div id="burger-line3" class="burger-line"></div>
 				</div>
-			</div>
-			<div id="burger">
-				<div id="burger-line1" class="burger-line"></div>
-				<div id="burger-line2" class="burger-line"></div>
-				<div id="burger-line3" class="burger-line"></div>
-			</div>
-			<div id="hexrgb-switch" class="switch">
-				<input type="checkbox" id="colinput">
-				<div class="slider">
-					<div class="sliderbox"></div>
-					<span class="on">hex</span>
-					<span class="off">rgb</span>
+				<div id="hexrgb-switch" class="switch">
+					<input type="checkbox" id="colinput">
+					<div class="slider">
+						<div class="sliderbox"></div>
+						<span class="on">hex</span>
+						<span class="off">rgb</span>
+					</div>
 				</div>
 			</div>
 		</div>

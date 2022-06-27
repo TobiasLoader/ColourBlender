@@ -191,3 +191,4 @@ refreshColourFields();
 showcssBuildCode();
 gradientBuildCode();
 dragElement(document.getElementById('track-diamond'));
+dragElement(document.getElementById('colour-banner'));

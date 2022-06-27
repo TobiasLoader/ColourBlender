@@ -1,10 +1,14 @@
 // Make the DIV element draggable:
 function dragElement(elmnt) {
+	var clickdragoffset = 0;
   elmnt.onmousedown = dragMouseDown;
 
   function dragMouseDown(e) {
 	e = e || window.event;
-	e.preventDefault();
+	if(e.target !== this)
+	  return;
+	// e.preventDefault();
+	clickdragoffset = e.clientX-$(window).width()*(0.2+split*0.6);
 	document.onmouseup = closeDragElement;
 	document.onmousemove = elementDrag;
   }
@@ -12,7 +16,7 @@ function dragElement(elmnt) {
   function elementDrag(e) {
 	e.preventDefault();
 	// calculate the new split:
-	let p = (e.clientX-0.2*$(window).width())/(0.6*$(window).width());
+	let p = (e.clientX-clickdragoffset-0.2*$(window).width())/(0.6*$(window).width());
 	if (p<0) p=0;
 	if (p>1) p=1;
 	split = p;
@@ -21,6 +25,7 @@ function dragElement(elmnt) {
   }
 
   function closeDragElement() {
+	  clickdragoffset = 0;
 	// stop moving when mouse button is released:
 	document.onmouseup = null;
 	document.onmousemove = null;
