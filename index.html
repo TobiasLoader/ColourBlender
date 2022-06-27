@@ -9,7 +9,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   </head>
-	<body class="hex">
+	<body class="hex hide">
 		<div id="title" class="light-title">
 			<a href="http://colourblender.io">colourblender.io</a>
 		</div>
@@ -44,7 +44,7 @@
 						<div style="flex:1;">
 							<p id="colour-result">rgb</p>
 						</div>
-						<div id="copy-btn" class="tooltip" style="width:40px;">
+						<div id="copy-btn" class="copy-clipboard-btn tooltip" style="width:40px;		position: relative;">
 							<img src="light-clipboard-copy.svg" style="height:16px;left:12px;top:12px;position:relative;"/>
 							<span class="tooltiptext"><p>Copy to Clipboard</p></span>
 					</div>
@@ -65,22 +65,37 @@
 					<div id="showcss-content" class="sub-content-inner">
 						<h2>show css</h2>
 						<p class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-						<div class="code-snippet">
-							<p class='code-css'>
-							</p>
+						<div id="css-colour" class="code-snippet">
+							<div class='code-css-container'><p class='code-css'></p></div>
+							<div id="copy-css-btn" class="copy-img-container">
+								<div class="copy-clipboard-btn tooltip tooltip-down">
+									<img class="code-copy-img" src="light-clipboard-copy.svg">
+									<span class="tooltiptext"><p>Copy to Clipboard</p></span>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div id="gradient-content" class="sub-content-inner">
 						<h2>gradient</h2>
 						<p class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 						<div id="modern-gradient" class="code-snippet">
-							<p class='code-css'>
-							</p>
+							<div class='code-css-container'><p class='code-css'></p></div>
+							<div id="copy-gradient-btn" class="copy-img-container">
+								<div class="copy-clipboard-btn tooltip tooltip-down">
+									<img class="code-copy-img" src="light-clipboard-copy.svg">
+									<span class="tooltiptext"><p>Copy to Clipboard</p></span>
+								</div>
+							</div>
 						</div>
 						<p class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 						<div id="max-comp-gradient" class="code-snippet">
-							<p class='code-css'>
-							</p>
+							<div class='code-css-container'><p class='code-css'></p></div>
+							<div id="copy-gradient-max-comp-btn" class="copy-img-container">
+								<div class="copy-clipboard-btn tooltip tooltip-down">
+									<img class="code-copy-img" src="light-clipboard-copy.svg">
+									<span class="tooltiptext"><p>Copy to Clipboard</p></span>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div id="info-content" class="sub-content-inner"><p>info</p></div>

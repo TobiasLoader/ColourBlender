@@ -66,9 +66,25 @@ $('#copy-btn').click(function(){
 	navigator.clipboard.writeText(colour_choice);
 	$('#copy-btn .tooltiptext p').html('Copied!');
 });
-$('#copy-btn').mouseleave(function(){
-	$('#copy-btn .tooltiptext p').html('Copy to Clipboard');
+$('#copy-btn').mouseleave(function(){$('#copy-btn .tooltiptext p').html('Copy to Clipboard');});
+
+$('#copy-css-btn').click(function(){
+	navigator.clipboard.writeText($('#css-colour .code-css').text());
+	$('#copy-css-btn .tooltiptext p').html('Copied!');
 });
+$('#copy-css-btn').mouseleave(function(){$('#copy-css-btn .tooltiptext p').html('Copy to Clipboard');});
+
+$('#copy-gradient-btn').click(function(){
+	navigator.clipboard.writeText($('#modern-gradient .code-css').text());
+	$('#copy-gradient-btn .tooltiptext p').html('Copied!');
+});
+$('#copy-gradient-btn').mouseleave(function(){$('#copy-gradient-btn .tooltiptext p').html('Copy to Clipboard');});
+
+$('#copy-gradient-max-comp-btn').click(function(){
+	navigator.clipboard.writeText($('#max-comp-gradient .code-css').text());
+	$('#copy-gradient-max-comp-btn .tooltiptext p').html('Copied!');
+});
+$('#copy-gradient-max-comp-btn').mouseleave(function(){$('#copy-gradient-max-comp-btn .tooltiptext p').html('Copy to Clipboard');});
 
 $('#burger').click(function(){
 	if (burger_transition==false && sub_content_transition==false){

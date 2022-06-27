@@ -3,6 +3,7 @@ function refreshColourFields() {
 	$('body').css({'background':'linear-gradient(90deg, '+cols[0]+' 20%, '+cols[1]+' 80%)'});
 	$('#sidebar-content').css({'background':cols[1]});
 	applyColourChoice();
+	$('body').removeClass('hide');
 }
 function applyColourChoice() {
 	if (colour_encode=='hex')

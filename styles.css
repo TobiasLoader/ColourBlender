@@ -13,6 +13,10 @@ body {
 	overflow: hidden;
 }
 
+.hide {
+	display: none;
+}
+
 /* /////////////// TITLE //////////////// */
 
 #title {
@@ -301,16 +305,19 @@ body {
 	width:100%;
 	background: rgb(50,50,50);
 	border:rgb(100,100,100) 1px solid;
+	display:flex;
+}
+.code-css-container {
+	flex:1;
 	padding: 15px 0;
 }
-
 .code-css {
 	margin: 0;
 	line-height: 30px;
 	vertical-align: middle;
 	padding-left: 30px;
 	font-size:17px;
-	overflow-wrap: break-word;
+	overflow-wrap: anywhere;
 }
 
 .code-css .l1 {color: rgba(249, 186, 130, 1);}
@@ -318,7 +325,6 @@ body {
 .code-css .l3 {color: rgba(119, 148, 231, 1);}
 .code-css .l4 {color: rgba(176, 193, 239, 1);}
 .code-css .l5 {color: rgba(208, 247, 152, 1);}
-
 
 
 /* /////////////// MAIN-CONTENT //////////////// */
@@ -450,16 +456,31 @@ input[type="color"]::-webkit-color-swatch-wrapper {
 	color:rgb(50,50,50);
 }
 
-#copy-btn {
-	opacity: 0.6;
+.copy-img-container {
+	width:60px;
+	position: relative;
 }
-#copy-btn:hover {
+
+.copy-clipboard-btn {
+	opacity: 0.6;
+	width: 60px;
+	height: 60px;
+	bottom: 0px;
+	position: absolute;
+}
+.copy-clipboard-btn:hover {
 	opacity: 1;
 	cursor:pointer;
 }
 
+.code-copy-img {
+	height: 18px;
+	right: 21px;
+	bottom: 21px;
+	position: absolute;
+}
+
 .tooltip {
-  position: relative;
   display: inline-block;
 }
 
@@ -470,6 +491,12 @@ input[type="color"]::-webkit-color-swatch-wrapper {
   top:-5px;
   position: absolute;
   left: 120%;
+  z-index: 2;
+}
+.tooltip-down .tooltiptext {
+  left: 50%;
+  top: calc(100% + 10px);
+  margin-left: -50px;
 }
 .light-mode .tooltip .tooltiptext {background-color: rgb(50,50,50);}
 .dark-mode .tooltip .tooltiptext {background-color: rgb(255,255,255);}
@@ -488,17 +515,27 @@ input[type="color"]::-webkit-color-swatch-wrapper {
 .dark-mode .tooltip .tooltiptext p {color: rgb(50,50,50);}
 
 .tooltip .tooltiptext::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: 100%;
-  margin-top: -7px;
-  border-width: 7px;
-  border-style: solid;
+	content: "";
+	position: absolute;
+	top: 50%;
+	right: 100%;
+	margin-top: -7px;
+	border-width: 7px;
+	border-style: solid;
+}
+.tooltip-down .tooltiptext::after {
+	top: calc(100% - 53px);
+	left: 50%;
+	margin-left: -5px;
+	border-width: 5px;
 }
 .light-mode .tooltip .tooltiptext::after {  border-color: transparent rgb(50,50,50) transparent transparent;
 }
 .dark-mode .tooltip .tooltiptext::after {  border-color: transparent rgb(255,255,255) transparent transparent;
+}
+.light-mode .tooltip-down .tooltiptext::after {  border-color: transparent transparent rgb(50,50,50) transparent;
+}
+.dark-mode .tooltip-down .tooltiptext::after {  border-color: transparent transparent rgb(255,255,255) transparent;
 }
 
 .tooltip:hover .tooltiptext {
