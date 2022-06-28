@@ -10,6 +10,8 @@ let c2 = $('#col2');
 let c1_picker = $('#col1_picker');
 let c2_picker = $('#col2_picker');
 
+let spl = $('#split')
+
 var colour_banner_mode = 'light';
 
 let hex_chars = ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'];
@@ -53,14 +55,17 @@ c2_picker.on('input',function(){
 	c2.val(cols[1]);
 	refreshColourFields();
 });
-$('#split').on('input',function(){
-	if ($('#split').val()>=0 && $('#split').val()<=100){
-		split = $('#split').val()/100;
-		applyColourChoice();
-	} else {
-		$('#split').val(split*100);
+
+spl.focusout(function(){numberSplitInputEntered(spl);});
+spl.keypress(function (e) {
+	if (e.which == 13) {
+		numberSplitInputEntered(spl);
+		spl.blur();
+		return false;
 	}
 });
+spl.dblclick(function() {spl.val(split*100);});
+
 
 $('#copy-btn').click(function(){
 	navigator.clipboard.writeText(colour_choice);

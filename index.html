@@ -5,7 +5,7 @@
 		<link rel="stylesheet" href="styles.css" />
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@300;400&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200;300&display=swap" rel="stylesheet">
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   </head>
@@ -19,7 +19,7 @@
 					<div id="colour-banner">
 						<div class="text-box colour-input">
 							<div style="flex:1;">
-								<input id="col1" placeholder="#6ad279">
+								<input id="col1" placeholder="#6ad279" spellcheck="false">
 							</div>
 							<div style="width:50px;">
 								<input id="col1_picker" class="colour-picker" type="color" value="#6ad279">
@@ -27,7 +27,7 @@
 						</div>
 						<div class="text-box colour-input">
 							<div style="flex:1;">
-								<input id="col2" placeholder="#5382c9">
+								<input id="col2" placeholder="#5382c9" spellcheck="false">
 							</div>
 							<div style="width:50px;">
 								<input id="col2_picker" class="colour-picker" type="color" value="#5382c9">
@@ -35,7 +35,7 @@
 						</div>
 						<div class="text-box percentage-input">
 							<div style="flex:3">
-							<input id="split" type="number" value="50" min="0" max="100">
+							<input id="split" type="number" placeholder="50" min="0" max="100">
 							</div>
 							<div style="width:50px;">
 								<p style="font-size:25px;margin:0;line-height:40px;text-align:right">%</p>
@@ -50,11 +50,11 @@
 								<span class="tooltiptext"><p>Copy to Clipboard</p></span>
 							</div>
 						</div>
-						<div class="grab-bars-vert-container">
+						<!-- <div class="grab-bars-vert-container">
 							<div class="grab-bars-vert" style="left:calc(50% - 3px)"></div>
 							<div class="grab-bars-vert" style="left:50%"></div>
 							<div class="grab-bars-vert" style="left:calc(50% + 3px)"></div>
-						</div>
+						</div> -->
 					</div>
 					<div id="track">
 						<div id="track-start" class="large-tick"></div>
@@ -82,7 +82,7 @@
 							</div>
 						</div>
 						<div id="gradient-content" class="sub-content-inner">
-							<h2>gradient css.</h2>
+							<h2>show gradient css.</h2>
 							<p class="desc">Here is the css for recreating the linear gradient in the background of this page, in case you would like to use it on your own site. 94% of users' browsers support the modern standard below.</p>
 							<div id="modern-gradient" class="code-snippet">
 								<div class='code-css-container'><p class='code-css'></p></div>
@@ -94,6 +94,9 @@
 								</div>
 							</div>
 							<p class="desc compatability">Compatability: IE 10+, Edge, Firefox 16+, Chrome 26+, Safari 6.1+, Opera 12+, iOS Safari 7.1+, Android Browser 4.4+, Chrome for Android 46+</p>
+							<div class="seperating-line-container">
+								<div class="seperating-line"></div>
+							</div>
 							<p class="desc">However for maximum compatibility you can instead use the following css. As always you can switch between hex and rgb encodings using the toggle in the top right of the window.</p>
 							<div id="max-comp-gradient" class="code-snippet">
 								<div class='code-css-container'><p class='code-css'></p></div>
@@ -114,15 +117,15 @@
 				</div>
 				<div id="copyright-content">
 					<p>
-						Copyright <span style="font-family:Arial, sans-serif;">©</span> 2022&nbsp;<a class="footer-link" href="http://colourblender.io">colourblender.io</a> | Tobias Loader <a class="footer-link" href="https://www.tobias.codes">tobias.codes</a>
+						copyright <span style="font-family:Arial, sans-serif;">©</span> 2022&nbsp;<a class="footer-link" href="https://www.linkedin.com/in/tobiasloader/">tobias loader</a> &mdash; all rights reserved
 					</p>
 				</div>
 			</div>
 			<div id="sidebar" class="light-sidebar">
 				<div id="sidebar-content">
 					<div id="sidebar-inner">
-						<div id="showcss-btn" class="sidebar-btn"><p>show css</p></div>
-						<div id="gradient-btn" class="sidebar-btn"><p>gradient</p></div>
+						<div id="showcss-btn" class="sidebar-btn"><p>colour css</p></div>
+						<div id="gradient-btn" class="sidebar-btn"><p>gradient css</p></div>
 						<div id="info-btn" class="sidebar-btn"><p>info</p></div>
 					</div>
 					<div id="bottom-row">

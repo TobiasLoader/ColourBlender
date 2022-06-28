@@ -26,7 +26,8 @@ function applyColourChoice() {
 		'left':(100*split).toString()+'%',
 	});
 	$('#colour-result').html(colour_choice);
-	$('#split').val(parseInt(100*split).toString());
+	$('#split').attr('placeholder',parseInt(100*split));
+	$('#splitt').val('');
 	for (var i=0; i<2; i+=1){
 		$('#col'+(i+1).toString()).attr('placeholder',cols[i]);
 		$('#col'+(i+1).toString()).val('');
@@ -41,15 +42,8 @@ function applyColourChoice() {
 
 function switchToHex(){
 	colour_encode = 'hex';
-	$('#txt-hex').css({opacity:1});
-	$('#txt-rgb').css({opacity:0.5});
-	$('.colour-input input').css('font-size','20px');
-	$('#colour-result').css('font-size','15px');
-	$('.text-box').css({'width':'60%','left':'20%','letter-spacing':'1px'});
 	$('body').removeClass('rgb');
 	$('body').addClass('hex');
-	$("#hexrgb-switch .off").css('opacity', '0');
-	$("#hexrgb-switch .on").css('opacity', '1');
 	$(".sliderbox").animate({"left":"10"},200,function () {can_encode_switch = true;});
 	cols = cols.map(rgb => rgbStrToHex(rgb));
 	colour_choice = rgbStrToHex(colour_choice);
@@ -59,15 +53,8 @@ function switchToHex(){
 
 function switchToRgb(){
 	colour_encode = 'rgb';
-	$('#txt-hex').css({opacity:0.5});
-	$('#txt-rgb').css({opacity:1});
-	$('.colour-input input').css('font-size','15px');
-	$('#colour-result').css('font-size','13px');
-	$('.text-box').css({'width':'70%','left':'15%','letter-spacing':'0'});
 	$('body').removeClass('hex');
 	$('body').addClass('rgb');
-	$("#hexrgb-switch .on").css('opacity', '0');
-	$("#hexrgb-switch .off").css('opacity', '1');
 	$(".sliderbox").animate({"left":"70"},200,function (){can_encode_switch = true;});
 	cols = cols.map(hex => hexToRgbStr(hex));
 	colour_choice = hexToRgbStr(colour_choice);
@@ -209,3 +196,15 @@ function colourTextInputEntered(el,el_picker,i){
 	}
 }
 
+function numberSplitInputEntered(el){
+	let valentered = parseInt(el.val());
+	if (valentered!=undefined && valentered>=0 && valentered<=100){
+		split = valentered/100;
+		applyColourChoice();
+		el.attr('placeholder',parseInt(split*100));
+		el.val('');
+	} else {
+		el.attr('placeholder',parseInt(split*100));
+		el.val('');
+	}
+}
