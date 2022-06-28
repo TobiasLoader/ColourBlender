@@ -302,9 +302,13 @@ body {
 	margin: 40px 0;
 }
 
+.compatability {
+	font-size: 12px;
+}
+
 .code-snippet {
 	width:100%;
-	background: rgb(50,50,50);
+	background: rgba(50,50,50,0.6);
 	border:rgb(100,100,100) 1px solid;
 	display:flex;
 }
@@ -323,7 +327,7 @@ body {
 
 .code-css .l1 {color: rgba(249, 186, 130, 1);}
 .code-css .l2 {color: rgba(220, 220, 220, 1);}
-.code-css .l3 {color: rgba(119, 148, 231, 1);}
+.code-css .l3 {color: rgba(224, 181, 237, 1);}
 .code-css .l4 {color: rgba(176, 193, 239, 1);}
 .code-css .l5 {color: rgba(208, 247, 152, 1);}
 
