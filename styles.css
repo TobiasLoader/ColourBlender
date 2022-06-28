@@ -341,9 +341,12 @@ body {
 
 
 #colour-banner {
-	top:15%;
+	bottom:30%;
 	height:55%;
-	width:max(280px,20%);
+	min-width: 280px;
+	max-width: 350px;
+	width: 25%;
+	max-height: 500px;
 	position:absolute;
 	left:0;
 	transform: translateX(-50%);
@@ -481,6 +484,7 @@ input[type=number] {
 #colour-result {
 	margin:0;
 	line-height: 40px;
+	margin-top: 1px;
 	vertical-align: middle;
 	text-align: center;
 }
@@ -489,6 +493,15 @@ input[type=number] {
 
 .hex #colour-result {font-size:15px;}
 .rgb #colour-result {font-size:13px;}
+/* 
+@media only screen and (max-width: 1200px) {
+  .hex #colour-result {font-size:14px;}
+  .rgb #colour-result {font-size:14px;}
+}
+@media only screen and (max-width: 992px) {
+  .hex #colour-result {font-size:13px;}
+  .rgb #colour-result {font-size:13px;}
+} */
 
 .copy-img-container {
 	width:60px;
