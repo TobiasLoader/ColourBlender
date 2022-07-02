@@ -1,3 +1,6 @@
+$('.hide').removeClass('hide');
+$('.no-js-class').removeClass('no-js-class');
+
 var cols =  ['#60c36f','#5382c9'];
 var split = 0.5;
 var colour_encode = 'hex';
@@ -69,27 +72,27 @@ spl.dblclick(function() {spl.val(split*100);});
 
 $('#copy-btn').click(function(){
 	navigator.clipboard.writeText(colour_choice);
-	$('#copy-btn .tooltiptext p').html('Copied!');
+	$('#copy-btn .tooltiptext span').html('Copied!');
 });
-$('#copy-btn').mouseleave(function(){$('#copy-btn .tooltiptext p').html('Copy to Clipboard');});
+$('#copy-btn').mouseleave(function(){$('#copy-btn .tooltiptext span').html('Copy to Clipboard');});
 
 $('#copy-css-btn').click(function(){
 	navigator.clipboard.writeText($('#css-colour .code-css').text());
-	$('#copy-css-btn .tooltiptext p').html('Copied!');
+	$('#copy-css-btn .tooltiptext span').html('Copied!');
 });
-$('#copy-css-btn').mouseleave(function(){$('#copy-css-btn .tooltiptext p').html('Copy to Clipboard');});
+$('#copy-css-btn').mouseleave(function(){$('#copy-css-btn .tooltiptext span').html('Copy to Clipboard');});
 
 $('#copy-gradient-btn').click(function(){
 	navigator.clipboard.writeText($('#modern-gradient .code-css').text());
-	$('#copy-gradient-btn .tooltiptext p').html('Copied!');
+	$('#copy-gradient-btn .tooltiptext span').html('Copied!');
 });
-$('#copy-gradient-btn').mouseleave(function(){$('#copy-gradient-btn .tooltiptext p').html('Copy to Clipboard');});
+$('#copy-gradient-btn').mouseleave(function(){$('#copy-gradient-btn .tooltiptext span').html('Copy to Clipboard');});
 
 $('#copy-gradient-max-comp-btn').click(function(){
 	navigator.clipboard.writeText($('#max-comp-gradient .code-css').text());
-	$('#copy-gradient-max-comp-btn .tooltiptext p').html('Copied!');
+	$('#copy-gradient-max-comp-btn .tooltiptext span').html('Copied!');
 });
-$('#copy-gradient-max-comp-btn').mouseleave(function(){$('#copy-gradient-max-comp-btn .tooltiptext p').html('Copy to Clipboard');});
+$('#copy-gradient-max-comp-btn').mouseleave(function(){$('#copy-gradient-max-comp-btn .tooltiptext span').html('Copy to Clipboard');});
 
 $('#burger').click(function(){
 	if (burger_transition==false && sub_content_transition==false){
@@ -172,7 +175,7 @@ $('#showcss-btn, #gradient-btn, #info-btn').click(function(){
 				sub_content = true;
 				sub_content_transition = false;
 			});
-			if (window.innerWidth<600){
+			if (window.innerWidth<700){
 				$('#sidebar-inner').animate({opacity: 0}, 300);
 			}
 		});

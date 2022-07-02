@@ -15,7 +15,7 @@ body {
 }
 
 .hide {
-	display: none;
+	visibility: hidden;
 }
 
 /* /////////////// TITLE //////////////// */
@@ -577,7 +577,7 @@ input[type=number] {
 .light-mode .tooltip .tooltiptext {background-color: rgb(50,50,50);}
 .dark-mode .tooltip .tooltiptext {background-color: rgb(255,255,255);}
 
-.tooltip .tooltiptext p {
+.tooltip .tooltiptext span {
 	margin:0;
 	position: absolute;
 	top:50%;
@@ -587,8 +587,8 @@ input[type=number] {
 	letter-spacing: 0;
 	font-size: 12px;
 }
-.light-mode .tooltip .tooltiptext p {color: rgb(255,255,255);}
-.dark-mode .tooltip .tooltiptext p {color: rgb(50,50,50);}
+.light-mode .tooltip .tooltiptext span {color: rgb(255,255,255);}
+.dark-mode .tooltip .tooltiptext span {color: rgb(50,50,50);}
 
 .tooltip .tooltiptext::after {
 	content: "";
@@ -739,7 +739,7 @@ input[type=number] {
 	margin-bottom:20px;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
 	h2 {font-size: 20px;}
 	p {font-size: 14px;}
 	#title a {
@@ -749,6 +749,9 @@ input[type=number] {
 		left: 50% !important;
 		bottom: 25%;
 		height: calc(70% - 100px);
+	}
+	#colour-banner.no-js-class {
+		left: 0 !important;
 	}
 	#track {
 		display:none;
@@ -769,7 +772,7 @@ input[type=number] {
 		right: auto;
 		left: 50%;
 		top: auto;
-		bottom:10%;
+		bottom:12%;
 		transform: translateX(-50%);
 	}
 	.sidebar-btn {
@@ -788,6 +791,21 @@ input[type=number] {
 		/* display: none; */
 		opacity:0;
 		pointer-events: none;
+	}
+	.sidebar-btn {
+		height: 55px;
+		margin: 15px auto;
+	}
+	.light-sidebar .sidebar-btn {
+		border: rgb(255,255,255,0.6) 1px solid;
+	}
+	.dark-sidebar .sidebar-btn {
+		border: rgb(50,50,50,0.6) 1px solid;
+	}
+	.sidebar-btn p {
+		height: 55px;
+		line-height: 55px;
+		font-size:17px;
 	}
 	#copyright-content {
 		width: 70%;

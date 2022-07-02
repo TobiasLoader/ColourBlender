@@ -1,17 +1,22 @@
 
 function refreshColourFields() {
-	// $('body').css({'background':'linear-gradient(90deg, '+cols[0]+' 20%, '+cols[1]+' 80%)'});
+	var p1 = 20;
+	var p2 = 80;
+	if (window.innerWidth<700){
+		p1 = 0;
+		p2 = 100;
+	}
 	let bg_styles = [
 		'background: rgb(50,50,50)',
-		'background: -moz-linear-gradient(0deg, '+cols[0]+' 20%, '+cols[1]+' 80%)',
-		'background: -webkit-linear-gradient(0deg, '+cols[0]+' 20%, '+cols[1]+' 80%)',
-		'background: linear-gradient(90deg, '+cols[0]+' 20%, '+cols[1]+' 80%)',      
+		'background: -moz-linear-gradient(0deg, '+cols[0]+' '+p1+'%, '+cols[1]+' '+p2+'%)',
+		'background: -webkit-linear-gradient(0deg, '+cols[0]+' '+p1+'%, '+cols[1]+' '+p2+'%)',
+		'background: linear-gradient(90deg, '+cols[0]+' '+p1+'%, '+cols[1]+' '+p2+'%)',      
 		'filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="'+cols[0]+'", endColorstr="'+cols[1]+'", GradientType=1)'
 	].join(';');
 	$('body').attr('style', bg_styles);
 	$('#sidebar-content').css({'background':cols[1]});
 	applyColourChoice();
-	$('.hide').removeClass('hide');
+	// $('.hide').removeClass('hide');
 }
 function applyColourChoice() {
 	if (colour_encode=='hex')

@@ -1,7 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-		<meta name="viewport" charset="UTF-8" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta charset="utf-8">
+		<title>ColourBlender.io</title>
+		<meta name="description" content="Free tool for Colour Blending, lerp tool.">
+		<meta name="keywords" content="Colour Blender, Color Blender, Lerp Tool, Linear Interpolation, RGB, HEX">
+		<meta name="author" content="Tobias Loader">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
 		<link rel="stylesheet" href="styles.css" />
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,19 +16,28 @@
 		<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
 		<link rel="manifest" href="favicon/site.webmanifest">
-		
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-		
+		<script src="drag.js" defer></script>
+		<script src="col_conversion.js" defer></script>
+		<script src="col_funcs.js" defer></script>
+		<script src="build_code_snippets.js" defer></script>
+		<script src="script.js" defer></script>
+		<script>
+			var refreshAfterTime;
+			window.onresize = function(){
+				clearTimeout(refreshAfterTime);
+				refreshAfterTime = setTimeout(refreshColourFields, 500);
+			};
+		</script>
   </head>
 	<body class="hex" style="width:100%; height:100%;">
-		<div class="hide" style="width:100%; height:100%;">
+		<div style="width:100%; height:100%;">
 			<div id="title" class="light-title">
 				<a href="http://colourblender.io">colourblender.io</a>
 			</div>
 			<div id="central-content" class="light-mode">
 				<div id="main-content">
-					<div id="colour-banner">
+					<div id="colour-banner" class="no-js-class">
 						<div class="text-box colour-input">
 							<div style="flex:1;">
 								<input id="col1" placeholder="#6ad279" spellcheck="false">
@@ -53,8 +67,8 @@
 								<p id="colour-result">rgb</p>
 							</div>
 							<div id="copy-btn" class="copy-clipboard-btn tooltip" style="width:40px;height:40px;position: relative;">
-								<img src="light-clipboard-copy.svg" style="height:16px;left:12px;top:12px;position:relative;"/>
-								<span class="tooltiptext"><p>Copy to Clipboard</p></span>
+								<img src="light-clipboard-copy.svg" alt="copy to clipboard icon" style="height:16px;left:12px;top:12px;position:relative;"/>
+								<span class="tooltiptext"><span>Copy to Clipboard</span></span>
 							</div>
 						</div>
 						<!-- <div class="grab-bars-vert-container">
@@ -63,7 +77,7 @@
 							<div class="grab-bars-vert" style="left:calc(50% + 3px)"></div>
 						</div> -->
 					</div>
-					<div id="track">
+					<div id="track" class="hide">
 						<div id="track-start" class="large-tick"></div>
 						<div id="track-end" class="large-tick"></div>
 						<div id="track-diamond">
@@ -82,8 +96,8 @@
 								<div class='code-css-container'><p class='code-css'></p></div>
 								<div id="copy-css-btn" class="copy-img-container">
 									<div class="copy-clipboard-btn tooltip tooltip-down">
-										<img class="code-copy-img" src="light-clipboard-copy.svg">
-										<span class="tooltiptext"><p>Copy to Clipboard</p></span>
+										<img class="code-copy-img" alt="copy to clipboard icon" src="light-clipboard-copy.svg">
+										<span class="tooltiptext"><span>Copy to Clipboard</span></span>
 									</div>
 								</div>
 							</div>
@@ -95,8 +109,8 @@
 								<div class='code-css-container'><p class='code-css'></p></div>
 								<div id="copy-gradient-btn" class="copy-img-container">
 									<div class="copy-clipboard-btn tooltip tooltip-down">
-										<img class="code-copy-img" src="light-clipboard-copy.svg">
-										<span class="tooltiptext"><p>Copy to Clipboard</p></span>
+										<img class="code-copy-img" alt="copy to clipboard icon" src="light-clipboard-copy.svg">
+										<span class="tooltiptext"><span>Copy to Clipboard</span></span>
 									</div>
 								</div>
 							</div>
@@ -109,8 +123,8 @@
 								<div class='code-css-container'><p class='code-css'></p></div>
 								<div id="copy-gradient-max-comp-btn" class="copy-img-container">
 									<div class="copy-clipboard-btn tooltip tooltip-down">
-										<img class="code-copy-img" src="light-clipboard-copy.svg">
-										<span class="tooltiptext"><p>Copy to Clipboard</p></span>
+										<img class="code-copy-img" alt="copy to clipboard icon" src="light-clipboard-copy.svg">
+										<span class="tooltiptext"><span>Copy to Clipboard</span></span>
 									</div>
 								</div>
 							</div>
@@ -131,7 +145,7 @@
 					</p>
 				</div>
 			</div>
-			<div id="sidebar" class="light-sidebar">
+			<div id="sidebar" class="hide light-sidebar">
 				<div id="sidebar-content">
 					<div id="sidebar-inner">
 						<div id="showcss-btn" class="sidebar-btn"><p>colour css</p></div>
@@ -139,7 +153,7 @@
 						<div id="info-btn" class="sidebar-btn"><p>info</p></div>
 					</div>
 					<div id="bottom-row">
-						<a href="https://www.linkedin.com/in/tobiasloader/"><img src="linkedin_light.svg"class="socialimg linkedinlight" alt="linkedin logo"><img src="linkedin_dark.svg"class="socialimg linkedindark" alt="linkedin logo"></a>
+						<a href="https://www.linkedin.com/in/tobiasloader/"><img src="linkedin_light.svg" class="socialimg linkedinlight"  alt="linkedin logo"><img src="linkedin_dark.svg" class="socialimg linkedindark" alt="linkedin logo"></a>
 						<a href="https://github.com/TobiasLoader"><img src="github_light.svg" class="socialimg githublight" alt="github logo"><img src="github_dark.svg" class="socialimg githubdark" alt="github logo"></a>
 					</div>
 				</div>
@@ -158,10 +172,10 @@
 				</div>
 			</div>
 		</div>
+		<noscript>
+			<div style="padding:5%;border:rgb(255,255,255,0.5) 1px solid;width:40%;left:50%;top:50%;position:absolute;transform:translate(-50%,-50%);background:#59a29c;">
+				<h2 style="color:white;margin:auto;text-align:center;">This tool requires Javascript to be enabled in your browser.</h2>
+			</div>
+		</noscript>
 	</body>
-	<script src="drag.js"></script>
-	<script src="col_conversion.js"></script>
-	<script src="col_funcs.js"></script>
-	<script src="build_code_snippets.js"></script>
-	<script src="script.js"></script>
 </html>
