@@ -389,6 +389,9 @@ body {
 #colour-banner:active {
 	cursor:grabbing;
 }
+#colour-banner.no-js-class {
+	pointer-events: none;
+}
 
 .light-mode #colour-banner {
 	box-shadow: 0px 0px 80px 20px rgba(22,27,37,0.25);
