@@ -12,23 +12,12 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200;300&display=swap" rel="stylesheet">
 		
-		<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
-		<link rel="manifest" href="favicon/site.webmanifest">
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-		<script src="drag.js" defer></script>
-		<script src="col_conversion.js" defer></script>
-		<script src="col_funcs.js" defer></script>
-		<script src="build_code_snippets.js" defer></script>
+		<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+		<link rel="manifest" href="assets/favicon/site.webmanifest">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
 		<script src="script.js" defer></script>
-		<script>
-			var refreshAfterTime;
-			window.onresize = function(){
-				clearTimeout(refreshAfterTime);
-				refreshAfterTime = setTimeout(refreshColourFields, 500);
-			};
-		</script>
   </head>
 	<body class="hex" style="width:100%; height:100%;">
 		<div style="width:100%; height:100%;">
@@ -67,7 +56,7 @@
 								<p id="colour-result">rgb</p>
 							</div>
 							<div id="copy-btn" class="copy-clipboard-btn tooltip" style="width:40px;height:40px;position: relative;">
-								<img src="light-clipboard-copy.svg" alt="copy to clipboard icon" style="height:16px;left:12px;top:12px;position:relative;"/>
+								<img src="assets/light-clipboard-copy.svg" alt="copy to clipboard icon" style="height:16px;left:12px;top:12px;position:relative;"/>
 								<span class="tooltiptext"><span>Copy to Clipboard</span></span>
 							</div>
 						</div>
@@ -96,7 +85,7 @@
 								<div class='code-css-container'><p class='code-css'></p></div>
 								<div id="copy-css-btn" class="copy-img-container">
 									<div class="copy-clipboard-btn tooltip tooltip-down">
-										<img class="code-copy-img" alt="copy to clipboard icon" src="light-clipboard-copy.svg">
+										<img class="code-copy-img" alt="copy to clipboard icon" src="assets/light-clipboard-copy.svg">
 										<span class="tooltiptext"><span>Copy to Clipboard</span></span>
 									</div>
 								</div>
@@ -109,7 +98,7 @@
 								<div class='code-css-container'><p class='code-css'></p></div>
 								<div id="copy-gradient-btn" class="copy-img-container">
 									<div class="copy-clipboard-btn tooltip tooltip-down">
-										<img class="code-copy-img" alt="copy to clipboard icon" src="light-clipboard-copy.svg">
+										<img class="code-copy-img" alt="copy to clipboard icon" src="assets/light-clipboard-copy.svg">
 										<span class="tooltiptext"><span>Copy to Clipboard</span></span>
 									</div>
 								</div>
@@ -123,7 +112,7 @@
 								<div class='code-css-container'><p class='code-css'></p></div>
 								<div id="copy-gradient-max-comp-btn" class="copy-img-container">
 									<div class="copy-clipboard-btn tooltip tooltip-down">
-										<img class="code-copy-img" alt="copy to clipboard icon" src="light-clipboard-copy.svg">
+										<img class="code-copy-img" alt="copy to clipboard icon" src="assets/light-clipboard-copy.svg">
 										<span class="tooltiptext"><span>Copy to Clipboard</span></span>
 									</div>
 								</div>
@@ -153,8 +142,8 @@
 						<div id="info-btn" class="sidebar-btn"><p>info</p></div>
 					</div>
 					<div id="bottom-row">
-						<a href="https://www.linkedin.com/in/tobiasloader/"><img src="linkedin_light.svg" class="socialimg linkedinlight"  alt="linkedin logo"><img src="linkedin_dark.svg" class="socialimg linkedindark" alt="linkedin logo"></a>
-						<a href="https://github.com/TobiasLoader"><img src="github_light.svg" class="socialimg githublight" alt="github logo"><img src="github_dark.svg" class="socialimg githubdark" alt="github logo"></a>
+						<a href="https://www.linkedin.com/in/tobiasloader/"><img src="assets/linkedin_light.svg" class="socialimg linkedinlight"  alt="linkedin logo"><img src="assets/linkedin_dark.svg" class="socialimg linkedindark" alt="linkedin logo"></a>
+						<a href="https://github.com/TobiasLoader"><img src="assets/github_light.svg" class="socialimg githublight" alt="github logo"><img src="assets/github_dark.svg" class="socialimg githubdark" alt="github logo"></a>
 					</div>
 				</div>
 				<div id="burger">
