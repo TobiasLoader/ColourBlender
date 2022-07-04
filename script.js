@@ -610,7 +610,7 @@ $('#copy-gradient-btn').click(function(){
 $('#copy-gradient-btn').mouseleave(function(){$('#copy-gradient-btn .tooltiptext span').html('Copy to Clipboard');});
 
 $('#copy-gradient-max-comp-btn').click(function(){
-	navigator.clipboard.writeText($('#max-comp-gradient .code-css').text());
+	navigator.clipboard.writeText($('#max-comp-gradient .code-css').text().replace(/;/g,';\n'));
 	$('#copy-gradient-max-comp-btn .tooltiptext span').html('Copied!');
 });
 $('#copy-gradient-max-comp-btn').mouseleave(function(){$('#copy-gradient-max-comp-btn .tooltiptext span').html('Copy to Clipboard');});
@@ -696,9 +696,6 @@ $('#showcss-btn, #gradient-btn, #info-btn').click(function(){
 				sub_content = true;
 				sub_content_transition = false;
 			});
-			if (window.innerWidth<700){
-				$('#sidebar-inner').animate({opacity: 0}, 300);
-			}
 		});
 	}
 });

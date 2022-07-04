@@ -99,6 +99,8 @@ body {
 	top: 120px;
 	position: absolute;
 	width:100%;
+	opacity: 1;
+	transition: opacity 300ms;
 }
 
 .sidebar-btn {
@@ -571,6 +573,7 @@ input[type=number] {
   position: absolute;
   left: 120%;
   z-index: 2;
+  /* display: none; */
 }
 .tooltip-down .tooltiptext {
   left: 50%;
@@ -756,6 +759,22 @@ input[type=number] {
 	#colour-banner.no-js-class {
 		left: 0 !important;
 	}
+	.tooltip-down-on-mobile .tooltiptext {
+	  left: 50%;
+	  top: calc(100% + 10px);
+	  margin-left: -50px;
+	}
+	.tooltip-down-on-mobile .tooltiptext::after {
+		top: calc(100% - 53px);
+		left: 50%;
+		margin-left: -5px;
+		border-width: 5px;
+	}
+	.light-mode .tooltip-down-on-mobile .tooltiptext::after {  border-color: transparent transparent rgb(50,50,50) transparent;
+	}
+	.dark-mode .tooltip-down-on-mobile .tooltiptext::after {  border-color: transparent transparent rgb(255,255,255) transparent;
+	}
+
 	#track {
 		display:none;
 	}
@@ -770,6 +789,9 @@ input[type=number] {
 	}
 	#sidebar {
 		width:100%;
+	}
+	.show-sec #sidebar-inner {
+		opacity: 0;
 	}
 	#hexrgb-switch {
 		right: auto;
