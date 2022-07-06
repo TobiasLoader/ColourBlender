@@ -656,6 +656,36 @@ window.onresize = function(){
 	refreshAfterTime = setTimeout(refreshColourFields, 500);
 };
 
+/////////////// COOKIES SCRIPT /////////////////
+
+function setCookie(name,value,days=0) {
+	if (name=='users_cookie_choice' || getCookie('users_cookie_choice')=='accept'){
+		var expires = "";
+		if (days) {
+			var date = new Date();
+			date.setTime(date.getTime() + (days*24*60*60*1000));
+			expires = "; expires=" + date.toUTCString();
+		}
+		document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+	}
+}
+function getCookie(name) {
+	var nameEQ = name + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++) {
+		var c = ca[i];
+		while (c.charAt(0)==' ') c = c.substring(1,c.length);
+		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+	}
+	return null;
+}
+function eraseCookie(name) {   
+	document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+function clearAllCookies(){
+	document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
+}
+
 //////////////// MAIN SCRIPT //////////////////
 
 // JS self-evidently has loaded so remove hide and no-js-class classes
@@ -691,6 +721,14 @@ var burger_transition = false;
 // flags for if sub content is out and if in transition
 var sub_content = false;
 var sub_content_transition = false;
+
+// cookie accepted policy
+var cookie_choice;
+if (getCookie('users_cookie_choice')==null) cookie_choice = 'reject';
+else cookie_choice = getCookie('users_cookie_choice');
+
+// slide cookie popup from the right
+if (cookie_choice == 'reject') $('#cookies').delay(1000).animate({'right':'33px'},300);
 
 // if focus leaves colour input text boxes then parse the input
 c1.focusout(function(){colourTextInputEntered(c1,c1_picker,0);});
@@ -870,7 +908,7 @@ $("#hexrgb-switch").on("mouseup", ()=>{
 });
 
 // if a sidebar button is clicked
-$('#showcss-btn, #gradient-btn, #info-btn').click(function(){
+$('.sidebar-btn').click(function(){
 	// if sub content not shown and not in transition
 	if (sub_content==false && sub_content_transition==false){
 		// set flag for transition as about to animate
@@ -891,26 +929,53 @@ $('#showcss-btn, #gradient-btn, #info-btn').click(function(){
 	}
 });
 
+// function to display none to all sec pages
+function displayNoneSecContent(){
+	$('#showcss-content').css('display','none');
+	$('#gradient-content').css('display','none');
+	$('#about-content').css('display','none');
+	$('#privacy-content').css('display','none');
+	$('#donate-content').css('display','none');
+}
+
 // if showcss button clicked
 $('#showcss-btn').click(function(){
 	// rebuild colour code snippet (since blended colour_choice can change without updating build code)
 	showcssBuildCode();
 	// then set the #showcss-content element display block and others display none
+	displayNoneSecContent();
 	$('#showcss-content').css('display','block');
-	$('#gradient-content').css('display','none');
-	$('#info-content').css('display','none');
 });
 $('#gradient-btn').click(function(){
 	// set the #gradient-content element display block and others display none
-	$('#showcss-content').css('display','none');
+	displayNoneSecContent();
 	$('#gradient-content').css('display','block');
-	$('#info-content').css('display','none');
 });
-$('#info-btn').click(function(){
-	// set the #info-content element display block and others display none
-	$('#showcss-content').css('display','none');
-	$('#gradient-content').css('display','none');
-	$('#info-content').css('display','block');
+$('#about-btn').click(function(){
+	// set the #about-content element display block and others display none
+	displayNoneSecContent();
+	$('#about-content').css('display','block');
+});
+$('#privacy-btn').click(function(){
+	// set the #privacy-content element display block and others display none
+	displayNoneSecContent();
+	$('#privacy-content').css('display','block');
+});
+$('#donate-btn').click(function(){
+	// set the #privacy-content element display block and others display none
+	displayNoneSecContent();
+	$('#donate-content').css('display','block');
+});
+
+$('.cookies-choice').click(function(){ 
+	$('#cookies').animate({'right':'-40px'},150);
+});
+$('#cookies-yes').click(function(){
+	cookie_choice = 'accept';
+	setCookie('users_cookie_choice',cookie_choice,1);
+});
+$('#cookies-x').click(function(){ 
+	clearAllCookies();
 });
 
 // on init refresh the colour fields, and build the css and gradient code snippets

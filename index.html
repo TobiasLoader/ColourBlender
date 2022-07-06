@@ -78,6 +78,10 @@
 				</div>
 				<div id="sec-content">
 					<div id="sub-content-box">
+						<div id="about-content" class="sub-content-inner">
+							<h2>about the project.</h2>
+							<p class="desc" style="margin-bottom: 0;">Hi, this is Toby Loader, known on the web as TobiasCodes. A bit of background on myself, I'm a student at the University of Oxford reading Maths and CS and love writing code and coming up with fun little projects to work on.<br><br>Having done lots of frontend dev over the years I've often needed to find colour schemes for my projects. But I never found an online tool that suited my needs whilst still being easy and fun to use. So I've built myself this little helper and hope it will be of use to some people.<br><br>If you would like to watch a video of me building the web app you can check out my youtube channel TobiasCodes :)</p>
+						</div>
 						<div id="showcss-content" class="sub-content-inner">
 							<h2>show colour css.</h2>
 							<p class="desc">Below is the css for the colour you've selected. This is a linear interpolation (lerp) of the left and right colours, at the percentage 'split'%. So 0% would represent all of the left colour and none of the right, whilst 100% would be none of the left and all of the right.<br><br>Use the toggle in the top right of the window to switch between hex and rgb colour encodings.</p>
@@ -119,9 +123,13 @@
 							</div>
 							<p class="desc compatability" style="margin-bottom: 0;">Compatability: IE 6+, Edge, Firefox 3.6+, Chrome 10+, Safari 5.1+, Opera 12+, iOS Safari 5.1+, Android Browser 4+, Chrome for Android 46+</p>
 						</div>
-						<div id="info-content" class="sub-content-inner">
-							<h2>info on the project.</h2>
-							<p class="desc" style="margin-bottom: 0;">Hi, this is Toby Loader, known on the web as TobiasCodes. A bit of background on myself, I'm a student at the University of Oxford reading Maths and CS and love writing code and coming up with fun little projects to work on.<br><br>Having done lots of frontend dev over the years I've often needed to find colour schemes for my projects. But I never found an online tool that suited my needs whilst still being easy and fun to use. So I've built myself this little helper and hope it will be of use to some people.<br><br>If you would like to watch a video of me building the web app you can check out my youtube channel TobiasCodes :)</p>
+						<div id="privacy-content" class="sub-content-inner">
+							<h2>privacy policy for cookies.</h2>
+							<p class="desc" style="margin-bottom: 0;">I'm collecting some basic usage info (with google analytics) so I can see how much the site is being used and know which of my projects to prioritise.<br><br>Trust me I don't like sites collecting data about me and tbh I actually make a point of rejecting cookies on most sites if i can :) but these basic cookies really help me out alot.<br><br>Also I only store cookies temporarily, they expire after 1 day.</p>
+						</div>
+						<div id="donate-content" class="sub-content-inner">
+							<h2>would you buy me a coffee?</h2>
+							<p class="desc" style="margin-bottom: 0;">Many coffee's were consumed in the making of this site, and tbh this has left me a little out of pocket. So if you found the tool helpful at all, I would be eternally grateful if you donated a couple of pounds to cover the cost of a coffee. Thanks very much :)</p>
 						</div>
 					</div>
 				</div>
@@ -133,14 +141,23 @@
 						copyright <span style="font-family:Arial, sans-serif;">©</span> 2022&nbsp;<a class="footer-link" href="https://www.linkedin.com/in/tobiasloader/">tobias loader</a><br>all rights reserved
 					</p>
 				</div>
-				<div id="cookies"></div>
+				<div id="cookies">
+					<div id="cookie-inner">
+						<p>ok with cookies?</p>
+						<p id="cookies-yes" class="cookies-choice">yes</p>
+						<!-- <p id="cookies-slash">/</p> -->
+						<p id="cookies-x" class="cookies-choice">x</p>
+					</div>
+				</div>
 			</div>
 			<div id="sidebar" class="hide light-sidebar">
 				<div id="sidebar-content">
 					<div id="sidebar-inner">
+						<div id="about-btn" class="sidebar-btn"><p>about</p></div>
 						<div id="showcss-btn" class="sidebar-btn"><p>colour css</p></div>
 						<div id="gradient-btn" class="sidebar-btn"><p>gradient css</p></div>
-						<div id="info-btn" class="sidebar-btn"><p>info</p></div>
+						<div id="privacy-btn" class="sidebar-btn"><p>privacy</p></div>
+						<div id="donate-btn" class="sidebar-btn"><p>coffee?</p></div>
 					</div>
 					<div id="bottom-row">
 						<a href="https://www.linkedin.com/in/tobiasloader/"><img src="assets/linkedin_light.svg" class="socialimg linkedinlight"  alt="linkedin logo"><img src="assets/linkedin_dark.svg" class="socialimg linkedindark" alt="linkedin logo"></a>

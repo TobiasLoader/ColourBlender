@@ -304,15 +304,11 @@ body {
 }
 
 .sub-content-inner {
-	display: block;
+	display: none;
 	padding: 10%;
 	max-height: 50vh;
 	overflow: auto;
 }
-
-#showcss-content {display:none;}
-#gradient-content {display:none;}
-#info-content {display:none;}
 
 .light-mode #sub-content-box p, .light-mode #sub-content-box h2 {color: rgb(255,255,255);}
 .dark-mode #sub-content-box p, .dark-mode #sub-content-box h2 {color: rgb(50,50,50);}
@@ -745,6 +741,43 @@ input[type=number] {
 	margin-bottom:20px;
 }
 
+#cookies {
+	width: 40px;
+	height: 190px;
+	position: absolute;
+	top: calc(70% - min(25%,250px));
+	right: -40px;
+	background: rgba(255,255,255,0.85);
+	border-radius: 40px;
+	padding:20px 0;
+	box-shadow: 0px 0px 80px 20px rgba(22,27,37,0.25);
+	transform: translateY(-50%) rotate(180deg);
+}
+#cookie-inner {
+	width:100%;
+	height:100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+#cookies p {
+	opacity:0.6;
+	line-height: 40px;
+	writing-mode: vertical-lr;
+	text-orientation: sideways;
+	margin:0;
+	vertical-align: middle;
+	font-size: 12px;
+	letter-spacing: 0.4px;
+}
+p.cookies-choice {cursor:pointer;}
+p.cookies-choice:hover {opacity:1;}
+p#cookies-yes {opacity:1;}
+p#cookies-slash {opacity:0.5;}
+p#cookies-x {opacity:0.5;}
+#cookies-yes:hover {color: #60c36f;}
+#cookies-x:hover {color: #c95353;}
+
 @media only screen and (max-width: 700px) {
 	h2 {font-size: 20px;}
 	p {font-size: 14px;}
@@ -789,6 +822,9 @@ input[type=number] {
 	}
 	#sidebar {
 		width:100%;
+	}
+	#sidebar-inner {
+		top: 80px;
 	}
 	.show-sec #sidebar-inner {
 		opacity: 0;
@@ -844,4 +880,8 @@ input[type=number] {
 		display: block;
 	}
 	.code-css {line-height: 20px;}
+	
+	#cookies {
+		top: calc(60% - 100px);;
+	}
 }
