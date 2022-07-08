@@ -59,7 +59,7 @@ function refreshColourFields() {
 		'background: linear-gradient(90deg, '+cols[0]+' '+p1+'%, '+cols[1]+' '+p2+'%)',      
 		'filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="'+cols[0]+'", endColorstr="'+cols[1]+'", GradientType=1)'
 	].join(';');
-	$('body').attr('style', bg_styles);
+	$('body, .body-btn').attr('style', bg_styles);
 	// colour the sidebar the right hand colour
 	$('#sidebar-content').css({'background':cols[1]});
 	applyColourChoice();
@@ -728,7 +728,22 @@ if (getCookie('users_cookie_choice')==null) cookie_choice = 'reject';
 else cookie_choice = getCookie('users_cookie_choice');
 
 // slide cookie popup from the right
-if (cookie_choice == 'reject') $('#cookies').delay(1000).animate({'right':'33px'},300);
+if (cookie_choice == 'reject') {
+	$('#cookies').delay(1000).animate({'right':'33px'},200,"linear")
+	.animate({opacity:0.75},{
+		duration: 300,
+		step: function(now,fx) {
+			$(this).css('transform','translateY(-50%) rotate('+30*(4)*(now-0.5)+'deg)');
+		},
+		easing:"easeOutQuad",
+	}).animate({opacity:1},{
+		duration: 400,
+		step: function(now,fx) {
+			$(this).css('transform','translateY(-50%) rotate('+(30*(1-(4)*(now-0.75)))+'deg)');
+		},
+		easing: "easeInOutQuad",
+	});
+}
 
 // if focus leaves colour input text boxes then parse the input
 c1.focusout(function(){colourTextInputEntered(c1,c1_picker,0);});
@@ -813,8 +828,8 @@ copyToClipboard('#css-colour .code-css','#copy-css-btn','#copy-css-btn .tooltipt
 copyToClipboard('#modern-gradient .code-css','#copy-gradient-btn','#copy-gradient-btn .tooltiptext span',false);
 copyToClipboard('#max-comp-gradient .code-css','#copy-gradient-max-comp-btn','#copy-gradient-max-comp-btn .tooltiptext span',true);
 
-// if click burger
-$('#burger').click(function(){
+// if clicked to open/close sidebar
+function sidebar(){
 	if (burger_transition==false && sub_content_transition==false){
 		// so long as other transitions aren't occuring
 		// if burger has already been clicked and sub content is open
@@ -847,7 +862,10 @@ $('#burger').click(function(){
 		// toggle opacity of sidebar content
 		$('#sidebar-content').animate({opacity: 1-opac}, 300, function(){
 			// if clicked before then remove sidebar open (since just closed sidebar)
-			if (burger) $('#sidebar').removeClass('sidebar-open');
+			if (burger) {
+				displayNoneSecContent();
+				$('#sidebar').removeClass('sidebar-open');
+			}
 		});
 		
 		// rotate top burger line to rot_deg (defined as 40 or 0 depending on opening or closing)
@@ -882,6 +900,11 @@ $('#burger').click(function(){
 			burger = !burger;
 		});
 	}
+}
+
+// if click burger
+$('#burger').click(function(){
+	sidebar();
 });
 
 // on mouse up (similar to release from click) on the hex/rgb switch
@@ -908,7 +931,7 @@ $("#hexrgb-switch").on("mouseup", ()=>{
 });
 
 // if a sidebar button is clicked
-$('.sidebar-btn').click(function(){
+function sidebar_btn(){
 	// if sub content not shown and not in transition
 	if (sub_content==false && sub_content_transition==false){
 		// set flag for transition as about to animate
@@ -927,6 +950,11 @@ $('.sidebar-btn').click(function(){
 			});
 		});
 	}
+}
+
+// if a sidebar button is clicked
+$('.sidebar-btn').click(function(){
+	sidebar_btn();
 });
 
 // function to display none to all sec pages
@@ -936,45 +964,63 @@ function displayNoneSecContent(){
 	$('#about-content').css('display','none');
 	$('#privacy-content').css('display','none');
 	$('#donate-content').css('display','none');
+	$('.sec-active').removeClass('sec-active');
 }
 
-// if showcss button clicked
-$('#showcss-btn').click(function(){
+function aboutPage(){
+	// set the #about-content element display block and others display none
+	displayNoneSecContent();
+	$('#about-content').css('display','block');
+	$('#about-btn').addClass('sec-active');
+}
+function showcssPage(){
 	// rebuild colour code snippet (since blended colour_choice can change without updating build code)
 	showcssBuildCode();
 	// then set the #showcss-content element display block and others display none
 	displayNoneSecContent();
 	$('#showcss-content').css('display','block');
-});
-$('#gradient-btn').click(function(){
+	$('#showcss-btn').addClass('sec-active');
+}
+function gradientPage(){
 	// set the #gradient-content element display block and others display none
 	displayNoneSecContent();
 	$('#gradient-content').css('display','block');
-});
-$('#about-btn').click(function(){
-	// set the #about-content element display block and others display none
-	displayNoneSecContent();
-	$('#about-content').css('display','block');
-});
-$('#privacy-btn').click(function(){
+	$('#gradient-btn').addClass('sec-active');
+}
+function privacyPage(){
 	// set the #privacy-content element display block and others display none
 	displayNoneSecContent();
 	$('#privacy-content').css('display','block');
-});
-$('#donate-btn').click(function(){
+	$('#privacy-btn').addClass('sec-active');
+}
+function donatePage(){
 	// set the #privacy-content element display block and others display none
 	displayNoneSecContent();
 	$('#donate-content').css('display','block');
-});
+	$('#donate-btn').addClass('sec-active');
+}
+// if showcss button clicked
+$('#showcss-btn').click(function(){showcssPage();});
+$('#gradient-btn').click(function(){gradientPage();});
+$('#about-btn').click(function(){aboutPage();});
+$('#privacy-btn').click(function(){privacyPage();});
+$('#donate-btn').click(function(){donatePage();});
 
-$('.cookies-choice').click(function(){ 
-	$('#cookies').animate({'right':'-40px'},150);
-});
+// $('.cookies-choice').click(function(){ 
+// 	$('#cookies').animate({'right':'-40px'},150);
+// });
 $('#cookies-yes').click(function(){
+	$('#cookies').animate({'right':'-40px'},150);
 	cookie_choice = 'accept';
 	setCookie('users_cookie_choice',cookie_choice,1);
 });
-$('#cookies-x').click(function(){ 
+$('#cookies-i').click(function(){
+	sidebar();
+	sidebar_btn();
+	privacyPage();
+});
+$('#cookies-x').click(function(){
+	$('#cookies').animate({'right':'-40px'},150);
 	clearAllCookies();
 });
 
