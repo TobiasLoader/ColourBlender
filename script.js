@@ -742,6 +742,8 @@ if (cookie_choice == 'reject') {
 			$(this).css('transform','translateY(-50%) rotate('+(30*(1-(4)*(now-0.75)))+'deg)');
 		},
 		easing: "easeInOutQuad",
+	}).promise().done(function(){
+		$(this).css("box-shadow", "0px 0px 80px 20px rgba(22,27,37,0.25)");
 	});
 }
 

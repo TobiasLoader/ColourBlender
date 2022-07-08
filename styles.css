@@ -140,7 +140,7 @@ body {
 
 #bottom-row {
 	position: absolute;
-	bottom:50px;
+	bottom:25px;
 	height:50px;
 	width:180px;
 	margin: 0;
@@ -408,7 +408,7 @@ body {
 	justify-content: space-evenly;
 	flex-direction: column;
 	cursor:grab;
-	transition: left 0.5s ease;
+	transition: left 0.5s ease-out, box-shadow 0.5s ease-in 0.5s;
 }
 #colour-banner:active {
 	cursor:grabbing;
@@ -424,6 +424,9 @@ body {
 .dark-mode #colour-banner {
 	box-shadow: 0px 0px 80px 20px rgba(40, 55, 86, 0.25);
 	border: rgb(50,50,50,0.3) 1px solid;
+}
+.hide .light-mode #colour-banner {
+	box-shadow: none;
 }
 
 .text-box {
@@ -671,7 +674,7 @@ input[type=number] {
 	margin-left: -15px;
 	transform: rotate(45deg);
 	cursor:grab;
-	transition: left 0.5s ease;
+	transition: left 0.5s ease-out;
 }
 #track-diamond:active {
 	cursor: grabbing;
@@ -777,9 +780,9 @@ input[type=number] {
 	background: rgba(255,255,255,0.85);
 	border-radius: 40px;
 	padding:20px 0;
-	box-shadow: 0px 0px 80px 20px rgba(22,27,37,0.25);
 	transform-origin: top center;
 	transform: translateY(-50%);
+	transition: box-shadow 400ms;
 }
 #cookie-inner {
 	width:100%;
