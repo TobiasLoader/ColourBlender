@@ -729,9 +729,9 @@ else cookie_choice = getCookie('users_cookie_choice');
 
 // slide cookie popup from the right
 if (cookie_choice == 'reject') {
-	$('#cookies').delay(1000).animate({'right':'33px'},200,"linear")
+	$('#cookies').delay(2000).animate({'right':'33px'},300,"linear")
 	.animate({opacity:0.75},{
-		duration: 300,
+		duration: 400,
 		step: function(now,fx) {
 			$(this).css('transform','translateY(-50%) rotate('+30*(4)*(now-0.5)+'deg)');
 		},
@@ -1008,9 +1008,7 @@ $('#about-btn').click(function(){aboutPage();});
 $('#privacy-btn').click(function(){privacyPage();});
 $('#donate-btn').click(function(){donatePage();});
 
-// $('.cookies-choice').click(function(){ 
-// 	$('#cookies').animate({'right':'-40px'},150);
-// });
+
 $('#cookies-yes').click(function(){
 	$('#cookies').animate({'right':'-40px'},150);
 	cookie_choice = 'accept';

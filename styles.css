@@ -12,6 +12,34 @@ body {
 	letter-spacing: 1px;
 	overflow: hidden;
 	background: #59a29c;
+	-webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
+	   -moz-animation: fadein 1s; /* Firefox < 16 */
+		-ms-animation: fadein 1s; /* Internet Explorer */
+		 -o-animation: fadein 1s; /* Opera < 12.1 */
+			animation: fadein 1s;
+}
+
+@keyframes fadein {
+	from { opacity: 0; }
+	to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+	from { opacity: 0; }
+	to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+	from { opacity: 0; }
+	to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+	from { opacity: 0; }
+	to   { opacity: 1; }
 }
 
 .hide {
@@ -291,7 +319,7 @@ body {
 
 #sub-content-box {
 	pointer-events: auto;
-	width:70%;
+	width:80%;
 	position: absolute;
 	top:50%;
 	left:50%;
@@ -300,11 +328,11 @@ body {
 
 .light-mode #sub-content-box {
 	box-shadow: 0px 0px 80px 20px rgba(22,27,37,0.25);
-	border: rgb(255,255,255,0.1) 1px solid;
+	border: rgb(255,255,255,0.4) 2px solid;
 }
 .dark-mode #sub-content-box {
 	box-shadow: 0px 0px 80px 20px rgba(40, 55, 86, 0.25);
-	border: rgb(50,50,50,0.3) 1px solid;
+	border: rgb(50,50,50,0.5) 2px solid;
 }
 
 .sub-content-inner {
@@ -563,14 +591,15 @@ input[type=number] {
 } */
 
 .copy-img-container {
-	width:60px;
+	width:50px;
+	margin:5px;
 	position: relative;
 }
 
 .copy-clipboard-btn {
 	opacity: 0.6;
-	width: 60px;
-	height: 60px;
+	width: 50px;
+	height: 50px;
 	bottom: 0px;
 	position: absolute;
 }
@@ -581,8 +610,8 @@ input[type=number] {
 
 .code-copy-img {
 	height: 18px;
-	right: 21px;
-	bottom: 21px;
+	right: 17px;
+	bottom: 17px;
 	position: absolute;
 }
 
@@ -675,6 +704,7 @@ input[type=number] {
 	transform: rotate(45deg);
 	cursor:grab;
 	transition: left 0.5s ease-out;
+	left:0;
 }
 #track-diamond:active {
 	cursor: grabbing;
@@ -848,7 +878,7 @@ p#cookies-x {opacity:0.5;}
 		width: 100%;
 	}
 	.show-sec #sub-content-box {
-		width: 80%;
+		width: 90%;
 	}
 	.show-sec .sub-content-inner {
 		max-height: 65vh;
