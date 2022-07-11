@@ -372,10 +372,9 @@ body {
 .light-mode .body-btn {border: white 1px solid;}
 .dark-mode .body-btn {border: rgb(50,50,50) 1px solid;}
 
-.body-btn.not-active {border:none;}
-.body-btn.not-active {background:rgba(255,255,255,0.2) !important;}
-.dark-mode .body-btn.not-active {background:rgba(50,50,50,0.1) !important;}
-.light-mode .body-btn.not-active {background:rgba(255,255,255,0.1) !important;}
+.body-btn.not-active {border-color:transparent;}
+.dark-mode .body-btn.not-active {background:rgba(50,50,50,0.2) !important;}
+.light-mode .body-btn.not-active {background:rgba(255,255,255,0.2) !important;}
 
 .body-btn p {
 	margin:0;
@@ -421,8 +420,11 @@ body {
 	max-width: 400px;
 	padding: 20px;
 	border-radius: 10px;
-	box-shadow: 0 0 50px 25px rgba(255,255,255,0.1)
+	
 }
+.light-mode #choose-amount-section {box-shadow: 0 0 50px 25px rgba(255,255,255,0.1);}
+.dark-mode #choose-amount-section {box-shadow: 0 0 50px 25px rgba(50,50,50,0.1);}
+
 #donate-btn-row {
 	display:flex;
 	justify-content:space-between;
@@ -446,10 +448,11 @@ body {
 	height: 25px;
 	border-bottom: white 1px solid;
 }
+.light-mode .choose-custom-amount-txt-line {border-bottom: white 1px solid;}
+.dark-mode .choose-custom-amount-txt-line {border-bottom: rgb(50,50,50) 1px solid;}
+
 #choose-custom-amount-txt-left {margin-right: 20px;}
-#choose-custom-amount-txt-right {margin-left: 20px;
-	
-}
+#choose-custom-amount-txt-right {margin-left: 20px;}
 #choose-custom-amount-txt {
 	cursor: pointer;
 	margin: 0;
@@ -470,9 +473,23 @@ body {
 #payment-system {
 	display: none;
 }
+#back-to-tip-row {
+	display: flex;
+	justify-content: space-between;
+	margin: 50px 0 20px 0;
+	padding: 20px 10px 0 10px;
+}
+.light-mode #back-to-tip-row {border-top: white 1px solid;}
+.dark-mode #back-to-tip-row {border-top: rgb(50,50,50) 1px solid;}
+
 #back-to-tip {
+	display: inline-block;
+	margin: 0;
 	cursor:pointer;
-	margin: 30px 0 20px 10px;
+}
+#display-tip {
+	display: inline-block;
+	margin: 0;
 }
 #payment-form {
   align-self: center;
@@ -502,6 +519,16 @@ body {
   padding-top: 12px;
   text-align: center;
   display: none;
+}
+.light-mode #payment-message a {color: white;}
+.dark-mode #payment-message a {color: rgb(50,50,50);}
+
+#payment-message a {
+	text-decoration: underline dashed;
+	text-underline-offset: 5px;
+}
+#payment-message a:hover {
+	text-decoration: underline solid;
 }
 
 #payment-element {

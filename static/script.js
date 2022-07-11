@@ -165,7 +165,7 @@ function lightDarkCheckBanner(){
 		$('#central-content').removeClass("light-mode");
 		$('#central-content').addClass("dark-mode");
 		// switch out also the clipboard copy svgs
-		$('.colour-output img').attr('src','assets/dark-clipboard-copy.svg');
+		$('.colour-output img').attr('src','static/assets/dark-clipboard-copy.svg');
 	}
 	// if dark mode and colour brightness is too dark change text to light
 	else if (colour_banner_mode=='dark' && b<183){
@@ -174,7 +174,7 @@ function lightDarkCheckBanner(){
 		$('#central-content').removeClass("dark-mode");
 		$('#central-content').addClass("light-mode");
 		// switch out also the clipboard copy svgs
-		$('.colour-output img').attr('src','assets/light-clipboard-copy.svg');
+		$('.colour-output img').attr('src','static/assets/light-clipboard-copy.svg');
 	}
 	// note discrepency in 187/183 brightness breakpoints.
 	// this is to prevent rapid flickering since the linear interpolation between
@@ -722,6 +722,9 @@ var burger_transition = false;
 var sub_content = false;
 var sub_content_transition = false;
 
+// tip amount
+var tip_amount = 2.50;
+
 // cookie accepted policy
 var cookie_choice;
 if (getCookie('users_cookie_choice')==null) cookie_choice = 'reject';
@@ -752,22 +755,15 @@ c1.focusout(function(){colourTextInputEntered(c1,c1_picker,0);});
 c2.focusout(function(){colourTextInputEntered(c2,c2_picker,1);});
 
 // if key enter (13) is pressed in either colour input box then parse input
-c1.keypress(function (e) {
+function loseFocusOnEnter(e,el){
 	if (e.which == 13) {
-		colourTextInputEntered(c1,c1_picker,0);
 		// blur loses focus
-		c1.blur();
+		el.blur();
 		return false;
 	}
-});
-c2.keypress(function (e) {
-	if (e.which == 13) {
-		colourTextInputEntered(c2,c2_picker,1);
-		// blur loses focus
-		c2.blur();
-		return false;
-	}
-});
+}
+c1.keypress(function (e) {loseFocusOnEnter(e,c1);});
+c2.keypress(function (e) {loseFocusOnEnter(e,c2);});
 
 // double click on either colour input text box sets value with current colour
 // (so that the colour code can be edited/copied etc...)
@@ -796,13 +792,7 @@ c2_picker.on('input',function(){
 // if lost focus on split number input then parse input
 spl.focusout(function(){numberSplitInputEntered(spl);});
 // if enter (key 13) pressed parse input
-spl.keypress(function (e) {
-	if (e.which == 13) {
-		numberSplitInputEntered(spl);
-		spl.blur();
-		return false;
-	}
-});
+spl.keypress(function (e) {loseFocusOnEnter(e,spl);});
 // if double click then make split the value (for ability to edit)
 spl.dblclick(function() {spl.val(split*100);});
 
@@ -1008,6 +998,11 @@ $('#about-btn').click(function(){aboutPage();});
 $('#privacy-btn').click(function(){privacyPage();});
 $('#donate-btn').click(function(){donatePage();});
 
+function updateTipAmount(newtip){
+	tip_amount = parseFloat(newtip).toFixed(2);
+	$('#choose-custom-amount-input').val(tip_amount);
+	$('#display-tip').text('£'+tip_amount.toString());
+}
 function removeTipActive(){
 	$('#onefifty-donate').addClass('not-active');
 	$('#twofifty-donate').addClass('not-active');
@@ -1022,15 +1017,25 @@ $('#onefifty-donate, #twofifty-donate, #threefifty-donate').click(function(){
 	removeTipActive();
 	$(this).removeClass('not-active');
 });
+$('#onefifty-donate').click(function(){updateTipAmount(1.50);});
+$('#twofifty-donate').click(function(){updateTipAmount(2.50);});
+$('#threefifty-donate').click(function(){updateTipAmount(3.50);});
+
 $('#choose-custom-amount-txt').click(function(){
 	removeTipActive();
 	$('#choose-custom-amount-txt-container').css('display','none');
 	$('#choose-custom-amount-row').css('display','flex');
 })
 
+$('#choose-custom-amount-input').focusout(function(){
+	updateTipAmount($(this).val());
+});
+$('#choose-custom-amount-input').keypress(function (e) {loseFocusOnEnter(e,$(this));});
+
 $('#donate-button').click(function(){
 	$('#choose-amount-section').css('display','none');
 	$('#payment-system').css('display','block');
+	updateStripeTip();
 });
 
 $('#back-to-tip').click(function(){
@@ -1057,3 +1062,11 @@ $('#cookies-x').click(function(){
 refreshColourFields();
 showcssBuildCode();
 gradientBuildCode();
+
+let page = $('#page-load').text();
+// check if should immediately direct to page coffee:
+if (page=='coffee') {
+	sidebar();
+	sidebar_btn();
+	donatePage();
+}

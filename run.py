@@ -25,45 +25,33 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-	return render_template('index.html',copyrightyears=build_copyright_years())
+	return render_template('index.html',copyrightyears=build_copyright_years(),page='home')
+	
+@app.route('/coffee')
+def coffee():
+	return render_template('index.html',copyrightyears=build_copyright_years(),page='coffee')
 
-@app.route('/secret',methods=['POST'])
+@app.route('/create-intent',methods=['POST'])
 def secret():
 	data = json.loads(request.data)
-	print(data)
 	intent = stripe.PaymentIntent.create(
 		amount=data['amount'],
 		currency='gbp',
 		payment_method_types=["card"],
-		# automatic_payment_methods=True,
 	)
-	return jsonify(client_secret=intent.client_secret)
-		
-# @app.route('/create-payment-intent', methods=['POST'])
-# def create_payment():
-# 	print(request.data)
-# 	try:
-# 		data = json.loads(request.data)
-# 		# Create a PaymentIntent with the order amount and currency
-# 		stripe.PaymentIntent.create(
-# 		  amount=1099,
-# 		  currency="eur",
-# 		  payment_method_types=[
-# 			"bancontact",
-# 			"card",
-# 			"eps",
-# 			"giropay",
-# 			"ideal",
-# 			"p24",
-# 			"sepa_debit",
-# 			"sofort",
-# 		  ],
-# 		)
-# 		return jsonify({
-# 			'clientSecret': intent['client_secret']
-# 		})
-# 	except Exception as e:
-# 		return jsonify(error=str(e))
+	return jsonify(client_secret=intent.client_secret,id=intent.id)
+
+@app.route('/update-intent/<string:id>',methods=['POST'])
+def update_intent(id):
+	data = json.loads(request.data)
+	try:
+			payment_intent = stripe.PaymentIntent.modify(
+					id,
+					amount=data['amount'],
+			)
+			return jsonify({'paymentIntent': payment_intent})
+	except Exception as e:
+			return jsonify(e), 403
 
 if __name__ == "__main__":
 	app.run()
