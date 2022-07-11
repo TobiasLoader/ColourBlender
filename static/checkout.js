@@ -2,7 +2,15 @@
 // See your keys here: https://dashboard.stripe.com/apikeys
 const stripe = Stripe('pk_test_51LJzMaAE43t8f8Vwd9V4opGsnZxhD2h2AzmFEZpXbyXYtmDuQaYXANvtAaxymr1R7eabRUmMHEzMb7or3ddFnTyh00YfCKuCOg');
 
-var response = fetch('/secret').then(function(response) {
+var response = fetch('/secret',{
+	method: 'POST',
+	headers: {
+		'Content-Type':'application/json',
+	},
+	body: JSON.stringify({
+		amount: 150
+	}),
+}).then(function(response) {
   return response.json();
 }).then(function(responseJson) {
   var clientSecret = responseJson.client_secret;

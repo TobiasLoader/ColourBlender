@@ -1008,6 +1008,35 @@ $('#about-btn').click(function(){aboutPage();});
 $('#privacy-btn').click(function(){privacyPage();});
 $('#donate-btn').click(function(){donatePage();});
 
+function removeTipActive(){
+	$('#onefifty-donate').addClass('not-active');
+	$('#twofifty-donate').addClass('not-active');
+	$('#threefifty-donate').addClass('not-active');
+	configuredTipActive();
+}
+function configuredTipActive(){
+	$('#choose-custom-amount-txt-container').css('display','flex');
+	$('#choose-custom-amount-row').css('display','none');
+}
+$('#onefifty-donate, #twofifty-donate, #threefifty-donate').click(function(){
+	removeTipActive();
+	$(this).removeClass('not-active');
+});
+$('#choose-custom-amount-txt').click(function(){
+	removeTipActive();
+	$('#choose-custom-amount-txt-container').css('display','none');
+	$('#choose-custom-amount-row').css('display','flex');
+})
+
+$('#donate-button').click(function(){
+	$('#choose-amount-section').css('display','none');
+	$('#payment-system').css('display','block');
+});
+
+$('#back-to-tip').click(function(){
+	$('#choose-amount-section').css('display','block');
+	$('#payment-system').css('display','none');
+});
 
 $('#cookies-yes').click(function(){
 	$('#cookies').animate({'right':'-40px'},150);

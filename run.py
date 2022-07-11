@@ -1,6 +1,7 @@
 from flask import Flask, render_template, jsonify, request
 from copyright_years import build_copyright_years
 import stripe
+import json
 
 # This is your test secret API key.
 stripe.api_key = 'sk_test_51LJzMaAE43t8f8VwHSiFCcHigSL0E4vC6Zvv35z9PJya75YYDcGLsAPRWgbpo5mnoxaoLnNm5fFG7XyYrKOxoTMj00MKqMaqsx'
@@ -26,12 +27,15 @@ app = Flask(__name__)
 def index():
 	return render_template('index.html',copyrightyears=build_copyright_years())
 
-@app.route('/secret')
+@app.route('/secret',methods=['POST'])
 def secret():
+	data = json.loads(request.data)
+	print(data)
 	intent = stripe.PaymentIntent.create(
-		amount=30,
+		amount=data['amount'],
 		currency='gbp',
-		payment_method_types=['card'],
+		payment_method_types=["card"],
+		# automatic_payment_methods=True,
 	)
 	return jsonify(client_secret=intent.client_secret)
 		

@@ -15,7 +15,7 @@
 		<!-- <link rel="apple-touch-icon" sizes="180x180" href="static/assets/favicon/apple-touch-icon.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="static/assets/favicon/favicon-32x32.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="static/assets/favicon/favicon-16x16.png"> -->
-		<link rel="shortcut icon" href="{{ url_for('static', filename='assets/favicon/favicon.ico') }}">
+		<link rel="shortcut icon" type="image/ico" href="{{ url_for('static', filename='assets/favicon/favicon.ico') }}">
 		<link rel="manifest" href="static/assets/favicon/site.webmanifest">
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" defer></script>
@@ -25,7 +25,6 @@
 		<script src="static/script.js" defer></script>
   </head>
 	<body class="hex no-js-class" style="width:100%; height:100%;">
-		<h1 id="message"></h1>
 		<div style="width:100%; height:100%;">
 			<div id="title" class="light-title">
 				<a href="http://colourblender.io">colourblender.io</a>
@@ -136,16 +135,39 @@
 						<div id="donate-content" class="sub-content-inner">
 							<h2>would you buy me a coffee?</h2>
 							<p class="desc" style="margin-bottom: 0;">Many coffee's were consumed in the making of this site, and tbh this has left me a little out of pocket. So if you found the tool helpful at all, I would be eternally grateful if you donated a couple of pounds to cover the cost of a coffee. Thanks very much :)</p>
-							<div class="body-btn"><p>Yes, i'm epic!</p></div>
-							<form id="payment-form">
-								<div id="payment-element">
-									<!--Stripe.js injects the Payment Element-->
+							<!-- <p>I'm awesome cos I'm going to tip Toby (and ColourBlender is awesome too!)</p> -->
+							<div id='choose-amount-section'>
+								<div id='donate-btn-row'>
+									<div id="onefifty-donate" class="not-active body-btn"><p>£1.50</p></div>
+									<div id="twofifty-donate" class="body-btn"><p>£2.50</p></div>
+									<div id="threefifty-donate" class="not-active body-btn"><p>£3.50</p></div>
 								</div>
-								<button id="submit">Submit</button>
-								<div id="error-message">
-									<!-- Display error message to your customers here -->
+								<div id='choose-custom-amount-container'>
+									<div id="choose-custom-amount-txt-container">
+										<div id="choose-custom-amount-txt-left" class="choose-custom-amount-txt-line"></div>
+										<p id="choose-custom-amount-txt">→ Choose custom amount ←</p>
+										<div id="choose-custom-amount-txt-right" class="choose-custom-amount-txt-line"></div>
+									</div>
+									<div id='choose-custom-amount-row'>
+										<p>Custom Amount (£):</p>
+										<input id='choose-custom-amount-input' type="number" placeholder="2.50" min="0.30" step="any">
+									</div>
 								</div>
-							</form>
+								<div id="donate-button" class="body-btn"><p>Yes, i'm awesome!</p></div>
+							</div>
+							<div id="payment-system">
+								<p id="back-to-tip">← Back to Tip Amount</p>
+								<form id="payment-form">
+									<div id="payment-element">
+										<!--Stripe.js injects the Payment Element-->
+									</div>
+									<button id="submit">Submit</button>
+									<div id="error-message">
+										<!-- Display error message to your customers here -->
+									</div>
+								</form>
+							</div>
+							<p id="payment-message"></p>
 						</div>
 					</div>
 				</div>
