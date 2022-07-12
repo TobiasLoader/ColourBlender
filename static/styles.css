@@ -64,15 +64,18 @@ body {
 	font-size:18px;
 	text-decoration: none;
 }
-.light-title#title {border:rgba(255,255,255,0.2) 1px solid;}
-.dark-title#title {border:rgba(50,50,50,0.2) 1px solid;}
+.light-title #title {border:rgba(255,255,255,0.2) 1px solid;}
+.dark-title #title {border:rgba(50,50,50,0.2) 1px solid;}
 
-.light-title#title:hover {background:rgba(255,255,255,0.05);}
-.dark-title#title:hover {background:rgba(50,50,50,0.05);}
+.light-title #title:hover {background:rgba(255,255,255,0.05);}
+.dark-title #title:hover {background:rgba(50,50,50,0.05);}
 
-.light-title#title a {color: rgb(255,255,255);}
-.dark-title#title a {color: rgb(50,50,50);}
+.light-title #title a {color: rgb(255,255,255);}
+.dark-title #title a {color: rgb(50,50,50);}
 
+.show-sec #title {
+	display: none;
+}
 
 /* /////////////// SIDEBAR //////////////// */
 
@@ -309,36 +312,34 @@ body {
 	opacity: 0;
 	display: none;
 	position:absolute;
-	z-index: 1;
-	pointer-events: none;
+	z-index: 2;
+	overflow: auto;
 }
 .show-sec #sec-content {
 	display: block;
 }
 
+#sec-scroll-page {
+	position: absolute;
+	padding: 10%;
+	pointer-events: none;
+}
+
 #sub-content-box {
 	pointer-events: auto;
-	width:80%;
-	position: absolute;
-	top:50%;
-	left:50%;
-	transform: translate(-50%,-50%);
 }
 
 .light-mode #sub-content-box {
 	box-shadow: 0px 0px 80px 20px rgba(22,27,37,0.25);
-	border: rgb(255,255,255,0.4) 2px solid;
+	/* border: rgb(255,255,255,0.4) 2px solid; */
 }
 .dark-mode #sub-content-box {
 	box-shadow: 0px 0px 80px 20px rgba(40, 55, 86, 0.25);
-	border: rgb(50,50,50,0.5) 2px solid;
+	/* border: rgb(50,50,50,0.5) 2px solid; */
 }
 
 .sub-content-inner {
-	/* display: none; */
 	padding: 10%;
-	max-height: 50vh;
-	overflow: auto;
 }
 
 .light-mode #sub-content-box p, .light-mode #sub-content-box h2 {color: rgb(255,255,255);}
@@ -947,6 +948,10 @@ input[type=number] {
 	margin-bottom:20px;
 }
 
+.show-sec #copyright-content {
+	display: none;
+}
+
 #cookies {
 	opacity:0.5;
 	width: 40px;
@@ -988,6 +993,95 @@ p#cookies-x {opacity:0.5;}
 #cookies-i:hover {color: #5382c9;}
 #cookies-x:hover {color: #c95353;}
 
+@media only screen and (max-width: 800px) {
+	#sec-content {
+		width: 100%;
+	}
+	#sec-scroll-page {
+		padding:0;
+		height: 100%;
+	}
+	.show-sec #sub-content-box {
+		min-height: 100%;
+	}
+	
+	.show-sec #sec-back-arrow {
+		position: absolute;
+		width: 15px;
+		height: 19px;
+		margin: 10% 0 0 5%;
+		transform: translate(-50%,8px);
+		cursor: pointer;
+		pointer-events: auto;
+		z-index: 2;
+		opacity: 0.5;
+	}
+	.show-sec #sec-back-arrow:hover {opacity: 1;}
+	.light-mode.show-sec .sec-back-arrow-line {border-top: rgb(255,255,255) 2px solid;}
+	.dark-mode.show-sec .sec-back-arrow-line {border-top: rgb(50,50,50) 2px solid;}
+	.show-sec #sec-back-line-1 {transform: translate(0px, 5px) rotate(-30deg);}
+	.show-sec #sec-back-line-2 {transform: translate(0px, 10px) rotate(30deg);}
+
+	#sidebar {
+		width:100%;
+	}
+	.light-mode.show-sec .burger-line {border-top:rgb(255,255,255) 2px solid;}
+	.dark-mode.show-sec .burger-line {border-top:rgb(50,50,50) 2px solid;}
+	
+	#sidebar-inner {
+		top: 100px;
+		height: 60vh;
+		max-height: 400px;
+		justify-content: space-between;
+	}
+	.show-sec #sidebar-inner {
+		opacity: 0;
+	}
+	.sidebar-btn {
+		width:60%;
+	}
+	#bottom-row {
+		bottom: 10%;
+	}
+	.sidebar-open.show-sec #sidebar-inner {
+		/* display: none; */
+	}
+	.sidebar-open.show-sec #bottom-row {
+		/* display: none; */
+	}
+	.sidebar-open.show-sec #copyright-content {
+		display: block;
+	}
+	.sidebar-open #hexrgb-switch {
+		/* display: none; */
+		opacity:0;
+		pointer-events: none;
+	}
+	.sidebar-btn {
+		height: 55px;
+		margin: 0 auto;
+	}
+	.light-sidebar .sidebar-btn {
+		border: rgb(255,255,255,0.6) 1px solid;
+	}
+	.dark-sidebar .sidebar-btn {
+		border: rgb(50,50,50,0.6) 1px solid;
+	}
+	.sidebar-btn p {
+		height: 55px;
+		line-height: 55px;
+		font-size:17px;
+	}
+	#copyright-content {
+		z-index: 1;
+	}
+	.light-sidebar.sidebar-open #copyright-content p {color:rgba(255,255,255,0.8)}
+	.dark-sidebar.sidebar-open #copyright-content p {color:rgba(50,50,50,0.8)}
+	.light-sidebar.sidebar-open #copyright-content .footer-link {color:rgba(255,255,255,0.8)}
+	.dark-sidebar.sidebar-open #copyright-content .footer-link {color:rgba(50,50,50,0.8)}
+	.light-sidebar.sidebar-open #copyright-content .footer-link:hover {color:rgb(255,255,255)}
+	.dark-sidebar.sidebar-open #copyright-content .footer-link:hover {color:rgb(50,50,50)}
+}
 @media only screen and (max-width: 700px) {
 	h2 {font-size: 20px;}
 	p {font-size: 14px;}
@@ -1018,29 +1112,10 @@ p#cookies-x {opacity:0.5;}
 	.dark-mode .tooltip-down-on-mobile .tooltiptext::after {  border-color: transparent transparent rgb(255,255,255) transparent;
 	}
 
+	.show-sec #sec-back-arrow {transform: translate(-50%,4px);}
+	
 	#track {
 		display:none;
-	}
-	#sec-content {
-		width: 100%;
-	}
-	.show-sec #sub-content-box {
-		width: 90%;
-	}
-	.show-sec .sub-content-inner {
-		max-height: 65vh;
-	}
-	#sidebar {
-		width:100%;
-	}
-	#sidebar-inner {
-		top: 100px;
-		height: 60vh;
-		max-height: 400px;
-		justify-content: space-between;
-	}
-	.show-sec #sidebar-inner {
-		opacity: 0;
 	}
 	#hexrgb-switch {
 		right: auto;
@@ -1049,42 +1124,12 @@ p#cookies-x {opacity:0.5;}
 		bottom:12%;
 		transform: translateX(-50%);
 	}
-	.sidebar-btn {
-		width:60%;
-	}
-	#bottom-row {
-		bottom: 10%;
-	}
-	.sidebar-open.show-sec #sidebar-inner {
-		display: none;
-	}
-	.sidebar-open.show-sec #bottom-row {
-		display: none;
-	}
-	.sidebar-open #hexrgb-switch {
-		/* display: none; */
-		opacity:0;
-		pointer-events: none;
-	}
-	.sidebar-btn {
-		height: 55px;
-		margin: 0 auto;
-	}
-	.light-sidebar .sidebar-btn {
-		border: rgb(255,255,255,0.6) 1px solid;
-	}
-	.dark-sidebar .sidebar-btn {
-		border: rgb(50,50,50,0.6) 1px solid;
-	}
-	.sidebar-btn p {
-		height: 55px;
-		line-height: 55px;
-		font-size:17px;
-	}
+	
+	.code-css {line-height: 20px;}
+	
 	#copyright-content {
 		width: 70%;
 		left: 15%;
-		z-index: 1;
 	}
 	#desktop-copyright {
 		display: none;
@@ -1092,7 +1137,6 @@ p#cookies-x {opacity:0.5;}
 	#mobile-copyright {
 		display: block;
 	}
-	.code-css {line-height: 20px;}
 	
 	#cookies {
 		top: max(75% - 250px, 40% + 50px)

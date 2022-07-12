@@ -162,8 +162,8 @@ function lightDarkCheckBanner(){
 	if (colour_banner_mode=='light' && b>187){
 		colour_banner_mode = 'dark';
 		// update the central-content light/dark mode class
-		$('#central-content').removeClass("light-mode");
-		$('#central-content').addClass("dark-mode");
+		$('body').removeClass("light-mode");
+		$('body').addClass("dark-mode");
 		// switch out also the clipboard copy svgs
 		$('.colour-output img').attr('src','static/assets/dark-clipboard-copy.svg');
 	}
@@ -171,8 +171,8 @@ function lightDarkCheckBanner(){
 	else if (colour_banner_mode=='dark' && b<183){
 		colour_banner_mode = 'light';
 		// update the central-content light/dark mode class
-		$('#central-content').removeClass("dark-mode");
-		$('#central-content').addClass("light-mode");
+		$('body').removeClass("dark-mode");
+		$('body').addClass("light-mode");
 		// switch out also the clipboard copy svgs
 		$('.colour-output img').attr('src','static/assets/light-clipboard-copy.svg');
 	}
@@ -189,11 +189,11 @@ function lightDarkCheckTitle(){
 	// if bright then make title text dark
 	// if dark then make title text light
 	if (b>=185){
-		$('#title').removeClass('light-title');
-		$('#title').addClass('dark-title');
+		$('body').removeClass('light-title');
+		$('body').addClass('dark-title');
 	} else if (b<185){
-		$('#title').removeClass('dark-title');
-		$('#title').addClass('light-title');
+		$('body').removeClass('dark-title');
+		$('body').addClass('light-title');
 	}
 }
 function lightDarkCheckSidebar(){
@@ -202,11 +202,11 @@ function lightDarkCheckSidebar(){
 	// if bright then make sidebar text dark
 	// if dark then make sidebar text light
 	if (b>=185){
-		$('#sidebar').removeClass('light-sidebar');
-		$('#sidebar').addClass('dark-sidebar');
+		$('body').removeClass('light-sidebar');
+		$('body').addClass('dark-sidebar');
 	} else if (b<185){
-		$('#sidebar').removeClass('dark-sidebar');
-		$('#sidebar').addClass('light-sidebar');
+		$('body').removeClass('dark-sidebar');
+		$('body').addClass('light-sidebar');
 	}
 }
 function belowDarkCheck(){
@@ -829,8 +829,7 @@ function sidebar(){
 			// jquery animate opacity to 0 the sec content
 			$('#sec-content').animate({opacity: 0}, 200, function(){
 				// when done remove show-sec classes (since no longer shown)
-				$('#central-content').removeClass('show-sec');
-				$('#sidebar').removeClass('show-sec');
+				$('body').removeClass('show-sec');
 				// then bring main content back to full opacity
 				$('#main-content').animate({opacity: 1}, 200,function(){
 					sub_content = false;
@@ -850,13 +849,13 @@ function sidebar(){
 		$('#sidebar-inner').animate({opacity: 1-opac}, 300);
 		
 		// if burger not clicked before then add class sidebar open
-		if (!burger) $('#sidebar').addClass('sidebar-open');
+		if (!burger) $('body').addClass('sidebar-open');
 		// toggle opacity of sidebar content
 		$('#sidebar-content').animate({opacity: 1-opac}, 300, function(){
 			// if clicked before then remove sidebar open (since just closed sidebar)
 			if (burger) {
 				displayNoneSecContent();
-				$('#sidebar').removeClass('sidebar-open');
+				$('body').removeClass('sidebar-open');
 			}
 		});
 		
@@ -931,8 +930,7 @@ function sidebar_btn(){
 		// jquery animate main content opacity to 0
 		$('#main-content').animate({opacity: 0}, 200, function(){
 			// add classes show-sec to inherit sec styles
-			$('#central-content').addClass('show-sec');
-			$('#sidebar').addClass('show-sec');
+			$('body').addClass('show-sec');
 			// jquery animate sec content opacity to 1
 			$('#sec-content').animate({opacity: 1}, 200, function(){
 				// once finished set sub content flag to true
@@ -943,11 +941,34 @@ function sidebar_btn(){
 		});
 	}
 }
-
 // if a sidebar button is clicked
 $('.sidebar-btn').click(function(){
 	sidebar_btn();
 });
+
+// if back arrow on mobile sec content clicked
+$('#sec-back-arrow').click(function(){
+	// if sub content shown and not in transition
+	if (sub_content==true && sub_content_transition==false){
+		// set flag for transition as about to animate
+		sub_content_transition = true;
+		// jquery animate sec content opacity to 0
+		$('#sec-content').animate({opacity: 0}, 200, function(){
+			// jquery animate main content opacity to 1
+			$('#main-content').animate({opacity: 1}, 200, function(){
+				// add classes show-sec to inherit sec styles
+				$('body').removeClass('show-sec');
+				// once finished set sub content flag to false
+				sub_content = false;
+				// and transition flag to false
+				sub_content_transition = false;
+			});
+			
+		});
+		
+	}
+});
+
 
 // function to display none to all sec pages
 function displayNoneSecContent(){

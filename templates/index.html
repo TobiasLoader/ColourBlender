@@ -24,13 +24,13 @@
 		<script src="static/checkout.js" defer></script>
 		<script src="static/status.js" defer></script>
   </head>
-	<body class="hex no-js-class" style="width:100%; height:100%;">
+	<body class="hex no-js-class light-title light-mode light-sidebar" style="width:100%; height:100%;">
 		<p id='page-load' style='display:none'>{{page}}</p>
 		<div style="width:100%; height:100%;">
-			<div id="title" class="light-title">
+			<div id="title">
 				<a href="http://colourblender.io">colourblender.io</a>
 			</div>
-			<div id="central-content" class="light-mode">
+			<div id="central-content">
 				<div id="main-content">
 					<div id="colour-banner" class="no-js-class">
 						<div class="text-box colour-input">
@@ -83,7 +83,8 @@
 					</div>
 				</div>
 				<div id="sec-content">
-					<div id="sub-content-box">
+					<div id="sec-scroll-page">
+						<div id="sub-content-box">
 						<div id="about-content" class="sub-content-inner">
 							<h2>about the project.</h2>
 							<p class="desc" style="margin-bottom: 0;">Hi, this is Toby Loader, known on the web as TobiasCodes. A bit of background on myself, I'm a student at the University of Oxford reading Maths and CS and love writing code and coming up with fun little projects to work on.<br><br>Having done lots of frontend dev over the years I've often needed to find colour schemes for my projects. But I never found an online tool that suited my needs whilst still being easy and fun to use. So I've built myself this little helper and hope it will be of use to some people.<br><br>If you would like to watch a video of me building the web app you can check out my youtube channel TobiasCodes :)</p>
@@ -174,6 +175,11 @@
 							<p id="payment-message"></p>
 						</div>
 					</div>
+					</div>
+					<div id="sec-back-arrow">
+						<div id="sec-back-line-1" class="sec-back-arrow-line"></div>
+						<div id="sec-back-line-2" class="sec-back-arrow-line"></div>
+					</div>
 				</div>
 				<div id="copyright-content">
 					<p id="desktop-copyright">
@@ -192,7 +198,7 @@
 					</div>
 				</div>
 			</div>
-			<div id="sidebar" class="hide light-sidebar">
+			<div id="sidebar" class="hide">
 				<div id="sidebar-content">
 					<div id="sidebar-inner">
 						<div id="about-btn" class="sidebar-btn"><p>about</p></div>
