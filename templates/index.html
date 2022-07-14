@@ -8,24 +8,28 @@
 		<meta name="author" content="Tobias Loader">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}" />
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
+		<!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
 		<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200;300&display=swap" rel="stylesheet">
 		
 		<!-- <link rel="apple-touch-icon" sizes="180x180" href="static/assets/favicon/apple-touch-icon.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="static/assets/favicon/favicon-32x32.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="static/assets/favicon/favicon-16x16.png"> -->
-		<link rel="shortcut icon" type="image/ico" href="{{ url_for('static', filename='assets/favicon/favicon.ico') }}">
-		<script src="https://js.stripe.com/v3/"></script>
+		<link rel="shortcut icon" type="image/ico" href="static/assets/favicon/favicon.ico">
 		<link rel="manifest" href="static/assets/favicon/site.webmanifest">
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" defer></script>
+		
+		<script>
+			let flask_data = {{ data | tojson }} // js vars from flask
+		</script>
+		<script src="https://js.stripe.com/v3/"></script>
+		<script src="static/jquery-3.6.0.min.js" defer></script>
+		<script src="static/velocity.min.js" defer></script>
 		<script src="static/script.js" defer></script>
 		<script src="static/checkout.js" defer></script>
 		<script src="static/status.js" defer></script>
   </head>
 	<body class="hex no-js-class light-title light-mode light-sidebar" style="width:100%; height:100%;">
-		<p id='page-load' style='display:none'>{{page}}</p>
+		<!-- <p id='page-load' style='display:none'>{{page}}</p> -->
 		<div style="width:100%; height:100%;">
 			<div id="title">
 				<a href="http://colourblender.io">colourblender.io</a>
@@ -183,10 +187,10 @@
 				</div>
 				<div id="copyright-content">
 					<p id="desktop-copyright">
-						copyright <span style="font-family:Arial, sans-serif;">©</span> {{copyrightyears}}&nbsp;<a class="footer-link" href="https://www.linkedin.com/in/tobiasloader/">tobias loader</a> &mdash; all rights reserved
+						copyright <span style="font-family:Arial, sans-serif;">©</span> {{data.years}}&nbsp;<a class="footer-link" href="https://www.linkedin.com/in/tobiasloader/">tobias loader</a> &mdash; all rights reserved
 					</p>
 					<p id="mobile-copyright">
-						copyright <span style="font-family:Arial, sans-serif;">©</span> {{copyrightyears}}&nbsp;<a class="footer-link" href="https://www.linkedin.com/in/tobiasloader/">tobias loader</a><br>all rights reserved
+						copyright <span style="font-family:Arial, sans-serif;">©</span> {{data.years}}&nbsp;<a class="footer-link" href="https://www.linkedin.com/in/tobiasloader/">tobias loader</a><br>all rights reserved
 					</p>
 				</div>
 				<div id="cookies">
@@ -201,6 +205,7 @@
 			<div id="sidebar" class="hide">
 				<div id="sidebar-content">
 					<div id="sidebar-inner">
+						<div id="home-btn" class="sidebar-btn"><p>home</p></div>
 						<div id="about-btn" class="sidebar-btn"><p>about</p></div>
 						<div id="showcss-btn" class="sidebar-btn"><p>colour css</p></div>
 						<div id="gradient-btn" class="sidebar-btn"><p>gradient css</p></div>

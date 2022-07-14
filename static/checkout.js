@@ -28,7 +28,7 @@ function initStripePayment(){
 				body: JSON.stringify({
 					amount: 100*tip_amount,
 				}),
-			})
+			});
 		}
 		
 	  const options = {
@@ -48,11 +48,16 @@ function initStripePayment(){
 	  form.addEventListener('submit', async (event) => {
 		event.preventDefault();
 	  
+		var return_url = new URL('http://localhost:5000/coffee');
+		return_url.searchParams.append('col1',cols[0].substring(1))
+		return_url.searchParams.append('col2',cols[1].substring(1))
+		return_url.searchParams.append('split',split)
+		
 		const {error} = await stripe.confirmPayment({
 		  //`Elements` instance that was used to create the Payment Element
 		  elements,
 		  confirmParams: {
-			return_url: 'http://localhost:5000/coffee?payment_intent_client_secret='+clientSecret,
+				return_url: return_url.toString(),
 		  },
 		});
 	  

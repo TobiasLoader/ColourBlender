@@ -6,34 +6,34 @@ import json
 # This is your test secret API key.
 stripe.api_key = 'sk_test_51LJzMaAE43t8f8VwHSiFCcHigSL0E4vC6Zvv35z9PJya75YYDcGLsAPRWgbpo5mnoxaoLnNm5fFG7XyYrKOxoTMj00MKqMaqsx'
 
-# stripe.PaymentIntent.create(
-# 	amount=1099,
-# 	currency="eur",
-# 	payment_method_types=[
-# 		"bancontact",
-# 		"card",
-# 		"eps",
-# 		"giropay",
-# 		"ideal",
-# 		"p24",
-# 		"sepa_debit",
-# 		"sofort",
-# 	],
-# )
-
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-	return render_template('index.html',copyrightyears=build_copyright_years(),page='home')
+	data = {
+		'col1': request.args.get('col1', default = '60c36f', type = str),
+		'col2': request.args.get('col2', default = '5382c9', type = str),
+		'split': request.args.get('split', default = 0.5, type = float),
+		'page': 'home',
+		'years': build_copyright_years()
+	}
+	return render_template('index.html',data=data)
 	
 @app.route('/coffee')
 def coffee():
-	return render_template('index.html',copyrightyears=build_copyright_years(),page='coffee')
+	data = {
+		'col1': request.args.get('col1', default = '60c36f', type = str),
+		'col2': request.args.get('col2', default = '5382c9', type = str),
+		'split': request.args.get('split', default = 0.5, type = float),
+		'page': 'coffee',
+		'years': build_copyright_years()
+	}
+	return render_template('index.html',data=data)
 
 @app.route('/create-intent',methods=['POST'])
 def secret():
 	data = json.loads(request.data)
+	print(data)
 	intent = stripe.PaymentIntent.create(
 		amount=data['amount'],
 		currency='gbp',

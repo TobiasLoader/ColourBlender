@@ -110,7 +110,7 @@ function switchToHex(){
 	$('body').removeClass('rgb');
 	$('body').addClass('hex');
 	// animate sliderbox from rgb to hex
-	$(".sliderbox").animate({"left":"10"},200,function () {can_encode_switch = true;});
+	$(".sliderbox").velocity({"left":"10px"},200,function () {can_encode_switch = true;});
 	// change each stored colour from rgb to hex
 	cols = cols.map(rgb => rgbStrToHex(rgb));
 	colour_choice = rgbStrToHex(colour_choice);
@@ -124,8 +124,8 @@ function switchToRgb(){
 	// body should have appropriate hex/rgb class
 	$('body').removeClass('hex');
 	$('body').addClass('rgb');
-	// animate sliderbox from hex to rgb
-	$(".sliderbox").animate({"left":"70"},200,function (){can_encode_switch = true;});
+	// velocity sliderbox from hex to rgb
+	$(".sliderbox").velocity({"left":"70px"},200,function (){can_encode_switch = true;});
 	// change each stored colour from hex to rgb
 	cols = cols.map(hex => hexToRgbStr(hex));
 	colour_choice = hexToRgbStr(colour_choice);
@@ -693,8 +693,8 @@ $('.hide').removeClass('hide');
 $('.no-js-class').removeClass('no-js-class');
 
 // define cols, split and hex/rgb encoding on init page load
-var cols =  ['#60c36f','#5382c9'];
-var split = 0.5;
+var cols =  ['#'+flask_data.col1,'#'+flask_data.col2];
+var split = flask_data.split;
 var colour_encode = 'hex';
 
 // can switch encoding (or is there an animation ongoing)
@@ -732,21 +732,27 @@ else cookie_choice = getCookie('users_cookie_choice');
 
 // slide cookie popup from the right
 if (cookie_choice == 'reject') {
-	$('#cookies').delay(2000).animate({'right':'33px'},300,"linear")
-	.animate({opacity:0.75},{
+	$('#cookies').velocity({
+		'right':'33px'
+	},{
+		duration:300,
+		easing:"linear",
+		delay:2000,
+	}).velocity({opacity:0.75,tween:[0.75,0.5]},{
 		duration: 400,
-		step: function(now,fx) {
-			$(this).css('transform','translateY(-50%) rotate('+30*(4)*(now-0.5)+'deg)');
+		progress: function(elements, percentComplete, remaining, tweenValue, activeCall) {
+			$(this).css('transform','translateY(-50%) rotate('+30*(4)*(tweenValue-0.5)+'deg)');
 		},
 		easing:"easeOutQuad",
-	}).animate({opacity:1},{
+	}).velocity({opacity:1,tween:[1,0.75]},{
 		duration: 400,
-		step: function(now,fx) {
-			$(this).css('transform','translateY(-50%) rotate('+(30*(1-(4)*(now-0.75)))+'deg)');
+		progress: function(elements, percentComplete, remaining, tweenValue, activeCall) {
+			$(this).css('transform','translateY(-50%) rotate('+(30*(1-(4)*(tweenValue-0.75)))+'deg)');
 		},
 		easing: "easeInOutQuad",
-	}).promise().done(function(){
-		$(this).css("box-shadow", "0px 0px 80px 20px rgba(22,27,37,0.25)");
+		complete: function(elements, activeCall){
+			$(this).css("box-shadow", "0px 0px 80px 20px rgba(22,27,37,0.25)");
+		}
 	});
 }
 
@@ -827,11 +833,11 @@ function sidebar(){
 		// if burger has already been clicked and sub content is open
 		if (burger && sub_content){
 			// jquery animate opacity to 0 the sec content
-			$('#sec-content').animate({opacity: 0}, 200, function(){
+			$('#sec-content').velocity({opacity: 0}, 200, function(){
 				// when done remove show-sec classes (since no longer shown)
 				$('body').removeClass('show-sec');
 				// then bring main content back to full opacity
-				$('#main-content').animate({opacity: 1}, 200,function(){
+				$('#main-content').velocity({opacity: 1}, 200,function(){
 					sub_content = false;
 				});
 			});
@@ -846,12 +852,12 @@ function sidebar(){
 		burger_transition = true;
 		
 		// toggle sidebar opacity with jquery animate
-		$('#sidebar-inner').animate({opacity: 1-opac}, 300);
+		$('#sidebar-inner').velocity({opacity: 1-opac}, 300);
 		
 		// if burger not clicked before then add class sidebar open
 		if (!burger) $('body').addClass('sidebar-open');
 		// toggle opacity of sidebar content
-		$('#sidebar-content').animate({opacity: 1-opac}, 300, function(){
+		$('#sidebar-content').velocity({opacity: 1-opac}, 300, function(){
 			// if clicked before then remove sidebar open (since just closed sidebar)
 			if (burger) {
 				displayNoneSecContent();
@@ -860,35 +866,36 @@ function sidebar(){
 		});
 		
 		// rotate top burger line to rot_deg (defined as 40 or 0 depending on opening or closing)
-		$('#burger-line1').animate({deg: rot_deg}, {
+		$('#burger-line1').velocity({deg: rot_deg,tween:[rot_deg,40-rot_deg]}, {
 			duration:400,
-			step: function(now) {
+			progress: function(elements, percentComplete, remaining, tweenValue, activeCall) {
 				// by using this css transform of translating up/down at same time as rotating
 				$('#burger-line1').css({
-					transform: 'translate(-20px, '+(12*(now/40)-13).toString()+'px) rotate(' + now + 'deg)'
+					transform: 'translate(-20px, '+(12*(tweenValue/40)-13).toString()+'px) rotate(' + tweenValue + 'deg)'
 				});
 			}
 		});
 		// if not clicked burger before then fade middle line to 0
 		// otherwise animate to 1 (delay to wait once rotation of other two lines sufficiently advanced such that the lines don't appear to intersect)
 		if (!burger)
-			$('#burger-line2').animate({opacity: opac}, 200);
+			$('#burger-line2').velocity({opacity: opac}, 200);
 		else
-			$('#burger-line2').stop(true, true).delay(200).animate({opacity: opac}, 200);
+			$('#burger-line2').velocity("stop", true).velocity({opacity: opac}, {duration:200,delay:200});
 		// rotate bottom burger line to -rot_deg (defined to be -40 or 0 depending on opening or closing)
-		$('#burger-line3').animate({deg: -rot_deg}, {
+		$('#burger-line3').velocity({deg: -rot_deg,tween:[-rot_deg,rot_deg-40]}, {
 			duration: 400,
-			step: function(now) {
+			progress: function(elements, percentComplete, remaining, tweenValue, activeCall) {
 				// by using this css transform of translating up/down at same time as rotating
 				$('#burger-line3').css({
-					transform: 'translate(-20px, '+(12*(now/40)-13).toString()+'px) rotate(' + now + 'deg)'
+					transform: 'translate(-20px, '+(12*(tweenValue/40)-13).toString()+'px) rotate(' + tweenValue + 'deg)'
 				});
 			},
-		}).promise().done(function () {
-			// once burger transition is complete set transition flag to false
-			burger_transition = false;
-			// and toggle burger flag (so burger flag is mod 2)
-			burger = !burger;
+			complete:function(elements, activeCall){
+				// once burger transition is complete set transition flag to false
+				burger_transition = false;
+				// and toggle burger flag (so burger flag is mod 2)
+				burger = !burger;
+			}
 		});
 	}
 }
@@ -928,11 +935,11 @@ function sidebar_btn(){
 		// set flag for transition as about to animate
 		sub_content_transition = true;
 		// jquery animate main content opacity to 0
-		$('#main-content').animate({opacity: 0}, 200, function(){
+		$('#main-content').velocity({opacity: 0}, 200, function(){
 			// add classes show-sec to inherit sec styles
 			$('body').addClass('show-sec');
 			// jquery animate sec content opacity to 1
-			$('#sec-content').animate({opacity: 1}, 200, function(){
+			$('#sec-content').velocity({opacity: 1}, 200, function(){
 				// once finished set sub content flag to true
 				sub_content = true;
 				// and transition flag to false
@@ -953,9 +960,9 @@ $('#sec-back-arrow').click(function(){
 		// set flag for transition as about to animate
 		sub_content_transition = true;
 		// jquery animate sec content opacity to 0
-		$('#sec-content').animate({opacity: 0}, 200, function(){
+		$('#sec-content').velocity({opacity: 0}, 200, function(){
 			// jquery animate main content opacity to 1
-			$('#main-content').animate({opacity: 1}, 200, function(){
+			$('#main-content').velocity({opacity: 1}, 200, function(){
 				// add classes show-sec to inherit sec styles
 				$('body').removeClass('show-sec');
 				// once finished set sub content flag to false
@@ -979,7 +986,10 @@ function displayNoneSecContent(){
 	$('#donate-content').css('display','none');
 	$('.sec-active').removeClass('sec-active');
 }
-
+function homePage(){
+	displayNoneSecContent();
+	sidebar();
+}
 function aboutPage(){
 	// set the #about-content element display block and others display none
 	displayNoneSecContent();
@@ -1013,6 +1023,7 @@ function donatePage(){
 	$('#donate-btn').addClass('sec-active');
 }
 // if showcss button clicked
+$('#home-btn').click(function(){homePage();});
 $('#showcss-btn').click(function(){showcssPage();});
 $('#gradient-btn').click(function(){gradientPage();});
 $('#about-btn').click(function(){aboutPage();});
@@ -1065,7 +1076,7 @@ $('#back-to-tip').click(function(){
 });
 
 $('#cookies-yes').click(function(){
-	$('#cookies').animate({'right':'-40px'},150);
+	$('#cookies').velocity({'right':'-40px'},150);
 	cookie_choice = 'accept';
 	setCookie('users_cookie_choice',cookie_choice,1);
 });
@@ -1075,7 +1086,7 @@ $('#cookies-i').click(function(){
 	privacyPage();
 });
 $('#cookies-x').click(function(){
-	$('#cookies').animate({'right':'-40px'},150);
+	$('#cookies').velocity({'right':'-40px'},150);
 	clearAllCookies();
 });
 
@@ -1084,7 +1095,8 @@ refreshColourFields();
 showcssBuildCode();
 gradientBuildCode();
 
-let page = $('#page-load').text();
+// let page = $('#page-load').text();
+let page = flask_data.page;
 // check if should immediately direct to page coffee:
 if (page=='coffee') {
 	sidebar();

@@ -9,7 +9,6 @@ if (clientSecret!=null) {
 	stripe.retrievePaymentIntent(clientSecret).then(({paymentIntent}) => {
   	const message = $('#payment-message')
 		message.css('display','block');
-		console.log(paymentIntent)
 		// Inspect the PaymentIntent `status` to indicate the status of the payment
 		// to your customer.
 		//
