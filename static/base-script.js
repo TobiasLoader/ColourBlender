@@ -226,17 +226,24 @@ window.onresize = function(){
 
 ///////// URL Redirect with PARAMETERS ////////
 
-function urlRedirectWithParams(str_url){
+function urlRedirectWithParams(str_url,page){
 	var url = new URL(str_url);
 	if (colour_encode=='hex'){
-		url.searchParams.append('col1',cols[0].substring(1));
-		url.searchParams.append('col2',cols[1].substring(1));
+		if (cols[0]!='#60c36f') url.searchParams.append('col1',cols[0].substring(1));
+		if (cols[1]!='#5382c9') url.searchParams.append('col2',cols[1].substring(1));
 	} else if (colour_encode=='rgb'){
-		url.searchParams.append('col1',rgbStrToHex(cols[0]).substring(1));
-		url.searchParams.append('col2',rgbStrToHex(cols[1]).substring(1));
+		if (cols[0]!='rgb(96,195,111)')
+			url.searchParams.append('col1',rgbStrToHex(cols[0]).substring(1));
+		if (cols[0]!='rgb(83,130,201)')
+			url.searchParams.append('col2',rgbStrToHex(cols[1]).substring(1));
 	}
-	url.searchParams.append('split',split);
-	url.searchParams.append('encode',colour_encode);
+	if(split!=0.5) url.searchParams.append('split',split);
+	if(colour_encode!='hex') url.searchParams.append('encode',colour_encode);
+	return url.toString();
+}
+function urlWithPageParam(str_url,page){
+	var url = new URL(str_url);
+	if (page!=undefined && page!='home' && page!='coffee') url.searchParams.append('page',page);
 	return url.toString();
 }
 

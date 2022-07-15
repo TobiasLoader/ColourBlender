@@ -44,19 +44,19 @@ $('#burger').click(function(){
 });
 
 function homePage(){
-	window.location.href = urlRedirectWithParams('http://localhost:5000');
+	window.location.href = urlWithPageParam(urlRedirectWithParams('http://localhost:5000'),'home');
 }
 function aboutPage(){
-	window.location.href = urlRedirectWithParams('http://localhost:5000/#about');
+	window.location.href = urlWithPageParam(urlRedirectWithParams('http://localhost:5000'),'about');
 }
 function showcssPage(){
-	window.location.href = urlRedirectWithParams('http://localhost:5000/#showcss');
+	window.location.href = urlWithPageParam(urlRedirectWithParams('http://localhost:5000'),'showcss');
 }
 function gradientPage(){
-	window.location.href = urlRedirectWithParams('http://localhost:5000/#gradient');
+	window.location.href = urlWithPageParam(urlRedirectWithParams('http://localhost:5000'),'gradient');
 }
 function privacyPage(){
-	window.location.href = urlRedirectWithParams('http://localhost:5000/#privacy');
+	window.location.href = urlWithPageParam(urlRedirectWithParams('http://localhost:5000'),'privacy');
 }
 function donatePage(){
 	// stay where we are
@@ -123,6 +123,5 @@ $('body').addClass('show-sec');
 $('body').addClass('sidebar-open');
 $('#sidebar-content').css('opacity',1);
 $('#sec-content').css('opacity',1);
-// $('#donate-content').css('display','block');
-// $('#donate-btn').addClass('sec-active');
+$('#donate-content').css('display','block');
 $('#donate-btn').addClass('sec-active');

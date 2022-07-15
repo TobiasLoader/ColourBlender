@@ -15,7 +15,7 @@ def index():
 		'col2': request.args.get('col2', default = '5382c9', type = str),
 		'split': request.args.get('split', default = 0.5, type = float),
 		'encode': request.args.get('encode', default = 'hex', type = str),
-		'page': 'home',
+		'page': request.args.get('page', default = 'home', type = str),
 		'years': build_copyright_years()
 	}
 	return render_template('index.html',data=data)

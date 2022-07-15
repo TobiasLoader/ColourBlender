@@ -180,7 +180,7 @@ function showcssBuildCode() {
 	// 	eg. rgb(1,11,111) --> 1,11,111
 	switch (colour_encode){
 		case 'hex':
-			$('#showcss-content .code-css').html(
+			$('#showcss .code-css').html(
 				echoHTML([
 					['l1','color'],
 					['l2',': '],
@@ -191,7 +191,7 @@ function showcssBuildCode() {
 			);
 			break;
 		case 'rgb':
-			$('#showcss-content .code-css').html(
+			$('#showcss .code-css').html(
 				echoHTML([
 					['l1','color'],
 					['l2',': '],
@@ -371,11 +371,11 @@ function gradientBuildCode() {
 			break;
 	}
 	// for the modern gradient code snippet include only linear-gradient
-	$('#gradient-content #modern-gradient .code-css').html(
+	$('#gradient #modern-gradient .code-css').html(
 		lineargradient
 	);
 	// for max compatability include all of them.
-	$('#gradient-content #max-comp-gradient .code-css').html(
+	$('#gradient #max-comp-gradient .code-css').html(
 		[
 			solid,
 			mozlineargradient,
@@ -610,6 +610,8 @@ copyToClipboard('#max-comp-gradient .code-css','#copy-gradient-max-comp-btn','#c
 // if click burger
 $('#burger').click(function(){
 	sidebar();
+	if (burger==true) 
+		history.pushState(null, '', urlWithPageParam('http://localhost:5000','home'));
 });
 
 
@@ -640,41 +642,46 @@ $('.sidebar-btn-js').click(function(){
 
 // function to display none to all sec pages
 function displayNoneSecContent(){
-	$('#showcss-content').css('display','none');
-	$('#gradient-content').css('display','none');
-	$('#about-content').css('display','none');
-	$('#privacy-content').css('display','none');
+	$('#showcss').css('display','none');
+	$('#gradient').css('display','none');
+	$('#about').css('display','none');
+	$('#privacy').css('display','none');
 	// $('#donate-content').css('display','none');
 	$('.sec-active').removeClass('sec-active');
 }
 function homePage(){
 	displayNoneSecContent();
 	sidebar();
+	history.pushState(null, '', urlWithPageParam('http://localhost:5000','home'));
 }
 function aboutPage(){
-	// set the #about-content element display block and others display none
+	history.pushState(null, '', urlWithPageParam('http://localhost:5000','about'));
+	// set the #about element display block and others display none
 	displayNoneSecContent();
-	$('#about-content').css('display','block');
+	$('#about').css('display','block');
 	$('#about-btn').addClass('sec-active');
 }
 function showcssPage(){
+	history.pushState(null, '', urlWithPageParam('http://localhost:5000','showcss'));
 	// rebuild colour code snippet (since blended colour_choice can change without updating build code)
 	showcssBuildCode();
-	// then set the #showcss-content element display block and others display none
+	// then set the #showcss element display block and others display none
 	displayNoneSecContent();
-	$('#showcss-content').css('display','block');
+	$('#showcss').css('display','block');
 	$('#showcss-btn').addClass('sec-active');
 }
 function gradientPage(){
-	// set the #gradient-content element display block and others display none
+	history.pushState(null, '', urlWithPageParam('http://localhost:5000','gradient'));
+	// set the #gradient element display block and others display none
 	displayNoneSecContent();
-	$('#gradient-content').css('display','block');
+	$('#gradient').css('display','block');
 	$('#gradient-btn').addClass('sec-active');
 }
 function privacyPage(){
-	// set the #privacy-content element display block and others display none
+	history.pushState(null, '', urlWithPageParam('http://localhost:5000','privacy'));
+	// set the #privacy element display block and others display none
 	displayNoneSecContent();
-	$('#privacy-content').css('display','block');
+	$('#privacy').css('display','block');
 	$('#privacy-btn').addClass('sec-active');
 }
 function donatePage(){
@@ -702,6 +709,38 @@ $('#cookies-x').click(function(){
 	$('#cookies').velocity({'right':'-40px'},150);
 	clearAllCookies();
 });
+
+function subPageOpenOnLoad(){
+	sidebar();
+	// check if should immediately direct to page coffee:
+	$('body').addClass('show-sec');
+	$('body').addClass('sidebar-open');
+	$('#sidebar-content').css('opacity',1);
+	$('#sec-content').css('opacity',1);
+	displayNoneSecContent();
+}
+switch (page) {
+	case 'about':
+		subPageOpenOnLoad();
+		$('#about').css('display','block');
+		$('#about-btn').addClass('sec-active');
+		break;
+	case 'showcss':
+		subPageOpenOnLoad();
+		$('#showcss').css('display','block');
+		$('#showcss-btn').addClass('sec-active');
+		break;
+	case 'gradient':
+		subPageOpenOnLoad();
+		$('#gradient').css('display','block');
+		$('#gradient-btn').addClass('sec-active');
+		break;
+	case 'privacy':
+		subPageOpenOnLoad();
+		$('#privacy').css('display','block');
+		$('#privacy-btn').addClass('sec-active');
+		break;
+}
 
 // on init refresh the colour fields, and build the css and gradient code snippets
 refreshColourFields();
