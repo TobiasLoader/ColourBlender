@@ -14,6 +14,7 @@ def index():
 		'col1': request.args.get('col1', default = '60c36f', type = str),
 		'col2': request.args.get('col2', default = '5382c9', type = str),
 		'split': request.args.get('split', default = 0.5, type = float),
+		'encode': request.args.get('encode', default = 'hex', type = str),
 		'page': 'home',
 		'years': build_copyright_years()
 	}
@@ -25,10 +26,11 @@ def coffee():
 		'col1': request.args.get('col1', default = '60c36f', type = str),
 		'col2': request.args.get('col2', default = '5382c9', type = str),
 		'split': request.args.get('split', default = 0.5, type = float),
+		'encode': request.args.get('encode', default = 'hex', type = str),
 		'page': 'coffee',
 		'years': build_copyright_years()
 	}
-	return render_template('index.html',data=data)
+	return render_template('coffee.html',data=data)
 
 @app.route('/create-intent',methods=['POST'])
 def secret():

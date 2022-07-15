@@ -2,6 +2,9 @@
 // See your keys here: https://dashboard.stripe.com/apikeys
 const stripe = Stripe('pk_test_51LJzMaAE43t8f8Vwd9V4opGsnZxhD2h2AzmFEZpXbyXYtmDuQaYXANvtAaxymr1R7eabRUmMHEzMb7or3ddFnTyh00YfCKuCOg');
 
+// tip amount
+var tip_amount = 2.50;
+
 var updateStripeTip = function(){}
 
 function initStripePayment(){
@@ -47,17 +50,12 @@ function initStripePayment(){
 	  
 	  form.addEventListener('submit', async (event) => {
 		event.preventDefault();
-	  
-		var return_url = new URL('http://localhost:5000/coffee');
-		return_url.searchParams.append('col1',cols[0].substring(1))
-		return_url.searchParams.append('col2',cols[1].substring(1))
-		return_url.searchParams.append('split',split)
 		
 		const {error} = await stripe.confirmPayment({
 		  //`Elements` instance that was used to create the Payment Element
 		  elements,
 		  confirmParams: {
-				return_url: return_url.toString(),
+				return_url: urlRedirectWithParams('http://localhost:5000/coffee'),
 		  },
 		});
 	  

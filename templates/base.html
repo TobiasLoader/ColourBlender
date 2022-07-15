@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>ColourBlender.io</title>
+		<meta name="description" content="Free tool for Colour Blending, lerp tool.">
+		<meta name="keywords" content="Colour Blender, Color Blender, Lerp Tool, Linear Interpolation, RGB, HEX">
+		<meta name="author" content="Tobias Loader">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}" />
+		<!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
+		<!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+		<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200;300&display=swap" rel="stylesheet">
+		
+		<!-- <link rel="apple-touch-icon" sizes="180x180" href="static/assets/favicon/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="static/assets/favicon/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="static/assets/favicon/favicon-16x16.png"> -->
+		<link rel="shortcut icon" type="image/ico" href="static/assets/favicon/favicon.ico">
+		<link rel="manifest" href="static/assets/favicon/site.webmanifest">
+		
+		{% block scripts %}
+			<script>
+				let flask_data = {{ data | tojson }} // js vars from flask
+			</script>
+			<script src="static/jquery-3.6.0.min.js" defer></script>
+			<script src="static/velocity.min.js" defer></script>
+			<script src="static/base-script.js" defer></script>
+		{%- endblock scripts %}
+  </head>
+	<body class="hex no-js-class light-title light-mode light-sidebar" style="width:100%; height:100%;">
+		<!-- <p id='page-load' style='display:none'>{{page}}</p> -->
+		<div style="width:100%; height:100%;">
+			<div id="title">
+				<a href="http://colourblender.io">colourblender.io</a>
+			</div>
+			<div id="central-content">
+				{% block main_content %}{% endblock %}
+				<div id="sec-content">
+					<div id="sec-scroll-page">
+						<div id="sub-content-box">
+							{% block sub_pages %}{% endblock %}
+						</div>
+					</div>
+					<div id="sec-back-arrow">
+						<div id="sec-back-line-1" class="sec-back-arrow-line"></div>
+						<div id="sec-back-line-2" class="sec-back-arrow-line"></div>
+					</div>
+				</div>
+				<div id="copyright-content">
+					<p id="desktop-copyright">
+						<a class="footer-link" href="https://colourblender.io">colourblender.io</a>&nbsp;|&nbsp;copyright <span style="font-family:Arial, sans-serif;">©</span> {{data.years}}&nbsp;<a class="footer-link" href="https://www.linkedin.com/in/tobiasloader/">tobias loader</a> &mdash; all rights reserved
+					</p>
+					<p id="mobile-copyright">
+						colourblender.io&nbsp;|&nbsp;copyright <span style="font-family:Arial, sans-serif;">©</span> {{data.years}}&nbsp;<br><a class="footer-link" href="https://www.linkedin.com/in/tobiasloader/">tobias loader</a> &mdash; all rights reserved
+					</p>
+				</div>
+				{% block cookies %}{% endblock %}
+			</div>
+			{% include "sidebar.html" %}
+		</div>
+		<noscript>
+			<div style="padding:5%;border:rgb(255,255,255,0.5) 1px solid;width:40%;left:50%;top:50%;position:absolute;transform:translate(-50%,-50%);background:#59a29c;">
+				<h2 style="color:white;margin:auto;text-align:center;">Oh noes! This tool requires Javascript to be enabled in your browser.</h2>
+			</div>
+		</noscript>
+	</body>
+</html>

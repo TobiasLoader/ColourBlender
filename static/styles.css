@@ -946,6 +946,7 @@ input[type=number] {
 	display: none;
 	font-size:10px;
 	margin-bottom:20px;
+	line-height:15px;
 }
 
 .show-sec #copyright-content {

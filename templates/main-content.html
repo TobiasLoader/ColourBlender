@@ -1,0 +1,51 @@
+<div id="main-content">
+	<div id="colour-banner" class="no-js-class">
+		<div class="text-box colour-input">
+			<div style="flex:1;">
+				<input id="col1" placeholder="#6ad279" spellcheck="false">
+			</div>
+			<div style="width:50px;">
+				<input id="col1_picker" class="colour-picker" type="color" value="#6ad279">
+			</div>
+		</div>
+		<div class="text-box colour-input">
+			<div style="flex:1;">
+				<input id="col2" placeholder="#5382c9" spellcheck="false">
+			</div>
+			<div style="width:50px;">
+				<input id="col2_picker" class="colour-picker" type="color" value="#5382c9">
+			</div>
+		</div>
+		<div class="text-box percentage-input">
+			<div style="flex:3">
+			<input id="split" type="number" placeholder="50" min="0" max="100">
+			</div>
+			<div style="width:50px;">
+				<p style="font-size:25px;margin:0;line-height:40px;text-align:right">%</p>
+			</div>
+		</div>
+		<div class="text-box colour-output">
+			<div style="flex:1;">
+				<p id="colour-result">rgb</p>
+			</div>
+			<div id="copy-btn" class="copy-clipboard-btn tooltip tooltip-down-on-mobile" style="width:40px;height:40px;position: relative;">
+				<img src="static/assets/light-clipboard-copy.svg" alt="copy to clipboard icon" style="height:16px;left:12px;top:12px;position:relative;"/>
+				<span class="tooltiptext"><span>Copy to Clipboard</span></span>
+			</div>
+		</div>
+		<!-- <div class="grab-bars-vert-container">
+			<div class="grab-bars-vert" style="left:calc(50% - 3px)"></div>
+			<div class="grab-bars-vert" style="left:50%"></div>
+			<div class="grab-bars-vert" style="left:calc(50% + 3px)"></div>
+		</div> -->
+	</div>
+	<div id="track" class="hide">
+		<div id="track-start" class="large-tick"></div>
+		<div id="track-end" class="large-tick"></div>
+		<div id="track-diamond">
+			<div class="grab-bars" style="right:8px;top:18px"></div>
+			<div class="grab-bars" style=""></div>
+			<div class="grab-bars" style="right:12px;top:2px"></div>
+		</div>
+	</div>
+</div>

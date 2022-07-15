@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block scripts %}
+	<script src="https://js.stripe.com/v3/"></script>
+	{{super()}}
+	<script src="static/coffee-script.js" defer></script>
+	<script src="static/checkout.js" defer></script>
+	<script src="static/status.js" defer></script>
+{% endblock %}
+
+{% block sub_pages %}
+	<div id="donate-content" class="sub-content-inner">
+		<h2>would you buy me a coffee?</h2>
+		<p class="desc" style="margin-bottom: 0;">Many coffee's were consumed in the making of this site, and tbh this has left me a little out of pocket. So if you found the tool helpful at all, I would be eternally grateful if you donated a couple of pounds to cover the cost of a coffee. Thanks very much :)</p>
+		<!-- <p>I'm awesome cos I'm going to tip Toby (and ColourBlender is awesome too!)</p> -->
+		<div id='choose-amount-section'>
+			<div id='donate-btn-row'>
+				<div id="onefifty-donate" class="not-active body-btn"><p>£1.50</p></div>
+				<div id="twofifty-donate" class="body-btn"><p>£2.50</p></div>
+				<div id="threefifty-donate" class="not-active body-btn"><p>£3.50</p></div>
+			</div>
+			<div id='choose-custom-amount-container'>
+				<div id="choose-custom-amount-txt-container">
+					<div id="choose-custom-amount-txt-left" class="choose-custom-amount-txt-line"></div>
+					<p id="choose-custom-amount-txt">click for custom amount</p>
+					<div id="choose-custom-amount-txt-right" class="choose-custom-amount-txt-line"></div>
+				</div>
+				<div id='choose-custom-amount-row'>
+					<p>> custom amount (£):</p>
+					<input id='choose-custom-amount-input' type="number" placeholder="2.50" min="0.30" step="any">
+				</div>
+			</div>
+			<div id="donate-button" class="body-btn"><p>time to tip toby!</p></div>
+		</div>
+		<div id="payment-system">
+			<div id="back-to-tip-row">
+				<p id="back-to-tip">← back to tip amount</p>
+				<p id="display-tip">£2.50</p>
+			</div>
+			<form id="payment-form">
+				<div id="payment-element">
+					<!--Stripe.js injects the Payment Element-->
+				</div>
+				<button id="submit">submit</button>
+				<div id="error-message">
+					<!-- Display error message to your customers here -->
+				</div>
+			</form>
+		</div>
+		<p id="payment-message"></p>
+	</div>
+{% endblock %}
