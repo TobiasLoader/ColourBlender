@@ -118,6 +118,7 @@ $('#back-to-tip').click(function(){
 refreshColourFields();
 
 sidebar();
+sub_content = true;
 // check if should immediately direct to page coffee:
 $('body').addClass('show-sec');
 $('body').addClass('sidebar-open');

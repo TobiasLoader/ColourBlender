@@ -391,17 +391,30 @@ $('#sec-back-arrow').click(function(){
 		sub_content_transition = true;
 		// jquery animate sec content opacity to 0
 		$('#sec-content').velocity({opacity: 0}, 200, function(){
-			// jquery animate main content opacity to 1
-			$('#main-content').velocity({opacity: 1}, 200, function(){
-				// add classes show-sec to inherit sec styles
-				$('body').removeClass('show-sec');
-				// once finished set sub content flag to false
-				sub_content = false;
-				// and transition flag to false
-				sub_content_transition = false;
-			});
-			
+			$('#main-content').css('opacity',1);
+			// add classes show-sec to inherit sec styles
+			$('body').removeClass('show-sec');
+			// once finished set sub content flag to false
+			sub_content = false;
+			// and transition flag to false
+			sub_content_transition = false;
 		});
-		
+	}
+});
+
+$('#share-btn').click( async () => {
+	if (navigator.canShare) {
+		try {
+			await navigator.share({
+				title: "ColourBlender.io",
+				url: urlWithPageParam('http://localhost:5000','home')
+			});
+			console.log("Data was shared successfully");
+		} catch (err) {
+			console.error("Share failed:", err.message);
+		}
+	} else {
+		navigator.clipboard.writeText(urlRedirectWithParams('http://localhost:5000'));
+		console.log('copied!');
 	}
 });

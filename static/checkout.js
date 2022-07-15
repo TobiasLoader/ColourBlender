@@ -1,6 +1,9 @@
 // Set your publishable key: remember to change this to your live publishable key in production
 // See your keys here: https://dashboard.stripe.com/apikeys
-const stripe = Stripe('pk_test_51LJzMaAE43t8f8Vwd9V4opGsnZxhD2h2AzmFEZpXbyXYtmDuQaYXANvtAaxymr1R7eabRUmMHEzMb7or3ddFnTyh00YfCKuCOg');
+const stripe = Stripe(
+	'pk_test_51LJzMaAE43t8f8Vwd9V4opGsnZxhD2h2AzmFEZpXbyXYtmDuQaYXANvtAaxymr1R7eabRUmMHEzMb7or3ddFnTyh00YfCKuCOg',{
+	locale: 'fr'
+});
 
 // tip amount
 var tip_amount = 2.50;

@@ -494,17 +494,6 @@ let c1_picker = $('#col1_picker');
 let c2_picker = $('#col2_picker');
 let spl = $('#split')
 
-// init banner text colour
-var colour_banner_mode = 'light';
-
-// flags for if burger has been clicked and if in transition
-var burger = false;
-var burger_transition = false;
-
-// flags for if sub content is out and if in transition
-var sub_content = false;
-var sub_content_transition = false;
-
 // cookie accepted policy
 var cookie_choice;
 if (getCookie('users_cookie_choice')==null) cookie_choice = 'reject';
@@ -612,6 +601,7 @@ $('#burger').click(function(){
 	sidebar();
 	if (burger==true) 
 		history.pushState(null, '', urlWithPageParam('http://localhost:5000','home'));
+	$('#home-btn').addClass('sec-active');
 });
 
 
@@ -650,9 +640,11 @@ function displayNoneSecContent(){
 	$('.sec-active').removeClass('sec-active');
 }
 function homePage(){
-	displayNoneSecContent();
-	sidebar();
-	history.pushState(null, '', urlWithPageParam('http://localhost:5000','home'));
+	if (burger_transition==false && sub_content_transition==false){
+		displayNoneSecContent();
+		sidebar();
+		history.pushState(null, '', urlWithPageParam('http://localhost:5000','home'));
+	}
 }
 function aboutPage(){
 	history.pushState(null, '', urlWithPageParam('http://localhost:5000','about'));
@@ -712,6 +704,7 @@ $('#cookies-x').click(function(){
 
 function subPageOpenOnLoad(){
 	sidebar();
+	sidebar_btn();
 	// check if should immediately direct to page coffee:
 	$('body').addClass('show-sec');
 	$('body').addClass('sidebar-open');

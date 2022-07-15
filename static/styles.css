@@ -205,6 +205,10 @@ body {
 	height: 31px;
 }
 
+#share-btn:hover {
+	cursor: pointer;
+}
+
 .light-sidebar .linkedindark {display: none;}
 .dark-sidebar .linkedinlight {display: none;}
 .light-sidebar .linkedinlight {display: inline-block;}
@@ -214,6 +218,11 @@ body {
 .dark-sidebar .githublight {display: none;}
 .light-sidebar .githublight {display: inline-block;}
 .dark-sidebar .githubdark {display: inline-block;}
+
+.light-sidebar .sharedark {display: none;}
+.dark-sidebar .sharelight {display: none;}
+.light-sidebar .sharelight {display: inline-block;}
+.dark-sidebar .sharedark {display: inline-block;}
 
 /* slider box */
 
@@ -1127,6 +1136,10 @@ p#cookies-x {opacity:0.5;}
 	}
 	
 	.code-css {line-height: 20px;}
+	.code-copy-img {
+		right: 12px;
+		bottom: 12px;
+	}
 	
 	#copyright-content {
 		width: 70%;
