@@ -1,3 +1,14 @@
+/* INFO: 
+  if the virtual env not running:
+	- navigate to /colour_blender_app (parent folder of the repo)
+	- run: source venv/bin/activate
+  to test locally (running flask backend):
+	- navigate to /ColourBlender folder in terminal
+	- run: python run.py
+	- go to http://localhost:5000/games
+  
+*/
+
 ////////// COLOUR CONVERSION SCRIPT ///////////
 
 /// RGB String: rgb(1,2,3)

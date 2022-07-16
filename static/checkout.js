@@ -37,15 +37,28 @@ function initStripePayment(){
 			});
 		}
 		
+		const appearance = {		
+			variables: {
+				// fontFamily: 'JetBrainsMono',
+			}
+		};
+		
 	  const options = {
 			clientSecret: clientSecret,
+			appearance: appearance,
+			// fonts: [
+				// {
+			    // family: 'JetBrainsMono',// put jetbrains_url below (on https) + if can get it working...?
+					// src: 'url(https://fonts.googleapis.com/css?family=JetBrains+Mono)',
+					// weight: '300',
+				// }
+			// ],
 	  };
 	  
 	  // Set up Stripe.js and Elements to use in checkout form, passing the client secret obtained in step 2
 	  const elements = stripe.elements(options);
 	  
-	  // Create and mount the Payment Element
-	  const paymentElement = elements.create('payment');
+		var paymentElement = elements.create('payment');
 	  paymentElement.mount('#payment-element');
 		
 	  // Call stripe.confirmCardPayment() with the client secret.

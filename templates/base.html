@@ -10,7 +10,7 @@
 		<link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}" />
 		<!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
 		<!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
-		<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200;300&display=swap" rel="stylesheet">
+		<!-- <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200;300&display=swap" rel="stylesheet"> -->
 		
 		<!-- <link rel="apple-touch-icon" sizes="180x180" href="static/assets/favicon/apple-touch-icon.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="static/assets/favicon/favicon-32x32.png">
@@ -18,9 +18,22 @@
 		<link rel="shortcut icon" type="image/ico" href="static/assets/favicon/favicon.ico">
 		<link rel="manifest" href="static/assets/favicon/site.webmanifest">
 		
+		<style>
+			@font-face {
+			  font-family: "JetBrains Mono";
+			  font-weight: 200;
+			  src: url({{url_for('static', filename='JetBrainsMono-ExtraLight.ttf')}});
+			}
+			@font-face {
+			  font-family: "JetBrains Mono";
+			  font-weight: 300;
+			  src: url({{url_for('static', filename='JetBrainsMono-Light.ttf')}});
+			}
+		</style>
 		{% block scripts %}
 			<script>
 				let flask_data = {{ data | tojson }} // js vars from flask
+				let jetbrains_url = "local({{url_for('static', filename='JetBrainsMono-Light.ttf')}})";
 			</script>
 			<script src="static/jquery-3.6.0.min.js" defer></script>
 			<script src="static/velocity.min.js" defer></script>

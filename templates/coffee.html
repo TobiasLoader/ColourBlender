@@ -15,9 +15,24 @@
 		<!-- <p>I'm awesome cos I'm going to tip Toby (and ColourBlender is awesome too!)</p> -->
 		<div id='choose-amount-section'>
 			<div id='donate-btn-row'>
-				<div id="onefifty-donate" class="not-active body-btn"><p>£1.50</p></div>
-				<div id="twofifty-donate" class="body-btn"><p>£2.50</p></div>
-				<div id="threefifty-donate" class="not-active body-btn"><p>£3.50</p></div>
+				<div class="tip-btn-container">
+					<label>small latte</label>
+					<div id="onefifty-donate" class="tip-btn">
+						<p>£1.50</p>
+					</div>
+				</div>
+				<div class="tip-btn-container">
+					<label>medium latte</label>
+					<div id="twofifty-donate" class="tip-btn active">
+						<p>£2.50</p>
+					</div>
+				</div>
+				<div class="tip-btn-container">
+					<label>large latte</label>
+					<div id="threefifty-donate" class="tip-btn">
+						<p>£3.50</p>
+					</div>
+				</div>
 			</div>
 			<div id='choose-custom-amount-container'>
 				<div id="choose-custom-amount-txt-container">
@@ -27,7 +42,7 @@
 				</div>
 				<div id='choose-custom-amount-row'>
 					<p>> custom amount (£):</p>
-					<input id='choose-custom-amount-input' type="number" placeholder="2.50" min="0.30" step="any">
+					<input id='choose-custom-amount-input'  class="tip-btn" type="number" placeholder="2.50" min="0.30" step="any">
 				</div>
 			</div>
 			<div id="donate-button" class="body-btn"><p>time to tip toby!</p></div>

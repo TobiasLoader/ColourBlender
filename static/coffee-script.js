@@ -75,9 +75,7 @@ function updateTipAmount(newtip){
 	$('#display-tip').text('£'+tip_amount.toString());
 }
 function removeTipActive(){
-	$('#onefifty-donate').addClass('not-active');
-	$('#twofifty-donate').addClass('not-active');
-	$('#threefifty-donate').addClass('not-active');
+	$('#onefifty-donate, #twofifty-donate, #threefifty-donate').removeClass('active');
 	configuredTipActive();
 }
 function configuredTipActive(){
@@ -86,11 +84,19 @@ function configuredTipActive(){
 }
 $('#onefifty-donate, #twofifty-donate, #threefifty-donate').click(function(){
 	removeTipActive();
-	$(this).removeClass('not-active');
 });
-$('#onefifty-donate').click(function(){updateTipAmount(1.50);});
-$('#twofifty-donate').click(function(){updateTipAmount(2.50);});
-$('#threefifty-donate').click(function(){updateTipAmount(3.50);});
+$('#onefifty-donate').click(function(){
+	updateTipAmount(1.50);
+	$(this).addClass('active');
+});
+$('#twofifty-donate').click(function(){
+	updateTipAmount(2.50);
+	$(this).addClass('active');
+});
+$('#threefifty-donate').click(function(){
+	updateTipAmount(3.50);
+	$(this).addClass('active');
+});
 
 $('#choose-custom-amount-txt').click(function(){
 	removeTipActive();

@@ -49,8 +49,10 @@ body {
 
 #title {
 	position: absolute;
+	/* top:25px;
+	left:25px; */
 	top:25px;
-	left:25px;
+	left:33px;
 	height:50px;
 }
 #title a {
@@ -64,8 +66,8 @@ body {
 	font-size:18px;
 	text-decoration: none;
 }
-.light-title #title {border:rgba(255,255,255,0.2) 1px solid;}
-.dark-title #title {border:rgba(50,50,50,0.2) 1px solid;}
+/* .light-title #title {border:rgba(255,255,255,0.2) 1px solid;}
+.dark-title #title {border:rgba(50,50,50,0.2) 1px solid;} */
 
 .light-title #title:hover {background:rgba(255,255,255,0.05);}
 .dark-title #title:hover {background:rgba(50,50,50,0.05);}
@@ -351,8 +353,8 @@ body {
 	padding: 10%;
 }
 
-.light-mode #sub-content-box p, .light-mode #sub-content-box h2 {color: rgb(255,255,255);}
-.dark-mode #sub-content-box p, .dark-mode #sub-content-box h2 {color: rgb(50,50,50);}
+.light-mode #sub-content-box p, .light-mode #sub-content-box #donate-button.body-btn p, .light-mode #sub-content-box h2 {color: rgb(255,255,255);}
+.dark-mode #sub-content-box p, .dark-mode #sub-content-box #donate-button.body-btn p, .dark-mode #sub-content-box h2 {color: rgb(50,50,50);}
 
 #sub-content-box h2 {
 	margin:0;
@@ -371,16 +373,18 @@ body {
 
 .body-btn {
 	/* height: 40px; */
-	height: 50px;
+	/* height: 50px; */
 	/* width: 180px; */
 	margin: 20px auto 0 auto;
 	cursor: pointer;
-	border: white 1px solid;
+	/* border: white 1px solid; */
 	width: fit-content;
 	transform: rotate(180deg);
+	border-radius:4px;
+	box-shadow: 0px 4px 5.5px 0px rgb(0 0 0 / 7%);
 }
-.light-mode .body-btn {border: white 1px solid;}
-.dark-mode .body-btn {border: rgb(50,50,50) 1px solid;}
+/* .light-mode .body-btn {border: white 1px solid;}
+.dark-mode .body-btn {border: rgb(50,50,50) 1px solid;} */
 
 .body-btn.not-active {border-color:transparent;}
 .dark-mode .body-btn.not-active {background:rgba(50,50,50,0.2) !important;}
@@ -388,14 +392,16 @@ body {
 
 .body-btn p {
 	margin:0;
-	height:100%;
-	line-height: 50px;
-	padding: 0 20px;
+	/* height:100%; */
+	/* line-height: 50px; */
+	/* padding: 0 20px; */
+	padding: 12px 16px;
 	transform: rotate(180deg);
 	text-align: center;
+	border-radius:4px;
 }
-.light-mode .body-btn p {background: rgba(50,50,50,0.3);}
-.dark-mode .body-btn p {background: rgba(255,255,255,0.3);}
+.light-mode .body-btn p {background: rgba(50,50,50,0.1);}
+.dark-mode .body-btn p {background: rgba(255,255,255,0.1);}
 
 .compatability {
 	font-size: 12px;
@@ -427,23 +433,58 @@ body {
 
 #choose-amount-section {
 	margin: 60px auto 0 auto;
-	max-width: 400px;
-	padding: 20px;
+	/* max-width: 400px; */
+	padding: 40px;
 	border-radius: 10px;
-	
+	background: rgb(240,240,240);
+	box-shadow: 0px 0px 0px 0.5px rgb(50 50 93 / 10%), 0px 2px 5px 0px rgb(50 50 93 / 10%), 0px 1px 1.5px 0px rgb(0 0 0 / 7%);
 }
-.light-mode #choose-amount-section {box-shadow: 0 0 50px 25px rgba(255,255,255,0.1);}
-.dark-mode #choose-amount-section {box-shadow: 0 0 50px 25px rgba(50,50,50,0.1);}
+/* .light-mode #choose-amount-section {box-shadow: 0 0 50px 25px rgba(255,255,255,0.1);}
+.dark-mode #choose-amount-section {box-shadow: 0 0 50px 25px rgba(50,50,50,0.1);} */
+
+#sub-content-box #choose-amount-section p {
+	color:rgb(120,120,120);
+}
 
 #donate-btn-row {
 	display:flex;
 	justify-content:space-between;
 }
 #donate-btn-row .body-btn {
-	margin: 0;	
+	margin: 0;
 }
 #donate-button {
 	width:auto;
+}
+
+.tip-btn-container {
+	max-width:160px;
+	width: 100%;
+}
+
+.tip-btn-container label {
+	margin-left: 5px;
+	font-size:10px;
+	text-align: center;
+}
+
+.tip-btn {
+	box-shadow: 0px 1px 1px rgb(0 0 0 / 3%), 0px 3px 6px rgb(0 0 0 / 2%);
+	background: white;
+	border-radius:4px;
+	padding:12px;
+	border: 1px solid #e6e6e6;
+	cursor:pointer;
+	transition: all 0.2s;
+}
+.tip-btn p {
+	font-size:14px;
+	margin: 0;
+	text-align: center;
+}
+.tip-btn.active {
+	background: rgba(83, 130, 201, 0.1);
+	border: 1px solid #5382c9;
 }
 
 #choose-custom-amount-container {
@@ -456,10 +497,10 @@ body {
 .choose-custom-amount-txt-line {
 	flex: 1;
 	height: 25px;
-	border-bottom: white 1px solid;
+	border-bottom: rgb(220,220,220) 1px solid;
 }
-.light-mode .choose-custom-amount-txt-line {border-bottom: white 1px solid;}
-.dark-mode .choose-custom-amount-txt-line {border-bottom: rgb(50,50,50) 1px solid;}
+/* .light-mode .choose-custom-amount-txt-line {border-bottom: white 1px solid;}
+.dark-mode .choose-custom-amount-txt-line {border-bottom: rgb(50,50,50) 1px solid;} */
 
 #choose-custom-amount-txt-left {margin-right: 20px;}
 #choose-custom-amount-txt-right {margin-left: 20px;}
@@ -477,7 +518,12 @@ body {
 }
 #choose-custom-amount-row input {
 	flex: 1;
-	height: 50px;
+	/* height: 50px; */
+	color:rgb(100,100,100);
+	cursor:auto;
+}
+#choose-custom-amount-row input::placeholder {
+	color:rgb(100,100,100);
 }
 
 #payment-system {
