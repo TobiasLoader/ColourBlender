@@ -444,6 +444,7 @@ body {
 
 #sub-content-box #choose-amount-section p {
 	color:rgb(120,120,120);
+	text-align: center;
 }
 
 #donate-btn-row {
@@ -469,6 +470,7 @@ body {
 }
 
 .tip-btn {
+	display: flex;
 	box-shadow: 0px 1px 1px rgb(0 0 0 / 3%), 0px 3px 6px rgb(0 0 0 / 2%);
 	background: white;
 	border-radius:4px;
@@ -477,14 +479,34 @@ body {
 	cursor:pointer;
 	transition: all 0.2s;
 }
+
+.tip-p-container {
+	flex:1;
+	margin:0;
+	position: relative;
+}
+
 .tip-btn p {
-	font-size:14px;
+	width: 100%;
 	margin: 0;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
 	text-align: center;
 }
 .tip-btn.active {
 	background: rgba(83, 130, 201, 0.1);
 	border: 1px solid #5382c9;
+}
+
+#onefifty-donate img {
+	width:20%;
+}
+#twofifty-donate img {
+	width:25%;
+}
+#threefifty-donate img {
+	width:30%;
 }
 
 #choose-custom-amount-container {
@@ -1049,6 +1071,16 @@ p#cookies-x {opacity:0.5;}
 #cookies-i:hover {color: #5382c9;}
 #cookies-x:hover {color: #c95353;}
 
+@media only screen and (max-width: 1100px) {
+	.tip-btn img {
+		display: none;
+	}
+	.tip-btn p {
+		position: relative;
+		top: 0;
+		transform: none;
+	}
+}
 @media only screen and (max-width: 800px) {
 	#sec-content {
 		width: 100%;
@@ -1200,5 +1232,10 @@ p#cookies-x {opacity:0.5;}
 	
 	#cookies {
 		top: max(75% - 250px, 40% + 50px)
+	}
+}
+@media only screen and (max-width: 500px) {
+	.tip-btn-container label {
+		display: none;
 	}
 }
