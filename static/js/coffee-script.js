@@ -44,19 +44,19 @@ $('#burger').click(function(){
 });
 
 function homePage(){
-	window.location.href = urlWithPageParam(urlRedirectWithParams('http://localhost:5000'),'home');
+	window.location.href = urlWithPageParam(urlRedirectWithParams(window.location.origin),'home');
 }
 function aboutPage(){
-	window.location.href = urlWithPageParam(urlRedirectWithParams('http://localhost:5000'),'about');
+	window.location.href = urlWithPageParam(urlRedirectWithParams(window.location.origin),'about');
 }
 function showcssPage(){
-	window.location.href = urlWithPageParam(urlRedirectWithParams('http://localhost:5000'),'showcss');
+	window.location.href = urlWithPageParam(urlRedirectWithParams(window.location.origin),'showcss');
 }
 function gradientPage(){
-	window.location.href = urlWithPageParam(urlRedirectWithParams('http://localhost:5000'),'gradient');
+	window.location.href = urlWithPageParam(urlRedirectWithParams(window.location.origin),'gradient');
 }
 function privacyPage(){
-	window.location.href = urlWithPageParam(urlRedirectWithParams('http://localhost:5000'),'privacy');
+	window.location.href = urlWithPageParam(urlRedirectWithParams(window.location.origin),'privacy');
 }
 function donatePage(){
 	// stay where we are

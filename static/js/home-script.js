@@ -643,18 +643,18 @@ function homePage(){
 	if (burger_transition==false && sub_content_transition==false){
 		displayNoneSecContent();
 		sidebar();
-		history.pushState(null, '', urlWithPageParam('http://localhost:5000','home'));
+		history.pushState(null, '', urlWithPageParam(window.location.origin,'home'));
 	}
 }
 function aboutPage(){
-	history.pushState(null, '', urlWithPageParam('http://localhost:5000','about'));
+	history.pushState(null, '', urlWithPageParam(window.location.origin,'about'));
 	// set the #about element display block and others display none
 	displayNoneSecContent();
 	$('#about').css('display','block');
 	$('#about-btn').addClass('sec-active');
 }
 function showcssPage(){
-	history.pushState(null, '', urlWithPageParam('http://localhost:5000','showcss'));
+	history.pushState(null, '', urlWithPageParam(window.location.origin,'showcss'));
 	// rebuild colour code snippet (since blended colour_choice can change without updating build code)
 	showcssBuildCode();
 	// then set the #showcss element display block and others display none
@@ -663,21 +663,21 @@ function showcssPage(){
 	$('#showcss-btn').addClass('sec-active');
 }
 function gradientPage(){
-	history.pushState(null, '', urlWithPageParam('http://localhost:5000','gradient'));
+	history.pushState(null, '', urlWithPageParam(window.location.origin,'gradient'));
 	// set the #gradient element display block and others display none
 	displayNoneSecContent();
 	$('#gradient').css('display','block');
 	$('#gradient-btn').addClass('sec-active');
 }
 function privacyPage(){
-	history.pushState(null, '', urlWithPageParam('http://localhost:5000','privacy'));
+	history.pushState(null, '', urlWithPageParam(window.location.origin,'privacy'));
 	// set the #privacy element display block and others display none
 	displayNoneSecContent();
 	$('#privacy').css('display','block');
 	$('#privacy-btn').addClass('sec-active');
 }
 function donatePage(){
-	window.location.href = urlRedirectWithParams('http://localhost:5000/coffee');
+	window.location.href = urlRedirectWithParams(window.location.origin + '/coffee');
 }
 // if showcss button clicked
 $('#home-btn').click(function(){homePage();});

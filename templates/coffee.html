@@ -3,9 +3,9 @@
 {% block scripts %}
 	<script src="https://js.stripe.com/v3/"></script>
 	{{super()}}
-	<script src="static/coffee-script.js" defer></script>
-	<script src="static/checkout.js" defer></script>
-	<script src="static/status.js" defer></script>
+	<script src="{{url_for('static', filename='js/coffee-script.js')}}" defer></script>
+	<script src="{{url_for('static', filename='js/checkout.js')}}" defer></script>
+	<script src="{{url_for('static', filename='js/status.js')}}" defer></script>
 {% endblock %}
 
 {% block sub_pages %}
@@ -18,21 +18,21 @@
 				<div class="tip-btn-container">
 					<label>small latte</label>
 					<div id="onefifty-donate" class="tip-btn">
-						<img src="/static/assets/coffee-cup-v3.png">
+						<img src="{{url_for('static', filename='assets/coffee-cup-v3.svg')}}">
 						<div class="tip-p-container"><p>£1.50</p></div>
 					</div>
 				</div>
 				<div class="tip-btn-container">
 					<label>medium latte</label>
 					<div id="twofifty-donate" class="tip-btn active">
-						<img src="/static/assets/coffee-cup-v3.png">
+						<img src="{{url_for('static', filename='assets/coffee-cup-v3.svg')}}">
 						<div class="tip-p-container"><p>£2.50</p></div>
 					</div>
 				</div>
 				<div class="tip-btn-container">
 					<label>large latte</label>
 					<div id="threefifty-donate" class="tip-btn">
-						<img src="/static/assets/coffee-cup-v3.png">
+						<img src="{{url_for('static', filename='assets/coffee-cup-v3.svg')}}">
 						<div class="tip-p-container"><p>£3.50</p></div>
 					</div>
 				</div>
@@ -59,7 +59,8 @@
 				<div id="payment-element">
 					<!--Stripe.js injects the Payment Element-->
 				</div>
-				<button id="submit">submit</button>
+				<!-- <div id="submit" class="body-btn"><p>time to tip toby!</p></div> -->
+				<div class="body-btn"><button id="submit">submit tip</button></div>
 				<div id="error-message">
 					<!-- Display error message to your customers here -->
 				</div>

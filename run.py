@@ -2,11 +2,13 @@ from flask import Flask, render_template, jsonify, request
 from copyright_years import build_copyright_years
 import stripe
 import json
+# from flask_ngrok import run_with_ngrok
 
 # This is your test secret API key.
 stripe.api_key = 'sk_test_51LJzMaAE43t8f8VwHSiFCcHigSL0E4vC6Zvv35z9PJya75YYDcGLsAPRWgbpo5mnoxaoLnNm5fFG7XyYrKOxoTMj00MKqMaqsx'
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static', static_url_path='')
+# run_with_ngrok(app)
 
 @app.route('/')
 def index():

@@ -2,11 +2,16 @@
   if the virtual env not running:
 	- navigate to /colour_blender_app (parent folder of the repo)
 	- run: source venv/bin/activate
+	
   to test locally (running flask backend):
 	- navigate to /ColourBlender folder in terminal
 	- run: python run.py
-	- go to http://localhost:5000/games
+	- go to http://localhost:5000
   
+  to test with ngrok:
+    - open another terminal window
+	- run: ngrok http 5000
+	- go to the https url under 'forwarding'
 */
 
 ////////// COLOUR CONVERSION SCRIPT ///////////
@@ -418,14 +423,14 @@ $('#share-btn').click( async () => {
 		try {
 			await navigator.share({
 				title: "ColourBlender.io",
-				url: urlWithPageParam('http://localhost:5000','home')
+				url: urlWithPageParam(window.location.origin,'home')
 			});
 			console.log("Data was shared successfully");
 		} catch (err) {
 			console.error("Share failed:", err.message);
 		}
 	} else {
-		navigator.clipboard.writeText(urlRedirectWithParams('http://localhost:5000'));
+		navigator.clipboard.writeText(urlRedirectWithParams(window.location.origin));
 		console.log('copied!');
 	}
 });

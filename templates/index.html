@@ -2,7 +2,7 @@
 
 {% block scripts %}
 	{{super()}}
-	<script src="static/home-script.js" defer></script>
+	<script src="{{url_for('static', filename='js/home-script.js')}}" defer></script>
 {% endblock %}
 
 {% block main_content %}
@@ -21,7 +21,7 @@
 			<div class='code-css-container'><p class='code-css'></p></div>
 			<div id="copy-css-btn" class="copy-img-container">
 				<div class="copy-clipboard-btn tooltip tooltip-down">
-					<img class="code-copy-img" alt="copy to clipboard icon" src="static/assets/light-clipboard-copy.svg">
+					<img class="code-copy-img" alt="copy to clipboard icon" src="{{url_for('static', filename='assets/light-clipboard-copy.svg')}}">
 					<span class="tooltiptext"><span>Copy to Clipboard</span></span>
 				</div>
 			</div>
@@ -34,7 +34,7 @@
 			<div class='code-css-container'><p class='code-css'></p></div>
 			<div id="copy-gradient-btn" class="copy-img-container">
 				<div class="copy-clipboard-btn tooltip tooltip-down">
-					<img class="code-copy-img" alt="copy to clipboard icon" src="static/assets/light-clipboard-copy.svg">
+					<img class="code-copy-img" alt="copy to clipboard icon" src="{{url_for('static', filename='assets/light-clipboard-copy.svg')}}">
 					<span class="tooltiptext"><span>Copy to Clipboard</span></span>
 				</div>
 			</div>
@@ -48,7 +48,7 @@
 			<div class='code-css-container'><p class='code-css'></p></div>
 			<div id="copy-gradient-max-comp-btn" class="copy-img-container">
 				<div class="copy-clipboard-btn tooltip tooltip-down">
-					<img class="code-copy-img" alt="copy to clipboard icon" src="static/assets/light-clipboard-copy.svg">
+					<img class="code-copy-img" alt="copy to clipboard icon" src="{{url_for('static', filename='assets/light-clipboard-copy.svg')}}">
 					<span class="tooltiptext"><span>Copy to Clipboard</span></span>
 				</div>
 			</div>
