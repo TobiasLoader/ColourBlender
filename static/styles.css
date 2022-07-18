@@ -435,7 +435,7 @@ body {
 .code-css .l5 {color: rgba(208, 247, 152, 1);}
 
 #choose-amount-section {
-	margin: 60px auto 0 auto;
+	margin: 50px auto 0 auto;
 	/* max-width: 400px; */
 	padding: 40px;
 	border-radius: 10px;
@@ -557,11 +557,12 @@ body {
 #back-to-tip-row {
 	display: flex;
 	justify-content: space-between;
-	margin: 50px 0 20px 0;
-	padding: 20px 10px 0 10px;
+	/* margin: 50px 0 20px 0; */
+	margin:0;
+	padding: 0 10px 20px 10px;
 }
-.light-mode #back-to-tip-row {border-top: white 1px solid;}
-.dark-mode #back-to-tip-row {border-top: rgb(50,50,50) 1px solid;}
+.light-mode #back-to-tip-row {border-bottom: white 1px solid;}
+.dark-mode #back-to-tip-row {border-bottom: rgb(50,50,50) 1px solid;}
 
 #back-to-tip {
 	display: inline-block;
@@ -578,7 +579,7 @@ body {
   border-radius: 7px;
   padding: 40px;
   background: rgb(240,240,240);
-  margin: 0;
+  margin: 50px 0 20px 0;
 }
 
 #payment-email {
@@ -594,12 +595,14 @@ body {
 }
 
 #payment-message {
-  color: rgb(105, 115, 134);
   font-size: 16px;
   line-height: 20px;
   padding-top: 12px;
   text-align: center;
   display: none;
+  margin-top: 40px;
+  padding: 10%;
+  border: rgb(200,200,200) 1px solid;
 }
 .light-mode #payment-message a {color: white;}
 .dark-mode #payment-message a {color: rgb(50,50,50);}
