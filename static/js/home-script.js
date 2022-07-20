@@ -572,18 +572,22 @@ spl.keypress(function (e) {loseFocusOnEnter(e,spl);});
 spl.dblclick(function() {spl.val(split*100);});
 
 // copy to clipboard function, parameters
-//  - selector for element containing text to copy,
+//  - selector for element containing text to copy, or if fails text itself to copy
 //  - selector for btn that triggers event
 //  - selector for element of corresponding tooltip span
 //  - boolean for whether to replace semi colons with newlines
-function copyToClipboard(copyfrom,btn,tooltipspan,semicolontonewline){
-		$(btn).click(function(){
-			if (!semicolontonewline) navigator.clipboard.writeText($(copyfrom).text());
-			else navigator.clipboard.writeText($(copyfrom).text().replace(/;/g,';\n'));
-			$(tooltipspan).html('Copied!');
-		});
-		$(btn).mouseleave(function(){$(tooltipspan).html('Copy to Clipboard');});
+function copyToClipboard(tocopy,btn,tooltipspan,semicolontonewline){
+	$(btn).click(function(){
+		if (!semicolontonewline) {
+			if ($(tocopy).length) navigator.clipboard.writeText($(tocopy).text());
+			else navigator.clipboard.writeText(tocopy);
+		}
+		else navigator.clipboard.writeText($(tocopy).text().replace(/;/g,';\n'));
+		$(tooltipspan).html('Copied!');
+	});
+	$(btn).mouseleave(function(){$(tooltipspan).html('Copy to Clipboard');});
 }
+
 
 // copy to clipboard in 4 places in site.
 // - on banner for blended colour code
@@ -600,7 +604,7 @@ copyToClipboard('#max-comp-gradient .code-css','#copy-gradient-max-comp-btn','#c
 $('#burger').click(function(){
 	sidebar();
 	if (burger==true) 
-		history.pushState(null, '', urlWithPageParam('http://localhost:5000','home'));
+		history.pushState(null, '', urlWithPageParam(window.location.origin,'home'));
 	$('#home-btn').addClass('sec-active');
 });
 

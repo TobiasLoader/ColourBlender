@@ -865,6 +865,10 @@ input[type=number] {
   top: calc(100% + 10px);
   margin-left: -50px;
 }
+.tooltip-up .tooltiptext {
+  left: 50%;
+  top: calc(-100% - 5px);
+}
 .light-mode .tooltip .tooltiptext {background-color: rgb(50,50,50);}
 .dark-mode .tooltip .tooltiptext {background-color: rgb(255,255,255);}
 
@@ -896,6 +900,12 @@ input[type=number] {
 	margin-left: -5px;
 	border-width: 5px;
 }
+.tooltip-up .tooltiptext::after {
+	top: 100%;
+	right: 50%;
+	margin-top:0;
+	margin-right: -7px;
+}
 .light-mode .tooltip .tooltiptext::after {  border-color: transparent rgb(50,50,50) transparent transparent;
 }
 .dark-mode .tooltip .tooltiptext::after {  border-color: transparent rgb(255,255,255) transparent transparent;
@@ -903,6 +913,11 @@ input[type=number] {
 .light-mode .tooltip-down .tooltiptext::after {  border-color: transparent transparent rgb(50,50,50) transparent;
 }
 .dark-mode .tooltip-down .tooltiptext::after {  border-color: transparent transparent rgb(255,255,255) transparent;
+}
+
+.light-mode .tooltip-up .tooltiptext::after {  border-color: rgb(50,50,50) transparent transparent transparent;
+}
+.dark-mode .tooltip-up .tooltiptext::after {  border-color: rgb(255,255,255) transparent transparent transparent;
 }
 
 .tooltip:hover .tooltiptext {

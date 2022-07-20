@@ -418,6 +418,7 @@ $('#sec-back-arrow').click(function(){
 	}
 });
 
+if (navigator.canShare) $('#share-btn span').css('display','none');
 $('#share-btn').click( async () => {
 	if (navigator.canShare) {
 		try {
@@ -431,6 +432,8 @@ $('#share-btn').click( async () => {
 		}
 	} else {
 		navigator.clipboard.writeText(urlRedirectWithParams(window.location.origin));
+		$('#share-btn .tooltiptext span').html('Copied!');
 		console.log('copied!');
 	}
 });
+$('#share-btn').mouseleave(function(){$('#share-btn .tooltiptext span').html('Save to Clipboard');});
