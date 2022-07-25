@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <style bx:fonts="JetBrains Mono">@import url(https://fonts.googleapis.com/css2?family=JetBrains+Mono%3Aital%2Cwght%400%2C100%3B0%2C200%3B0%2C300%3B0%2C400%3B0%2C500%3B0%2C600%3B0%2C700%3B0%2C800%3B1%2C100%3B1%2C200%3B1%2C300%3B1%2C400%3B1%2C500%3B1%2C600%3B1%2C700%3B1%2C800&amp;display=swap);</style>
+  </defs>
+  <rect width="500" height="500" style="fill: rgb(71, 71, 71);"/>
+  <g transform="matrix(0, -1, 1, 0, 120.422127, 284.927094)">
+    <rect style="stroke-width: 3px; stroke: rgb(20, 20, 20); fill: rgb(38, 38, 38);" width="80" height="160" rx="15" ry="15"/>
+    <path style="stroke: rgb(20, 20, 20); fill: rgb(20, 20, 20);" d="M 30 0 H 50 V 2.5 A 2.5 2.5 0 0 1 47.5 5 H 32.5 A 2.5 2.5 0 0 1 30 2.5 V 0 Z" bx:shape="rect 30 0 20 5 0 0 2.5 2.5 1@a3c14082"/>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, 247.215836, 125.773331)">
+    <rect style="stroke-width: 3px; stroke: rgb(255, 255, 255); fill: rgba(89, 162, 156, 0.86);" width="80" height="160" rx="15" ry="15"/>
+    <path style="fill: rgb(255, 255, 255); stroke: rgb(55, 126, 120);" d="M 30 0 H 50 V 2.5 A 2.5 2.5 0 0 1 47.5 5 H 32.5 A 2.5 2.5 0 0 1 30 2.5 V 0 Z" bx:shape="rect 30 0 20 5 0 0 2.5 2.5 1@a3c14082"/>
+    <rect style="fill: rgb(255, 255, 255);" x="29.077" y="-1.523" width="21.951" height="3.022"/>
+  </g>
+  <path style="fill: rgb(171, 171, 171);" d="M 160.064 184.811 L 168.768 184.551 C 166.327 165.332 185.884 142.183 209.433 145.369 L 205.613 155.341 L 223.868 142.959 C 223.868 142.959 205.491 131.073 205.491 131.238 C 205.491 131.403 209.995 140.742 209.995 140.742 C 173.34 142.477 165.876 166.072 160.064 184.811 Z"/>
+  <text style="fill: rgb(171, 171, 171); font-family: &quot;JetBrains Mono&quot;; font-size: 14px; text-anchor: end; white-space: pre;" transform="matrix(1, 0, 0, 1, 175.109665, -16.599152)"><tspan x="154.865" y="344.012">Please rotate your device</tspan><tspan x="154.865" dy="1em">​</tspan><tspan>for a better experience</tspan></text>
+  <text style="fill: rgb(61, 61, 61); font-family: &quot;JetBrains Mono&quot;; font-size: 5px; white-space: pre;" transform="matrix(0, -1, 1, 0, -73.896622, 432.629608)" x="163.795" y="236.113">colourblender.io</text>
+  <text style="fill: rgba(227, 227, 227, 0.32); font-family: &quot;JetBrains Mono&quot;; font-size: 5px; white-space: pre;" x="263.666" y="165.436">colourblender.io</text>
+  <circle style="fill: rgb(38, 38, 38);" transform="matrix(1, 0, 0, 1.000001, -407.322998, -329.707825)" cx="779.785" cy="664.764" r="7"/>
+  <path style="fill: rgb(38, 38, 38);" d="M 366.35 229.17 L 366.58 269.94 L 369.068 318.615 C 371.533 316.498 374.108 317.067 375.821 318.42 L 378.061 270.002 L 377.378 229.282 L 366.35 229.17 Z"/>
+</svg>

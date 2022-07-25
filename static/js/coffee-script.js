@@ -59,7 +59,10 @@ function privacyPage(){
 	window.location.href = urlWithPageParam(urlRedirectWithParams(window.location.origin),'privacy');
 }
 function donatePage(){
-	// stay where we are
+	history.pushState(null, '', urlWithPageParam(window.location.origin,'coffee'));
+	sidebar_btn();
+	$('#donate-content').css('display','block');
+	$('#donate-btn').addClass('sec-active');
 }
 // if showcss button clicked
 $('#home-btn').click(function(){homePage();});

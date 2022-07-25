@@ -19,11 +19,11 @@
 		<link rel="shortcut icon" type="image/ico" href="{{url_for('static', filename='assets/favicon/favicon.ico')}}">
 		
 		<style>
-			@font-face {
+			/* @font-face {
 			  font-family: "JetBrains Mono";
 			  font-weight: 200;
 			  src: url({{url_for('static', filename='JetBrainsMono-ExtraLight.ttf')}});
-			}
+			} */
 			@font-face {
 			  font-family: "JetBrains Mono";
 			  font-weight: 300;
@@ -76,5 +76,8 @@
 				<h2 style="color:white;margin:auto;text-align:center;">Oh noes! This tool requires Javascript to be enabled in your browser.</h2>
 			</div>
 		</noscript>
+		<div id="rotate-device">
+			<img src="{{url_for('static', filename='/assets/rotate-device.png')}}" alt='rotate device to portrait notice'>
+		</div>
 	</body>
 </html>

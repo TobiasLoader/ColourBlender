@@ -2,7 +2,7 @@
 // See your keys here: https://dashboard.stripe.com/apikeys
 const stripe = Stripe(
 	'pk_test_51LJzMaAE43t8f8Vwd9V4opGsnZxhD2h2AzmFEZpXbyXYtmDuQaYXANvtAaxymr1R7eabRUmMHEzMb7or3ddFnTyh00YfCKuCOg',{
-	locale: 'fr'
+	locale: 'en' // or 'fr'
 });
 
 // tip amount

@@ -42,6 +42,7 @@ def secret():
 		amount=data['amount'],
 		currency='gbp',
 		payment_method_types=["card"],
+		# automatic_payment_methods=True,
 	)
 	return jsonify(client_secret=intent.client_secret,id=intent.id)
 

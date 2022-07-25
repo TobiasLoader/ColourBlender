@@ -610,26 +610,6 @@ $('#burger').click(function(){
 
 
 // if a sidebar button is clicked
-function sidebar_btn(){
-	// if sub content not shown and not in transition
-	if (sub_content==false && sub_content_transition==false){
-		// set flag for transition as about to animate
-		sub_content_transition = true;
-		// jquery animate main content opacity to 0
-		$('#main-content').velocity({opacity: 0}, 200, function(){
-			// add classes show-sec to inherit sec styles
-			$('body').addClass('show-sec');
-			// jquery animate sec content opacity to 1
-			$('#sec-content').velocity({opacity: 1}, 200, function(){
-				// once finished set sub content flag to true
-				sub_content = true;
-				// and transition flag to false
-				sub_content_transition = false;
-			});
-		});
-	}
-}
-// if a sidebar button is clicked
 $('.sidebar-btn-js').click(function(){
 	sidebar_btn();
 });
