@@ -171,6 +171,23 @@ body {
 	color: rgb(50,50,50);
 }
 
+#donate-btn.sidebar-btn img {
+	opacity: 0.7;
+	position: absolute;
+	height: 70%;
+	top: 15%;
+}
+
+#donate-btn.sidebar-btn #coffee-btn-left-cup {
+	transform: rotate(355deg);
+	left: 8%;
+}
+
+#donate-btn.sidebar-btn #coffee-btn-right-cup {
+	transform: rotate(5deg);
+	right: 8%;
+}
+
 #bottom-row {
 	position: absolute;
 	bottom:25px;
@@ -530,11 +547,14 @@ body {
 
 #choose-custom-amount-txt-left {margin-right: 20px;}
 #choose-custom-amount-txt-right {margin-left: 20px;}
-#choose-custom-amount-txt {
+.choose-custom-amount-txt {
 	cursor: pointer;
 	margin: 0;
 	height: 50px;
 	line-height: 50px;
+}
+#ccat-short.choose-custom-amount-txt {
+	display: none;
 }
 #choose-custom-amount-row {
 	display: none;
@@ -1315,6 +1335,15 @@ p#cookies-x {opacity:0.5;}
 	}
 	#donate-btn-row {
 		flex-direction: column;
+	}
+	#choose-custom-amount-row p {
+		display: none;
+	}
+	#ccat-long.choose-custom-amount-txt {
+		display: none;
+	}
+	#ccat-short.choose-custom-amount-txt {
+		display: block;
 	}
 	.tip-btn-container {
 		max-width: 100%;

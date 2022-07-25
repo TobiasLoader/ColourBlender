@@ -395,6 +395,7 @@ function dragElement(elmnt) {
 	// drag offset is offset from where clicked to center of element
 	var clickdragoffset = 0;
 	elmnt.onmousedown = dragMouseDown;
+	elmnt.ontouchstart = dragMouseDown;
 	// if starting a drag on the element
 	function dragMouseDown(e) {
 		// only allow drag if desktop version with track
@@ -408,6 +409,9 @@ function dragElement(elmnt) {
 			// define the callbacks for continuing to drag and release drag
 			document.onmouseup = closeDragElement;
 			document.onmousemove = elementDrag;
+			
+			document.ontouchend = closeDragElement;
+			document.ontouchmove = elementDrag;
 			// add moving classes to both colour-banner and track-diamond when only one of the 
 			// two elements is dragged - so they both follow same behaviour when either dragged
 			// (gives illusion they are connected in some way)
@@ -448,6 +452,8 @@ function dragElement(elmnt) {
 		// stop moving when mouse button is released:
 		document.onmouseup = null;
 		document.onmousemove = null;
+		document.ontouchend = null;
+		document.ontouchmove = null;
 	}
 }
 

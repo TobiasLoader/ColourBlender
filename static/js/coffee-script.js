@@ -101,7 +101,7 @@ $('#threefifty-donate').click(function(){
 	$(this).addClass('active');
 });
 
-$('#choose-custom-amount-txt').click(function(){
+$('.choose-custom-amount-txt').click(function(){
 	removeTipActive();
 	$('#choose-custom-amount-txt-container').css('display','none');
 	$('#choose-custom-amount-row').css('display','flex');
