@@ -371,8 +371,8 @@ body {
 	padding: 10%;
 }
 
-.light-mode #sub-content-box p, .light-mode #sub-content-box #donate-button.body-btn p, .light-mode #sub-content-box h2 {color: rgb(255,255,255);}
-.dark-mode #sub-content-box p, .dark-mode #sub-content-box #donate-button.body-btn p, .dark-mode #sub-content-box h2 {color: rgb(50,50,50);}
+.light-mode #sub-content-box p, .light-mode #sub-content-box #donate-button.body-btn p,.light-mode #sub-content-box h2, .light-mode #sub-content-box h3 {color: rgb(255,255,255);}
+.dark-mode #sub-content-box p, .dark-mode #sub-content-box #donate-button.body-btn p, .dark-mode #sub-content-box h2, .dark-mode #sub-content-box h3 {color: rgb(50,50,50);}
 
 #sub-content-box h2 {
 	margin:0;
@@ -451,6 +451,48 @@ body {
 .code-css .l3 {color: rgba(224, 181, 237, 1);}
 .code-css .l4 {color: rgba(176, 193, 239, 1);}
 .code-css .l5 {color: rgba(208, 247, 152, 1);}
+
+
+.cookies-table-container {
+	margin-top:40px;
+}
+
+.cookie-table {
+	border-collapse: separate;
+	border-spacing: 1px;
+	margin: 0;
+	font-size: 11px;
+	border-radius: 10px;
+	color: white;
+}
+.cookie-table a {
+	color:white;
+}
+
+.cookie-table th {
+	background: rgba(50,50,50,0.8);
+	font-size: 12px;
+	font-weight: bold;
+	margin-right: 10px;
+	padding: 14px;
+	text-align:center
+}
+
+.cookie-table td {
+	background: rgba(50,50,50,0.6);
+	padding: 12px;
+	text-align: center;
+	vertical-align:middle
+}
+.cookie-table td.cookie-table-desc {
+	text-align: justify;
+}
+
+.cookie-table thead tr th:first-child {border-top-left-radius: 10px;}
+.cookie-table thead tr th:last-child {border-top-right-radius: 10px;}
+.cookie-table tr:last-child td:first-child {border-bottom-left-radius: 10px;}
+.cookie-table tr:last-child td:last-child {border-bottom-right-radius: 10px;}
+
 
 #choose-amount-section {
 	margin: 50px auto 0 auto;
@@ -1129,6 +1171,10 @@ p#cookies-x {opacity:0.5;}
 		top: 0;
 		transform: none;
 	}
+	
+	.cookie-table th {white-space: nowrap;}
+	.cookie-table td {overflow-wrap: anywhere;}
+	.cookie-table td.cookie-table-desc {text-align: left;}
 }
 @media only screen and (min-width: 800px) and (max-height: 650px) {
 	#sidebar-inner {
@@ -1179,7 +1225,7 @@ p#cookies-x {opacity:0.5;}
 	.dark-mode.show-sec .sec-back-arrow-line {border-top: rgb(50,50,50) 2px solid;}
 	.show-sec #sec-back-line-1 {transform: translate(0px, 5px) rotate(-30deg);}
 	.show-sec #sec-back-line-2 {transform: translate(0px, 10px) rotate(30deg);}
-
+	
 	#sidebar {
 		width:100%;
 	}
@@ -1332,6 +1378,12 @@ p#cookies-x {opacity:0.5;}
 	}
 	#bottom-row a {
 		margin:5px;
+	}
+	.cookie-table {
+		font-size: 11px;
+	}
+	.cookie-table th {
+		font-size: 10px;
 	}
 	#donate-btn-row {
 		flex-direction: column;

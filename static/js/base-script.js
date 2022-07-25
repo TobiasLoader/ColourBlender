@@ -172,7 +172,7 @@ function lightDarkCheckBanner(){
 		$('body').removeClass("light-mode");
 		$('body').addClass("dark-mode");
 		// switch out also the clipboard copy svgs
-		$('.colour-output img').attr('src','static/assets/dark-clipboard-copy.svg');
+		$('.colour-output img').attr('src','/assets/dark-clipboard-copy.svg');
 	}
 	// if dark mode and colour brightness is too dark change text to light
 	else if (colour_banner_mode=='dark' && b<183){
@@ -181,7 +181,7 @@ function lightDarkCheckBanner(){
 		$('body').removeClass("dark-mode");
 		$('body').addClass("light-mode");
 		// switch out also the clipboard copy svgs
-		$('.colour-output img').attr('src','static/assets/light-clipboard-copy.svg');
+		$('.colour-output img').attr('src','/assets/light-clipboard-copy.svg');
 	}
 	// note discrepency in 187/183 brightness breakpoints.
 	// this is to prevent rapid flickering since the linear interpolation between
