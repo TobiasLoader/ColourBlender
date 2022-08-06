@@ -23,8 +23,7 @@ function initStripePayment(){
 	  return response.json();
 	}).then(function(responseJson) {
 	  var clientSecret = responseJson.client_secret;
-	  var id = responseJson.id
-		
+	  var id = responseJson.id;		
 		updateStripeTip = function(){
 			fetch('/update-intent/'+id,{
 				method: 'POST',
@@ -72,6 +71,8 @@ function initStripePayment(){
 	  const form = document.getElementById('payment-form');
 	  form.addEventListener('submit', async (event) => {
 			event.preventDefault();
+			$("#spinner").removeClass("hidden");
+			$('#submit').text("processing");
 			const {error} = await stripe.confirmPayment({
 		  	//`Elements` instance that was used to create the Payment Element
 		  	elements,
@@ -80,6 +81,8 @@ function initStripePayment(){
 		  	},
 			});
 			if (error) {
+				$('#spinner').addClass("hidden");
+				$('#submit').text("submit tip");
 		  	// This point will only be reached if there is an immediate error when
 		  	// confirming the payment. Show error to your customer (for example, payment
 		  	// details incomplete)

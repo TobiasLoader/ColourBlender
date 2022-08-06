@@ -654,6 +654,8 @@ function showcssPage(){
 }
 function gradientPage(){
 	history.pushState(null, '', urlWithPageParam(window.location.origin,'gradient'));
+	// rebuild gradient code snippet
+	gradientBuildCode();
 	// set the #gradient element display block and others display none
 	displayNoneSecContent();
 	$('#gradient').css('display','block');
