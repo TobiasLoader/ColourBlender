@@ -1,3 +1,19 @@
+""" INFO:
+  if the virtual env not running:
+    - navigate to /colour_blender_app
+    - run: source venv/bin/activate
+  to test locally (running flask backend):
+    - navigate to /ColourBlender folder in terminal
+    - run: python run.py
+    - go to http://localhost:5000
+"""
+
+
+"""
+	TODO - natural extensions:
+		- build in options for multiple blending modes: eg: rgb, hsl...
+"""
+
 from flask import Flask, render_template, jsonify, request
 from copyright_years import build_copyright_years
 import stripe
@@ -21,7 +37,7 @@ def index():
 		'years': build_copyright_years()
 	}
 	return render_template('index.html',data=data)
-	
+
 @app.route('/coffee')
 def coffee():
 	data = {
