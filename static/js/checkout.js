@@ -1,7 +1,12 @@
 // Set your publishable key: remember to change this to your live publishable key in production
 // See your keys here: https://dashboard.stripe.com/apikeys
+
+// this is the test publishable stripe key
+//pk_test_51LJzMaAE43t8f8Vwd9V4opGsnZxhD2h2AzmFEZpXbyXYtmDuQaYXANvtAaxymr1R7eabRUmMHEzMb7or3ddFnTyh00YfCKuCOg
+
+// this is the live publishable stripe key
 const stripe = Stripe(
-	'pk_test_51LJzMaAE43t8f8Vwd9V4opGsnZxhD2h2AzmFEZpXbyXYtmDuQaYXANvtAaxymr1R7eabRUmMHEzMb7or3ddFnTyh00YfCKuCOg',{
+	'pk_live_51LJzMaAE43t8f8VwYVxfz6l7reJpFabH5PC42fG23aNesboeijDtCOBNsBwFzYIleds84h6mXbinPqX50YxGE5Fh00peyx3rqB',{
 	locale: 'en' // or 'fr'
 });
 
