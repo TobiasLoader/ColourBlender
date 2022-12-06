@@ -4,8 +4,8 @@
     - run: source venv/bin/activate
   to test locally (running flask backend):
     - navigate to /ColourBlender folder in terminal
-    - run: python run.py
-    - go to http://localhost:5000
+    - run: python run.py (or gunicorn run:app)
+    - go to http://localhost:5000 (or port number)
 """
 
 
@@ -21,7 +21,10 @@ import json
 # from flask_ngrok import run_with_ngrok
 
 # This is your test secret API key.
-stripe.api_key = 'sk_test_51LJzMaAE43t8f8VwHSiFCcHigSL0E4vC6Zvv35z9PJya75YYDcGLsAPRWgbpo5mnoxaoLnNm5fFG7XyYrKOxoTMj00MKqMaqsx'
+#sk_test_51LJzMaAE43t8f8VwHSiFCcHigSL0E4vC6Zvv35z9PJya75YYDcGLsAPRWgbpo5mnoxaoLnNm5fFG7XyYrKOxoTMj00MKqMaqsx
+
+f = open("/Users/Toby/project-disk-data/ColourBlender/key.txt", "r")
+stripe.api_key = f.read();
 
 app = Flask(__name__, static_folder='static', static_url_path='')
 # run_with_ngrok(app)
