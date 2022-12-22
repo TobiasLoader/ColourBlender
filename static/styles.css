@@ -18,9 +18,14 @@ body {
 			animation: fadein 1s;
 }
 
+p {
+	font-size: 13px;
+	line-height: 20px;
+}
+
 #toby-pic {
-	width: 110px;
-	margin-right: 20px;
+	width: 100px;
+	margin-right: 15px;
 	margin-bottom: 10px;
 	float: left;
 	border: rgba(255,255,255,0.5) 1px solid;
@@ -142,6 +147,7 @@ body {
 	width:100%;
 	opacity: 1;
 	transition: opacity 300ms;
+	padding-left: 0;
 }
 
 .sidebar-btn {
@@ -150,6 +156,7 @@ body {
 	margin: 10px auto;
 	cursor:pointer;
 	position: relative;
+	list-style: none;
 }
 .light-sidebar .sidebar-btn {
 	border:rgb(255,255,255,0.2) 1px solid;
@@ -165,6 +172,7 @@ body {
 .dark-sidebar .sec-active.sidebar-btn {background:rgba(50,50,50,0.1);}
 
 .sidebar-btn p {
+	font-size:16px;
 	margin:0;
 	height: 100%;
 	line-height: 50px;
@@ -388,7 +396,7 @@ body {
 #sub-content-box .desc {
 	opacity:0.7;
 	letter-spacing:0;
-	margin: 40px 0;
+	margin: 15px 0;
 	text-align: justify;
 }
 
@@ -536,9 +544,11 @@ body {
 }
 
 .tip-btn-container label {
-	margin-left: 5px;
-	font-size:10px;
+	margin-bottom: 5px;
+	font-size:11px;
 	text-align: center;
+	display: inline-block;
+	width: 100%;
 }
 
 .tip-btn {
@@ -604,6 +614,9 @@ body {
 	height: 50px;
 	line-height: 50px;
 }
+#sub-content-box #choose-amount-section p.choose-custom-amount-txt:hover {
+	color: #5382c9;
+}
 #ccat-short.choose-custom-amount-txt {
 	display: none;
 }
@@ -615,7 +628,8 @@ body {
 }
 #choose-custom-amount-row input {
 	flex: 1;
-	/* height: 50px; */
+	font-size: 15px;
+	padding: 14px;
 	color:rgb(100,100,100);
 	cursor:auto;
 }

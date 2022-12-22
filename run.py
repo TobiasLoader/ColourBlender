@@ -11,7 +11,8 @@
 
 """
 	TODO - natural extensions:
-		- build in options for multiple blending modes: eg: rgb, hsl...
+		- build in options for multiple blending modes: eg: rgb, hsl, lch...
+		- accounts to save colour palettes
 """
 
 from flask import Flask, render_template, jsonify, request

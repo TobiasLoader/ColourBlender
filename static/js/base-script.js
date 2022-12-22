@@ -265,6 +265,9 @@ function urlWithPageParam(str_url,page){
 
 //////////////// MAIN SCRIPT //////////////////
 
+$('#email-address').attr("href", atob('bWFpbHRvOmNvbG91cmJsZW5kZXJAdG9iaWFzbG9hZGVyLmNvbQ=='));
+ $('#email-address').text(atob('Y29sb3VyYmxlbmRlckB0b2JpYXNsb2FkZXIuY29t'));
+
 // JS self-evidently has loaded so remove hide and no-js-class classes
 $('.hide').removeClass('hide');
 $('.no-js-class').removeClass('no-js-class');

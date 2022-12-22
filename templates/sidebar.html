@@ -1,18 +1,18 @@
 <div id="sidebar" class="hide">
 	<div id="sidebar-content">
-		<div id="sidebar-inner">
-			<div id="home-btn" class="sidebar-btn"><p>home</p></div>
-			<div id="about-btn" class="sidebar-btn sidebar-btn-js"><p>about</p></div>
-			<div id="showcss-btn" class="sidebar-btn sidebar-btn-js"><p>colour css</p></div>
-			<div id="gradient-btn" class="sidebar-btn sidebar-btn-js"><p>gradient css</p></div>
-			<div id="privacy-btn" class="sidebar-btn sidebar-btn-js"><p>privacy</p></div>
-			<div id="donate-btn" class="sidebar-btn sidebar-btn-js">
+		<ul id="sidebar-inner">
+			<li id="home-btn" class="sidebar-btn"><p>home</p></li>
+			<li id="about-btn" class="sidebar-btn sidebar-btn-js"><p>about</p></li>
+			<li id="showcss-btn" class="sidebar-btn sidebar-btn-js"><p>colour css</p></li>
+			<li id="gradient-btn" class="sidebar-btn sidebar-btn-js"><p>gradient css</p></li>
+			<li id="privacy-btn" class="sidebar-btn sidebar-btn-js"><p>privacy</p></li>
+			<li id="donate-btn" class="sidebar-btn sidebar-btn-js">
 				<img src="{{url_for('static', filename='assets/coffee-cup-v3.svg')}}" id="coffee-btn-left-cup">
 				<img src="{{url_for('static', filename='assets/coffee-cup-v3.svg')}}" 
 				id="coffee-btn-right-cup">
 				<p>coffee?</p>
-			</div>
-		</div>
+			</li>
+		</ul>
 		<div id="bottom-row">
 			<a href="https://www.linkedin.com/in/tobiasloader/">
 				<img src="{{url_for('static', filename='assets/linkedin_light.svg')}}" class="socialimg linkedinlight"  alt="linkedin logo">
