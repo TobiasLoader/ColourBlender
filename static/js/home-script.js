@@ -683,6 +683,23 @@ $('#cookies-yes').click(function(){
 	$('#cookies').velocity({'right':'-40px'},150);
 	cookie_choice = 'accept';
 	setCookie('users_cookie_choice',cookie_choice,1);
+	// google analytics cookies
+	$.ajax({
+		url: "https://www.googletagmanager.com/gtag/js?id=G-97W2E7DNR6",
+		dataType: "script",
+		cache: true,
+		success: function() {
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'G-97W2E7DNR6');
+		}
+	});
+	// or append to head, then would need callback on load to run gtag funcs
+	// var head = document.getElementsByTagName('head')[0],
+	// 	script = document.createElement('script');
+	// script.src = 'https://www.googletagmanager.com/gtag/js?id=G-97W2E7DNR6';
+	// head.appendChild(script);
 });
 $('#cookies-i').click(function(){
 	sidebar();
