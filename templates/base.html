@@ -38,6 +38,14 @@
 			<script src="{{url_for('static', filename='js/jquery-3.6.0.min.js')}}" defer></script>
 			<script src="{{url_for('static', filename='js/velocity.min.js')}}" defer></script>
 			<script src="{{url_for('static', filename='js/base-script.js')}}" defer></script>
+			<!-- Google tag (gtag.js) -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=G-97W2E7DNR6"></script>
+			<script>
+			  window.dataLayer = window.dataLayer || [];
+			  function gtag(){dataLayer.push(arguments);}
+			  gtag('js', new Date());
+			  gtag('config', 'G-97W2E7DNR6');
+			</script>
 		{%- endblock scripts %}
   </head>
 	<body class="hex no-js-class light-title light-mode light-sidebar" style="width:100%; height:100%;">
