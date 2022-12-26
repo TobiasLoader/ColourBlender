@@ -1386,6 +1386,10 @@ p#cookies-x {opacity:0.5;}
 
 	.show-sec #sec-back-arrow {transform: translate(-50%,4px);}
 	
+	#sub-content-box .desc {
+		text-align: left;
+	}
+	
 	#track {
 		display:none;
 	}
