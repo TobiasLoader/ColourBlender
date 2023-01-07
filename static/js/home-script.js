@@ -500,6 +500,20 @@ let c1_picker = $('#col1_picker');
 let c2_picker = $('#col2_picker');
 let spl = $('#split')
 
+function fetchGoogleTag(){
+	$.ajax({
+		url: "https://www.googletagmanager.com/gtag/js?id=G-97W2E7DNR6",
+		dataType: "script",
+		cache: true,
+		success: function() {
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'G-97W2E7DNR6');
+		}
+	});
+}
+
 // cookie accepted policy
 var cookie_choice;
 if (getCookie('users_cookie_choice')==null) cookie_choice = 'reject';
@@ -529,6 +543,9 @@ if (cookie_choice == 'reject') {
 			$(this).css("box-shadow", "0px 0px 80px 20px rgba(22,27,37,0.25)");
 		}
 	});
+} else {
+	// otherwise if cookies already okayed - fetch google analytics
+	fetchGoogleTag();
 }
 
 // if focus leaves colour input text boxes then parse the input
@@ -684,17 +701,7 @@ $('#cookies-yes').click(function(){
 	cookie_choice = 'accept';
 	setCookie('users_cookie_choice',cookie_choice,1);
 	// google analytics cookies
-	$.ajax({
-		url: "https://www.googletagmanager.com/gtag/js?id=G-97W2E7DNR6",
-		dataType: "script",
-		cache: true,
-		success: function() {
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
-			gtag('config', 'G-97W2E7DNR6');
-		}
-	});
+	fetchGoogleTag();
 	// or append to head, then would need callback on load to run gtag funcs
 	// var head = document.getElementsByTagName('head')[0],
 	// 	script = document.createElement('script');
