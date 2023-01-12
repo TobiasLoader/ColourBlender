@@ -6,5 +6,5 @@ def build_copyright_years():
 	currentyr = date.today().year
 	yrstr = str(init_launch_yr)
 	if currentyr>init_launch_yr:
-		yrstr += "-" + str(currentyr)
+		yrstr += "–" + str(currentyr)
 	return yrstr
