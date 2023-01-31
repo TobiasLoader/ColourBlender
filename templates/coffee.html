@@ -1,79 +1,78 @@
-{% extends "base.html" %}
-
-{% block scripts %}
-	<script src="https://js.stripe.com/v3/"></script>
-	{{super()}}
-	<script src="{{url_for('static', filename='js/coffee-script.js')}}" defer></script>
-	<script src="{{url_for('static', filename='js/checkout.js')}}" defer></script>
-	<script src="{{url_for('static', filename='js/status.js')}}" defer></script>
-{% endblock %}
-
-{% block main_content %}
-	<div id="main-content" style="opacity:0;"></div>
-{% endblock %}
-
-{% block sub_pages %}
-	<div id="donate-content" class="sub-content-inner">
-		<h2>buy me a coffee?</h2>
-		<p class="desc" style="margin-bottom: 0;">Hey there! Many thanks for considering giving a tip. I'll invest it right back into colourblender.io via the server and the coffee that keeps me going. Thanks very much!</p>
-		<!-- <p>I'm awesome cos I'm going to tip Toby (and ColourBlender is awesome too!)</p> -->
-		<div id='choose-amount-section'>
-			<div id='donate-btn-row'>
-				<div class="tip-btn-container">
-					<label>small latte</label>
-					<div id="onefifty-donate" class="tip-btn">
-						<img src="{{url_for('static', filename='assets/coffee-cup-v3.svg')}}">
-						<div class="tip-p-container"><p>£1.50</p></div>
-					</div>
-				</div>
-				<div class="tip-btn-container">
-					<label>medium latte</label>
-					<div id="twofifty-donate" class="tip-btn active">
-						<img src="{{url_for('static', filename='assets/coffee-cup-v3.svg')}}">
-						<div class="tip-p-container"><p>£2.50</p></div>
-					</div>
-				</div>
-				<div class="tip-btn-container">
-					<label>large latte</label>
-					<div id="threefifty-donate" class="tip-btn">
-						<img src="{{url_for('static', filename='assets/coffee-cup-v3.svg')}}">
-						<div class="tip-p-container"><p>£3.50</p></div>
-					</div>
-				</div>
-			</div>
-			<div id='choose-custom-amount-container'>
-				<div id="choose-custom-amount-txt-container">
-					<div id="choose-custom-amount-txt-left" class="choose-custom-amount-txt-line"></div>
-					<p id="ccat-long" class="choose-custom-amount-txt">or choose custom amount?</p>
-					<p id="ccat-short" class="choose-custom-amount-txt">or custom amount?</p>
-					<div id="choose-custom-amount-txt-right" class="choose-custom-amount-txt-line"></div>
-				</div>
-				<div id='choose-custom-amount-row'>
-					<p>> custom amount (£):</p>
-					<input id='choose-custom-amount-input'  class="tip-btn" type="number" placeholder="2.50" min="0.30" step="any">
-				</div>
-			</div>
-			<div id="donate-button" class="body-btn"><p>payment details →</p></div>
-		</div>
-		<div id="payment-system">
-			<form id="payment-form">
-				<div id="payment-element">
-					<!--Stripe.js injects the Payment Element-->
-				</div>
-				<!-- <div id="submit" class="body-btn"><p>time to tip toby!</p></div> -->
-				<div class="body-btn">
-					<button id="submit">submit tip :)</button>
-					<div id="spinner" class="hidden"></div>
-				</div>
-				<div id="error-message">
-					<!-- Display error message to your customers here -->
-				</div>
-			</form>
-			<div id="back-to-tip-row">
-				<p id="back-to-tip">← back to tip amount</p>
-				<p id="display-tip">£2.50</p>
-			</div>
-		</div>
-		<p id="payment-message"></p>
-	</div>
+{% extends "base.html" %} {% block scripts %}
+<script src="https://js.stripe.com/v3/"></script>
+{{super()}}
+<script src="{{url_for('static', filename='js/coffee-script.js')}}" defer></script>
+<script src="{{url_for('static', filename='js/checkout.js')}}" defer></script>
+<script src="{{url_for('static', filename='js/status.js')}}" defer></script>
+{% endblock %} {% block main_content %}
+<div id="main-content" style="opacity: 0"></div>
+{% endblock %} {% block sub_pages %}
+<div id="donate-content" class="sub-content-inner">
+    <h2>buy me a coffee?</h2>
+    <p class="desc" style="margin-bottom: 0">
+        Hey there! Many thanks for considering giving a tip. I'll invest it right back into colourblender.io via the server and the coffee that keeps me going. Thanks very much!
+    </p>
+    <p class="desc" style="margin-bottom: 0">
+        By going ahead with this you agree to the stricly necessary Stripe related cookies as set out on the 'privacy' page. Further you accept that if you make a Stripe payment, some of your details (eg. post code entered, last 4 digits of card number, name if you have a Stripe account) will appear in my Stripe Dashboard, along with the tip you made. I do not have control over what information Stripe shows me.
+    </p>
+    <!-- <p>I'm awesome cos I'm going to tip Toby (and ColourBlender is awesome too!)</p> -->
+    <div id="choose-amount-section">
+        <div id="donate-btn-row">
+            <div class="tip-btn-container">
+                <label>small latte</label>
+                <div id="onefifty-donate" class="tip-btn">
+                    <img src="{{url_for('static', filename='assets/coffee-cup-v3.svg')}}" />
+                    <div class="tip-p-container"><p>£1.50</p></div>
+                </div>
+            </div>
+            <div class="tip-btn-container">
+                <label>medium latte</label>
+                <div id="twofifty-donate" class="tip-btn active">
+                    <img src="{{url_for('static', filename='assets/coffee-cup-v3.svg')}}" />
+                    <div class="tip-p-container"><p>£2.50</p></div>
+                </div>
+            </div>
+            <div class="tip-btn-container">
+                <label>large latte</label>
+                <div id="threefifty-donate" class="tip-btn">
+                    <img src="{{url_for('static', filename='assets/coffee-cup-v3.svg')}}" />
+                    <div class="tip-p-container"><p>£3.50</p></div>
+                </div>
+            </div>
+        </div>
+        <div id="choose-custom-amount-container">
+            <div id="choose-custom-amount-txt-container">
+                <div id="choose-custom-amount-txt-left" class="choose-custom-amount-txt-line"></div>
+                <p id="ccat-long" class="choose-custom-amount-txt">or choose custom amount?</p>
+                <p id="ccat-short" class="choose-custom-amount-txt">or custom amount?</p>
+                <div id="choose-custom-amount-txt-right" class="choose-custom-amount-txt-line"></div>
+            </div>
+            <div id="choose-custom-amount-row">
+                <p>> custom amount (£):</p>
+                <input id="choose-custom-amount-input" class="tip-btn" type="number" placeholder="2.50" min="0.30" step="any" />
+            </div>
+        </div>
+        <div id="donate-button" class="body-btn"><p>payment details →</p></div>
+    </div>
+    <div id="payment-system">
+        <form id="payment-form">
+            <div id="payment-element">
+                <!--Stripe.js injects the Payment Element-->
+            </div>
+            <!-- <div id="submit" class="body-btn"><p>time to tip toby!</p></div> -->
+            <div class="body-btn">
+                <button id="submit">submit tip :)</button>
+                <div id="spinner" class="hidden"></div>
+            </div>
+            <div id="error-message">
+                <!-- Display error message to your customers here -->
+            </div>
+        </form>
+        <div id="back-to-tip-row">
+            <p id="back-to-tip">← back to tip amount</p>
+            <p id="display-tip">£2.50</p>
+        </div>
+    </div>
+    <p id="payment-message"></p>
+</div>
 {% endblock %}
