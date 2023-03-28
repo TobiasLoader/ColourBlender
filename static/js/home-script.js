@@ -114,6 +114,8 @@ function colourTextInputEntered(el,el_picker,i){
 	// tries to validated the colour with current encoding
 	let veri_col = verifyFormatCol(el.val());
 	if (veri_col){
+		// tell server to increment colourchanged in analytics
+		collectColourBlenderUsageStats('colourchange');
 		// if succeeds then update the corresponding colour
 		cols[i] = veri_col;
 		// then refresh the page with new colour
@@ -144,6 +146,8 @@ function numberSplitInputEntered(el){
 	let valentered = parseInt(el.val());
 	// if valid int and in range 0-100
 	if (valentered!=undefined && valentered>=0 && valentered<=100){
+		// record analytics that slider has moved
+		collectColourBlenderUsageStats('sliderchange');
 		// then update value split
 		split = valentered/100;
 		// update colours on page with applyColourChoice()
@@ -404,6 +408,8 @@ function dragElement(elmnt) {
 			e = e || window.event;
 			if(e.target !== this)
 			return;
+			// analytics that slider has moved
+			collectColourBlenderUsageStats('sliderchange');
 			// determine the drag offset (which is then maintained throughout drag)
 			clickdragoffset = e.clientX-$(window).width()*(0.2+split*0.6);
 			// define the callbacks for continuing to drag and release drag
@@ -577,7 +583,7 @@ c1_picker.on('input',function(){
 	// then update text input
 	c1.val(cols[0]);
 	// and refresh colour fields
-	refreshColourFields();
+	refreshColourFields();	
 });
 // same comments above on func below (this is RHS colour)
 c2_picker.on('input',function(){
@@ -586,6 +592,10 @@ c2_picker.on('input',function(){
 	c2.val(cols[1]);
 	refreshColourFields();
 });
+
+// update analytics for number of times colour has been changed
+c1_picker.focusout(function(){collectColourBlenderUsageStats('colourchange');})
+c2_picker.focusout(function(){collectColourBlenderUsageStats('colourchange');})
 
 // if lost focus on split number input then parse input
 spl.focusout(function(){numberSplitInputEntered(spl);});

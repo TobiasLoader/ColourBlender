@@ -272,6 +272,19 @@ $('#email-address').attr("href", atob('bWFpbHRvOmNvbG91cmJsZW5kZXJAdG9iaWFzbG9hZ
 $('.hide').removeClass('hide');
 $('.no-js-class').removeClass('no-js-class');
 
+function collectColourBlenderUsageStats(apiEndpoint){
+	fetch('/analytics/'+apiEndpoint,{
+		method: 'POST',
+		headers: {'Content-Type':'application/json',},
+	});
+}
+
+// tell server to increment 5sec/30sec in analytics
+// after the page has been open for 5sec/30sec respectively
+// NB: each of these occur at most once on any given page load
+setTimeout(()=>{collectColourBlenderUsageStats('fivesec');},5000);
+setTimeout(()=>{collectColourBlenderUsageStats('thirtysec');},30000);
+
 // define cols, split and hex/rgb encoding on init page load
 var colour_encode = flask_data.encode;
 var cols = ['#'+flask_data.col1,'#'+flask_data.col2];
@@ -304,9 +317,11 @@ var sub_content_transition = false;
 let page = flask_data.page;
 
 function hexrgbToggle(){
-	console.log(cols);
+	// console.log(cols);
 	// if we can switch encoding (ie. no ongoing transitions)
 	if (can_encode_switch){
+		// tell server to increment hexrgbtoggle in analytics
+		collectColourBlenderUsageStats('hexrgbtoggle');
 		switch (colour_encode) {
 			case "hex": 
 				// switch to rgb

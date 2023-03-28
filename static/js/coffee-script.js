@@ -38,6 +38,8 @@ var burger_transition = false;
 var sub_content = false;
 var sub_content_transition = false;
 
+collectColourBlenderUsageStats('coffeevisits');
+
 // if click burger
 $('#burger').click(function(){
 	homePage();
