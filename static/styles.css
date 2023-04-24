@@ -1484,6 +1484,9 @@ p#cookies-x {opacity:0.5;}
 	}
 }
 
+#main-img-preview {
+	display: none;
+}
 #rotate-device {
 	position:fixed;
 	top: 0;
