@@ -38,6 +38,19 @@
 			<script src="{{url_for('static', filename='js/jquery-3.6.0.min.js')}}" defer></script>
 			<script src="{{url_for('static', filename='js/velocity.min.js')}}" defer></script>
 			<script src="{{url_for('static', filename='js/base-script.js')}}" defer></script>
+			<script type="application/ld+json">
+				{
+					"@context": "https://schema.org",
+					"@type": "WebSite",
+					"url": "https://www.colourblender.io/",
+					"image": {
+						"@type": "ImageObject",
+						"url": "https://www.colourblender.io/assets/colourblenderio.png",
+						"height": "779",
+						"width": "1437"
+					}
+				}
+			</script>
 		{%- endblock scripts %}
   </head>
 	<body class="hex no-js-class light-title light-mode light-sidebar" style="width:100%; height:100%;">
