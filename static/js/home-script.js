@@ -546,7 +546,7 @@ if (cookie_choice == 'reject') {
 		},
 		easing: "easeInOutQuad",
 		complete: function(elements, activeCall){
-			$(this).css("box-shadow", "0px 0px 80px 20px rgba(22,27,37,0.25)");
+			$(this).css("box-shadow", "0px 0px 40px 0px rgba(22,27,37,0.3)");
 		}
 	});
 } else {
