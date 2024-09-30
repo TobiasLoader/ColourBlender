@@ -33,8 +33,8 @@ app = Flask(__name__, static_folder='static', static_url_path='')
 @app.route('/')
 def index():
 	data = {
-		'col1': request.args.get('col1', default = '60c36f', type = str),
-		'col2': request.args.get('col2', default = '5382c9', type = str),
+		'col1': request.args.get('col1', default = '96d35f', type = str),
+		'col2': request.args.get('col2', default = 'fecb3e', type = str),
 		'split': request.args.get('split', default = 0.5, type = float),
 		'encode': request.args.get('encode', default = 'hex', type = str),
 		'page': request.args.get('page', default = 'home', type = str),
@@ -45,8 +45,8 @@ def index():
 @app.route('/coffee')
 def coffee():
 	data = {
-		'col1': request.args.get('col1', default = '60c36f', type = str),
-		'col2': request.args.get('col2', default = '5382c9', type = str),
+		'col1': request.args.get('col1', default = '96d35f', type = str),
+		'col2': request.args.get('col2', default = 'fecb3e', type = str),
 		'split': request.args.get('split', default = 0.5, type = float),
 		'encode': request.args.get('encode', default = 'hex', type = str),
 		'page': 'coffee',
