@@ -1228,9 +1228,9 @@ p.cookies-choice:hover {opacity:1 !important;}
 p#cookies-yes {opacity:1;}
 p#cookies-i {opacity:0.5;}
 p#cookies-x {opacity:0.5;}
-#cookies-yes:hover {color: #96d35f;}
-#cookies-i:hover {color: #fecb3e;}
-#cookies-x:hover {color: #c95353;}
+#cookies-yes:hover {color: #635bff;}
+#cookies-i:hover {color: #ff8d5c;}
+#cookies-x:hover {color: #ff5c5c;}
 
 @media only screen and (max-width: 1100px) {
 	.tip-btn img {
