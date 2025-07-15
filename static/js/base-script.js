@@ -245,12 +245,12 @@ window.onresize = function(){
 function urlRedirectWithParams(str_url,page){
 	var url = new URL(str_url);
 	if (colour_encode=='hex'){
-		if (cols[0]!='#96d35f') url.searchParams.append('col1',cols[0].substring(1));
-		if (cols[1]!='#fecb3e') url.searchParams.append('col2',cols[1].substring(1));
+		if (cols[0]!='#635bff') url.searchParams.append('col1',cols[0].substring(1));
+		if (cols[1]!='#ff8d5c') url.searchParams.append('col2',cols[1].substring(1));
 	} else if (colour_encode=='rgb'){
-		if (cols[0]!='rgb(150,211,95)')
+		if (cols[0]!='rgb(99,91,255)')
 			url.searchParams.append('col1',rgbStrToHex(cols[0]).substring(1));
-		if (cols[0]!='rgb(254,203,62)')
+		if (cols[0]!='rgb(255,141,92)')
 			url.searchParams.append('col2',rgbStrToHex(cols[1]).substring(1));
 	}
 	if(split!=0.5) url.searchParams.append('split',split);
